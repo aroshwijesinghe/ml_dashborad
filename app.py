@@ -7,8 +7,6 @@ import os
 
 from data_utils import (
     preprocess_data,
-    get_sample_telecom_churn_data,
-    get_sample_patient_data,
     load_sl_it_jobs_dataset
 )
 from model_trainer import train_and_evaluate
@@ -157,9 +155,7 @@ with st.sidebar:
         "Choose Data Source:",
         [
             "🇱🇰 Kaggle: Sri Lanka IT Jobs Dataset",
-            "📤 Upload Dataset (CSV / Excel)",
-            "📞 Sample: Telecom Churn (Classification)",
-            "🩺 Sample: Patient Health (Regression)"
+            "📤 Upload Custom Dataset (CSV / Excel)"
         ]
     )
     
@@ -172,7 +168,7 @@ with st.sidebar:
         except Exception as e:
             st.error(f"Error loading Kaggle dataset: {e}")
 
-    elif data_source == "📤 Upload Dataset (CSV / Excel)":
+    elif data_source == "📤 Upload Custom Dataset (CSV / Excel)":
         uploaded_file = st.file_uploader("Upload CSV or Excel file", type=["csv", "xlsx", "xls"])
         if uploaded_file is not None:
             try:
@@ -184,15 +180,7 @@ with st.sidebar:
             except Exception as e:
                 st.error(f"Error loading file: {e}")
         else:
-            st.info("Upload your custom CSV or pick the pre-loaded Kaggle dataset.")
-
-    elif data_source == "📞 Sample: Telecom Churn (Classification)":
-        df = get_sample_telecom_churn_data()
-        st.info("Loaded Telecom Churn dataset (1,000 records).")
-
-    elif data_source == "🩺 Sample: Patient Health (Regression)":
-        df = get_sample_patient_data()
-        st.info("Loaded Patient Disease Progression dataset (442 records).")
+            st.info("Upload your custom CSV/Excel dataset or select the Kaggle IT Jobs dataset above.")
 
     if df is not None:
         st.markdown("---")
