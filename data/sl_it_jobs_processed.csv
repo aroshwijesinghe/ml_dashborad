@@ -1,0 +1,526 @@
+Role,Domain,Level,Experience_Years,Salary_LKR,Salary_Bracket,Has_Python,Has_React,Has_Java,Has_SQL,Has_Cloud,Has_AI_ML
+Software Engineer (Full-Stack),Engineering,Entry,1.0,150000.0,Mid (150k-300k),0,1,0,1,0,1
+Software Engineer (Full-Stack),Engineering,Mid,4.0,240000.0,Mid (150k-300k),0,1,0,1,0,1
+Software Engineer (Full-Stack),Engineering,Senior,8.0,400000.0,Senior (300k-500k),0,1,0,1,0,1
+Frontend Developer,Engineering,Entry,1.0,100000.0,Entry (<150k),0,1,0,0,0,1
+Frontend Developer,Engineering,Mid,4.0,160000.0,Mid (150k-300k),0,1,0,0,0,1
+Frontend Developer,Engineering,Senior,8.0,275000.0,Mid (150k-300k),0,1,0,0,0,1
+Backend Developer,Engineering,Entry,1.0,125000.0,Entry (<150k),1,0,1,1,0,0
+Backend Developer,Engineering,Mid,4.0,200000.0,Mid (150k-300k),1,0,1,1,0,0
+Backend Developer,Engineering,Senior,8.0,325000.0,Senior (300k-500k),1,0,1,1,0,0
+Mobile Developer (iOS/Android),Engineering,Entry,1.0,115000.0,Entry (<150k),0,1,0,0,0,0
+Mobile Developer (iOS/Android),Engineering,Mid,4.0,195000.0,Mid (150k-300k),0,1,0,0,0,0
+Mobile Developer (iOS/Android),Engineering,Senior,8.0,350000.0,Senior (300k-500k),0,1,0,0,0,0
+Flutter Developer,Engineering,Entry,1.0,105000.0,Entry (<150k),0,0,0,0,0,0
+Flutter Developer,Engineering,Mid,3.0,175000.0,Mid (150k-300k),0,0,0,0,0,0
+Flutter Developer,Engineering,Senior,7.0,300000.0,Senior (300k-500k),0,0,0,0,0,0
+React Native Developer,Engineering,Entry,1.0,112500.0,Entry (<150k),0,1,0,0,0,0
+React Native Developer,Engineering,Mid,3.0,190000.0,Mid (150k-300k),0,1,0,0,0,0
+React Native Developer,Engineering,Senior,7.0,320000.0,Senior (300k-500k),0,1,0,0,0,0
+Kotlin Developer,Engineering,Entry,1.0,100000.0,Entry (<150k),0,0,0,0,0,1
+Kotlin Developer,Engineering,Mid,3.0,167500.0,Mid (150k-300k),0,0,0,0,0,1
+Kotlin Developer,Engineering,Senior,7.0,280000.0,Mid (150k-300k),0,0,0,0,0,1
+Python Developer,Engineering,Entry,1.0,125000.0,Entry (<150k),1,0,0,1,0,0
+Python Developer,Engineering,Mid,4.0,215000.0,Mid (150k-300k),1,0,0,1,0,0
+Python Developer,Engineering,Senior,8.0,365000.0,Senior (300k-500k),1,0,0,1,0,0
+Java Developer,Engineering,Entry,1.0,120000.0,Entry (<150k),0,0,1,1,0,0
+Java Developer,Engineering,Mid,4.0,202500.0,Mid (150k-300k),0,0,1,1,0,0
+Java Developer,Engineering,Senior,8.0,340000.0,Senior (300k-500k),0,0,1,1,0,0
+.NET Developer,Engineering,Entry,1.0,115000.0,Entry (<150k),0,0,0,1,0,0
+.NET Developer,Engineering,Mid,4.0,190000.0,Mid (150k-300k),0,0,0,1,0,0
+.NET Developer,Engineering,Senior,8.0,320000.0,Senior (300k-500k),0,0,0,1,0,0
+C++ Developer,Engineering,Entry,2.0,135000.0,Entry (<150k),0,0,0,0,0,0
+C++ Developer,Engineering,Mid,4.5,230000.0,Mid (150k-300k),0,0,0,0,0,0
+C++ Developer,Engineering,Senior,9.0,400000.0,Senior (300k-500k),0,0,0,0,0,0
+PHP Developer,Engineering,Entry,1.0,90000.0,Entry (<150k),0,0,0,1,0,1
+PHP Developer,Engineering,Mid,3.0,145000.0,Entry (<150k),0,0,0,1,0,1
+PHP Developer,Engineering,Senior,7.0,250000.0,Mid (150k-300k),0,0,0,1,0,1
+Ruby on Rails Developer,Engineering,Entry,1.0,107500.0,Entry (<150k),0,0,0,1,0,1
+Ruby on Rails Developer,Engineering,Mid,3.0,170000.0,Mid (150k-300k),0,0,0,1,0,1
+Ruby on Rails Developer,Engineering,Senior,7.0,285000.0,Mid (150k-300k),0,0,0,1,0,1
+Go Developer,Engineering,Entry,1.0,120000.0,Entry (<150k),0,0,0,1,0,0
+Go Developer,Engineering,Mid,3.0,202500.0,Mid (150k-300k),0,0,0,1,0,0
+Go Developer,Engineering,Senior,7.0,340000.0,Senior (300k-500k),0,0,0,1,0,0
+API Developer,Engineering,Entry,1.0,125000.0,Entry (<150k),0,0,0,0,0,1
+API Developer,Engineering,Mid,4.0,210000.0,Mid (150k-300k),0,0,0,0,0,1
+API Developer,Engineering,Senior,8.0,360000.0,Senior (300k-500k),0,0,0,0,0,1
+Game Developer,Engineering,Entry,1.5,110000.0,Entry (<150k),0,0,0,0,0,0
+Game Developer,Engineering,Mid,4.5,210000.0,Mid (150k-300k),0,0,0,0,0,0
+Game Developer,Engineering,Senior,9.0,390000.0,Senior (300k-500k),0,0,0,0,0,0
+Web Developer,Engineering,Entry,1.0,97500.0,Entry (<150k),1,0,0,1,0,1
+Web Developer,Engineering,Mid,3.0,160000.0,Mid (150k-300k),1,0,0,1,0,1
+Web Developer,Engineering,Senior,7.0,275000.0,Mid (150k-300k),1,0,0,1,0,1
+Data Scientist,Data & AI,Entry,1.5,175000.0,Mid (150k-300k),1,0,0,1,0,1
+Data Scientist,Data & AI,Mid,4.0,275000.0,Mid (150k-300k),1,0,0,1,0,1
+Data Scientist,Data & AI,Senior,8.0,475000.0,Senior (300k-500k),1,0,0,1,0,1
+Data Engineer,Engineering,Entry,1.5,155000.0,Mid (150k-300k),1,0,0,1,1,1
+Data Engineer,Engineering,Mid,4.0,250000.0,Mid (150k-300k),1,0,0,1,1,1
+Data Engineer,Engineering,Senior,8.0,435000.0,Senior (300k-500k),1,0,0,1,1,1
+Machine Learning Engineer,Engineering,Entry,2.5,190000.0,Mid (150k-300k),1,0,0,0,0,1
+Machine Learning Engineer,Engineering,Mid,5.0,300000.0,Senior (300k-500k),1,0,0,0,0,1
+Machine Learning Engineer,Engineering,Senior,9.0,515000.0,Executive (>500k),1,0,0,0,0,1
+AI Engineer,Engineering,Entry,2.5,210000.0,Mid (150k-300k),1,0,0,0,0,1
+AI Engineer,Engineering,Mid,5.0,335000.0,Senior (300k-500k),1,0,0,0,0,1
+AI Engineer,Engineering,Senior,9.0,560000.0,Executive (>500k),1,0,0,0,0,1
+NLP Engineer,Engineering,Entry,2.5,170000.0,Mid (150k-300k),1,0,0,0,0,0
+NLP Engineer,Engineering,Mid,5.0,275000.0,Mid (150k-300k),1,0,0,0,0,0
+NLP Engineer,Engineering,Senior,9.0,475000.0,Senior (300k-500k),1,0,0,0,0,0
+Computer Vision Engineer,Engineering,Entry,2.5,170000.0,Mid (150k-300k),1,0,0,0,0,1
+Computer Vision Engineer,Engineering,Mid,5.0,275000.0,Mid (150k-300k),1,0,0,0,0,1
+Computer Vision Engineer,Engineering,Senior,9.0,475000.0,Senior (300k-500k),1,0,0,0,0,1
+Business Intelligence Engineer,Engineering,Entry,4.0,185000.0,Mid (150k-300k),1,0,0,1,1,0
+Business Intelligence Engineer,Engineering,Mid,6.0,310000.0,Senior (300k-500k),1,0,0,1,1,0
+Business Intelligence Engineer,Engineering,Senior,10.0,550000.0,Executive (>500k),1,0,0,1,1,0
+Database Administrator,Data & AI,Entry,2.5,145000.0,Entry (<150k),0,0,0,1,0,0
+Database Administrator,Data & AI,Mid,5.0,225000.0,Mid (150k-300k),0,0,0,1,0,0
+Database Administrator,Data & AI,Senior,9.0,390000.0,Senior (300k-500k),0,0,0,1,0,0
+Cloud Database Administrator,Data & AI,Entry,2.5,160000.0,Mid (150k-300k),0,0,0,1,1,0
+Cloud Database Administrator,Data & AI,Mid,5.0,255000.0,Mid (150k-300k),0,0,0,1,1,0
+Cloud Database Administrator,Data & AI,Senior,9.0,435000.0,Senior (300k-500k),0,0,0,1,1,0
+Network Engineer,Engineering,Entry,3.0,135000.0,Entry (<150k),0,0,0,0,0,0
+Network Engineer,Engineering,Mid,6.0,220000.0,Mid (150k-300k),0,0,0,0,0,0
+Network Engineer,Engineering,Senior,10.0,380000.0,Senior (300k-500k),0,0,0,0,0,0
+Network Administrator,Management & Other,Entry,1.0,100000.0,Entry (<150k),0,0,0,0,0,0
+Network Administrator,Management & Other,Mid,4.0,160000.0,Mid (150k-300k),0,0,0,0,0,0
+Network Administrator,Management & Other,Senior,8.0,275000.0,Mid (150k-300k),0,0,0,0,0,0
+DevOps Engineer,Engineering,Entry,3.0,170000.0,Mid (150k-300k),0,0,0,0,1,0
+DevOps Engineer,Engineering,Mid,6.0,275000.0,Mid (150k-300k),0,0,0,0,1,0
+DevOps Engineer,Engineering,Senior,10.0,475000.0,Senior (300k-500k),0,0,0,0,1,0
+Cloud Architect,DevOps & Infra,Entry,6.0,240000.0,Mid (150k-300k),0,0,0,0,1,0
+Cloud Architect,DevOps & Infra,Mid,9.0,365000.0,Senior (300k-500k),0,0,0,0,1,0
+Cloud Architect,DevOps & Infra,Senior,13.0,625000.0,Executive (>500k),0,0,0,0,1,0
+Solutions Architect,Management & Other,Entry,6.0,220000.0,Mid (150k-300k),0,0,0,0,1,0
+Solutions Architect,Management & Other,Mid,9.0,340000.0,Senior (300k-500k),0,0,0,0,1,0
+Solutions Architect,Management & Other,Senior,13.0,585000.0,Executive (>500k),0,0,0,0,1,0
+Enterprise Architect,Management & Other,Entry,9.0,300000.0,Senior (300k-500k),0,0,0,0,1,0
+Enterprise Architect,Management & Other,Mid,13.0,450000.0,Senior (300k-500k),0,0,0,0,1,0
+Enterprise Architect,Management & Other,Senior,17.0,775000.0,Executive (>500k),0,0,0,0,1,0
+Systems Architect,Management & Other,Entry,6.0,240000.0,Mid (150k-300k),0,0,0,0,0,0
+Systems Architect,Management & Other,Mid,9.0,365000.0,Senior (300k-500k),0,0,0,0,0,0
+Systems Architect,Management & Other,Senior,13.0,625000.0,Executive (>500k),0,0,0,0,0,0
+Infrastructure Engineer,Engineering,Entry,3.0,125000.0,Entry (<150k),0,0,0,0,0,0
+Infrastructure Engineer,Engineering,Mid,6.0,205000.0,Mid (150k-300k),0,0,0,0,0,0
+Infrastructure Engineer,Engineering,Senior,10.0,355000.0,Senior (300k-500k),0,0,0,0,0,0
+Site Reliability Engineer (SRE),Engineering,Entry,4.5,185000.0,Mid (150k-300k),0,0,0,0,0,0
+Site Reliability Engineer (SRE),Engineering,Mid,7.0,300000.0,Senior (300k-500k),0,0,0,0,0,0
+Site Reliability Engineer (SRE),Engineering,Senior,11.0,515000.0,Executive (>500k),0,0,0,0,0,0
+Cybersecurity Specialist,DevOps & Infra,Entry,4.0,160000.0,Mid (150k-300k),0,0,0,0,0,0
+Cybersecurity Specialist,DevOps & Infra,Mid,7.0,255000.0,Mid (150k-300k),0,0,0,0,0,0
+Cybersecurity Specialist,DevOps & Infra,Senior,11.0,435000.0,Senior (300k-500k),0,0,0,0,0,0
+Information Security Officer,DevOps & Infra,Entry,6.0,200000.0,Mid (150k-300k),0,0,0,0,0,0
+Information Security Officer,DevOps & Infra,Mid,9.0,320000.0,Senior (300k-500k),0,0,0,0,0,0
+Information Security Officer,DevOps & Infra,Senior,13.0,550000.0,Executive (>500k),0,0,0,0,0,0
+Penetration Tester,QA & Testing,Entry,7.0,250000.0,Mid (150k-300k),0,0,0,0,0,0
+Penetration Tester,QA & Testing,Mid,10.0,400000.0,Senior (300k-500k),0,0,0,0,0,0
+Penetration Tester,QA & Testing,Senior,14.0,700000.0,Executive (>500k),0,0,0,0,0,0
+Security Incident Response Analyst,DevOps & Infra,Entry,4.0,170000.0,Mid (150k-300k),0,0,0,0,0,0
+Security Incident Response Analyst,DevOps & Infra,Mid,6.0,275000.0,Mid (150k-300k),0,0,0,0,0,0
+Security Incident Response Analyst,DevOps & Infra,Senior,10.0,475000.0,Senior (300k-500k),0,0,0,0,0,0
+IT Compliance Officer,Management & Other,Entry,4.0,185000.0,Mid (150k-300k),0,0,0,0,0,0
+IT Compliance Officer,Management & Other,Mid,6.0,300000.0,Senior (300k-500k),0,0,0,0,0,0
+IT Compliance Officer,Management & Other,Senior,10.0,515000.0,Executive (>500k),0,0,0,0,0,0
+IT Auditor,Management & Other,Entry,5.0,170000.0,Mid (150k-300k),0,0,0,0,0,0
+IT Auditor,Management & Other,Mid,8.5,280000.0,Mid (150k-300k),0,0,0,0,0,0
+IT Auditor,Management & Other,Senior,13.0,480000.0,Senior (300k-500k),0,0,0,0,0,0
+QA Engineer (Manual Testing),Engineering,Entry,1.0,90000.0,Entry (<150k),0,0,0,0,0,0
+QA Engineer (Manual Testing),Engineering,Mid,3.0,145000.0,Entry (<150k),0,0,0,0,0,0
+QA Engineer (Manual Testing),Engineering,Senior,7.0,250000.0,Mid (150k-300k),0,0,0,0,0,0
+QA Automation Engineer,Engineering,Entry,1.5,125000.0,Entry (<150k),1,0,1,0,0,0
+QA Automation Engineer,Engineering,Mid,4.0,205000.0,Mid (150k-300k),1,0,1,0,0,0
+QA Automation Engineer,Engineering,Senior,8.0,355000.0,Senior (300k-500k),1,0,1,0,0,0
+Performance Testing Engineer,Engineering,Entry,2.5,150000.0,Mid (150k-300k),0,0,0,0,0,0
+Performance Testing Engineer,Engineering,Mid,5.0,240000.0,Mid (150k-300k),0,0,0,0,0,0
+Performance Testing Engineer,Engineering,Senior,9.0,400000.0,Senior (300k-500k),0,0,0,0,0,0
+UI/UX Designer,Design & UI/UX,Entry,1.0,80000.0,Entry (<150k),0,0,0,0,0,0
+UI/UX Designer,Design & UI/UX,Mid,4.0,140000.0,Entry (<150k),0,0,0,0,0,0
+UI/UX Designer,Design & UI/UX,Senior,8.0,265000.0,Mid (150k-300k),0,0,0,0,0,0
+Business Analyst,Management & Other,Entry,2.0,115000.0,Entry (<150k),0,0,0,1,0,0
+Business Analyst,Management & Other,Mid,4.0,190000.0,Mid (150k-300k),0,0,0,1,0,0
+Business Analyst,Management & Other,Senior,8.0,330000.0,Senior (300k-500k),0,0,0,1,0,0
+IT Project Manager,Management & Other,Entry,4.0,150000.0,Mid (150k-300k),0,0,0,0,0,0
+IT Project Manager,Management & Other,Mid,6.0,240000.0,Mid (150k-300k),0,0,0,0,0,0
+IT Project Manager,Management & Other,Senior,10.0,400000.0,Senior (300k-500k),0,0,0,0,0,0
+Scrum Master,Management & Other,Entry,1.5,125000.0,Entry (<150k),0,0,0,0,0,0
+Scrum Master,Management & Other,Mid,2.5,200000.0,Mid (150k-300k),0,0,0,0,0,0
+Scrum Master,Management & Other,Senior,6.0,335000.0,Senior (300k-500k),0,0,0,0,0,0
+IT Consultant,Management & Other,Entry,4.0,165000.0,Mid (150k-300k),0,0,0,0,1,0
+IT Consultant,Management & Other,Mid,7.0,275000.0,Mid (150k-300k),0,0,0,0,1,0
+IT Consultant,Management & Other,Senior,11.0,475000.0,Senior (300k-500k),0,0,0,0,1,0
+Technical Writer,Management & Other,Entry,3.5,125000.0,Entry (<150k),0,0,0,0,0,0
+Technical Writer,Management & Other,Mid,6.5,215000.0,Mid (150k-300k),0,0,0,0,0,0
+Technical Writer,Management & Other,Senior,11.0,390000.0,Senior (300k-500k),0,0,0,0,0,0
+IT Support Specialist,Management & Other,Entry,0.5,65000.0,Entry (<150k),0,0,0,0,0,0
+IT Support Specialist,Management & Other,Mid,2.5,110000.0,Entry (<150k),0,0,0,0,0,0
+IT Support Specialist,Management & Other,Senior,6.0,210000.0,Mid (150k-300k),0,0,0,0,0,0
+Help Desk Technician,Management & Other,Entry,0.5,60000.0,Entry (<150k),0,0,0,0,0,0
+Help Desk Technician,Management & Other,Mid,1.5,97500.0,Entry (<150k),0,0,0,0,0,0
+Help Desk Technician,Management & Other,Senior,5.0,180000.0,Mid (150k-300k),0,0,0,0,0,0
+Hardware Technician,Management & Other,Entry,1.0,80000.0,Entry (<150k),0,0,0,0,0,0
+Hardware Technician,Management & Other,Mid,3.0,135000.0,Entry (<150k),0,0,0,0,0,0
+Hardware Technician,Management & Other,Senior,7.0,245000.0,Mid (150k-300k),0,0,0,0,0,0
+System Administrator,Management & Other,Entry,1.5,90000.0,Entry (<150k),0,0,0,0,0,0
+System Administrator,Management & Other,Mid,3.5,150000.0,Mid (150k-300k),0,0,0,0,0,0
+System Administrator,Management & Other,Senior,7.0,270000.0,Mid (150k-300k),0,0,0,0,0,0
+Database Developer,Engineering,Entry,3.0,135000.0,Entry (<150k),0,0,0,1,0,0
+Database Developer,Engineering,Mid,6.0,220000.0,Mid (150k-300k),0,0,0,1,0,0
+Database Developer,Engineering,Senior,10.0,380000.0,Senior (300k-500k),0,0,0,1,0,0
+Middleware Architect,Management & Other,Entry,5.0,200000.0,Mid (150k-300k),0,0,0,0,0,0
+Middleware Architect,Management & Other,Mid,8.0,320000.0,Senior (300k-500k),0,0,0,0,0,0
+Middleware Architect,Management & Other,Senior,12.0,550000.0,Executive (>500k),0,0,0,0,0,0
+Application Integration Engineer,Engineering,Entry,3.0,160000.0,Mid (150k-300k),0,0,0,0,0,0
+Application Integration Engineer,Engineering,Mid,6.0,260000.0,Mid (150k-300k),0,0,0,0,0,0
+Application Integration Engineer,Engineering,Senior,10.0,455000.0,Senior (300k-500k),0,0,0,0,0,0
+Software Engineer Intern,Engineering,Unpaid,3.0,12500.0,Entry (<150k),0,1,0,0,0,1
+Software Engineer Intern,Engineering,Paid internship,1.0,37500.0,Entry (<150k),0,1,0,0,0,1
+Full-Stack Developer Intern,Engineering,Unpaid,3.0,12500.0,Entry (<150k),0,1,0,0,0,1
+Full-Stack Developer Intern,Engineering,Paid internship,1.0,37500.0,Entry (<150k),0,1,0,0,0,1
+Frontend Developer Intern,Engineering,Unpaid,3.0,12500.0,Entry (<150k),0,1,0,0,0,1
+Frontend Developer Intern,Engineering,Paid internship,1.0,37500.0,Entry (<150k),0,1,0,0,0,1
+Backend Developer Intern,Engineering,Unpaid,3.0,12500.0,Entry (<150k),0,1,0,0,0,1
+Backend Developer Intern,Engineering,Paid internship,1.0,37500.0,Entry (<150k),0,1,0,0,0,1
+Mobile Developer Intern (iOS),Engineering,Unpaid,3.0,12500.0,Entry (<150k),0,1,0,0,0,1
+Mobile Developer Intern (iOS),Engineering,Paid internship,1.0,37500.0,Entry (<150k),0,1,0,0,0,1
+Mobile Developer Intern (Android),Engineering,Unpaid,3.0,12500.0,Entry (<150k),0,1,0,0,0,1
+Mobile Developer Intern (Android),Engineering,Paid internship,1.0,37500.0,Entry (<150k),0,1,0,0,0,1
+Flutter Developer Intern,Engineering,Unpaid,3.0,12500.0,Entry (<150k),0,1,0,0,0,1
+Flutter Developer Intern,Engineering,Paid internship,1.0,37500.0,Entry (<150k),0,1,0,0,0,1
+React Native Developer Intern,Engineering,Unpaid,3.0,12500.0,Entry (<150k),0,1,0,0,0,1
+React Native Developer Intern,Engineering,Paid internship,1.0,37500.0,Entry (<150k),0,1,0,0,0,1
+Python Developer Intern,Engineering,Unpaid,3.0,12500.0,Entry (<150k),0,1,0,0,0,1
+Python Developer Intern,Engineering,Paid internship,1.0,37500.0,Entry (<150k),0,1,0,0,0,1
+Java Developer Intern,Engineering,Unpaid,3.0,12500.0,Entry (<150k),0,1,0,0,0,1
+Java Developer Intern,Engineering,Paid internship,1.0,37500.0,Entry (<150k),0,1,0,0,0,1
+.NET Developer Intern,Engineering,Unpaid,3.0,12500.0,Entry (<150k),0,1,0,0,0,1
+.NET Developer Intern,Engineering,Paid internship,1.0,37500.0,Entry (<150k),0,1,0,0,0,1
+PHP Developer Intern,Engineering,Unpaid,3.0,12500.0,Entry (<150k),0,1,0,0,0,1
+PHP Developer Intern,Engineering,Paid internship,1.0,37500.0,Entry (<150k),0,1,0,0,0,1
+WordPress Developer Intern,Engineering,Unpaid,3.0,12500.0,Entry (<150k),0,1,0,0,0,1
+WordPress Developer Intern,Engineering,Paid internship,1.0,37500.0,Entry (<150k),0,1,0,0,0,1
+Node.js Developer Intern,Engineering,Unpaid,3.0,12500.0,Entry (<150k),0,1,0,0,0,1
+Node.js Developer Intern,Engineering,Paid internship,1.0,37500.0,Entry (<150k),0,1,0,0,0,1
+Go Developer Intern,Engineering,Unpaid,3.0,12500.0,Entry (<150k),0,1,0,0,0,1
+Go Developer Intern,Engineering,Paid internship,1.0,37500.0,Entry (<150k),0,1,0,0,0,1
+Data Science Intern,Data & AI,Unpaid,3.0,12500.0,Entry (<150k),0,1,0,0,0,1
+Data Science Intern,Data & AI,Paid internship,1.0,37500.0,Entry (<150k),0,1,0,0,0,1
+Machine Learning Intern,Management & Other,Unpaid,3.0,12500.0,Entry (<150k),0,1,0,0,0,1
+Machine Learning Intern,Management & Other,Paid internship,1.0,37500.0,Entry (<150k),0,1,0,0,0,1
+AI/ML Engineer Trainee,Engineering,Unpaid,3.0,12500.0,Entry (<150k),0,1,0,0,0,1
+AI/ML Engineer Trainee,Engineering,Paid internship,1.0,37500.0,Entry (<150k),0,1,0,0,0,1
+Data Engineer Intern,Engineering,Unpaid,3.0,12500.0,Entry (<150k),0,1,0,0,0,1
+Data Engineer Intern,Engineering,Paid internship,1.0,37500.0,Entry (<150k),0,1,0,0,0,1
+Database Administration Intern,Data & AI,Unpaid,3.0,12500.0,Entry (<150k),0,1,0,0,0,1
+Database Administration Intern,Data & AI,Paid internship,1.0,37500.0,Entry (<150k),0,1,0,0,0,1
+DevOps Intern,DevOps & Infra,Unpaid,3.0,12500.0,Entry (<150k),0,1,0,0,0,1
+DevOps Intern,DevOps & Infra,Paid internship,1.0,37500.0,Entry (<150k),0,1,0,0,0,1
+Cloud Computing Intern (AWS),DevOps & Infra,Unpaid,3.0,12500.0,Entry (<150k),0,1,0,0,0,1
+Cloud Computing Intern (AWS),DevOps & Infra,Paid internship,1.0,37500.0,Entry (<150k),0,1,0,0,0,1
+Cloud Computing Intern (Azure),DevOps & Infra,Unpaid,3.0,12500.0,Entry (<150k),0,1,0,0,0,1
+Cloud Computing Intern (Azure),DevOps & Infra,Paid internship,1.0,37500.0,Entry (<150k),0,1,0,0,0,1
+Network Engineer Intern,Engineering,Unpaid,3.0,12500.0,Entry (<150k),0,1,0,0,0,1
+Network Engineer Intern,Engineering,Paid internship,1.0,37500.0,Entry (<150k),0,1,0,0,0,1
+IT Support Intern,Management & Other,Unpaid,3.0,12500.0,Entry (<150k),0,1,0,0,0,1
+IT Support Intern,Management & Other,Paid internship,1.0,37500.0,Entry (<150k),0,1,0,0,0,1
+Help Desk Intern,Management & Other,Unpaid,3.0,12500.0,Entry (<150k),0,1,0,0,0,1
+Help Desk Intern,Management & Other,Paid internship,1.0,37500.0,Entry (<150k),0,1,0,0,0,1
+System Administrator Intern,Management & Other,Unpaid,3.0,12500.0,Entry (<150k),0,1,0,0,0,1
+System Administrator Intern,Management & Other,Paid internship,1.0,37500.0,Entry (<150k),0,1,0,0,0,1
+Cybersecurity Trainee,Data & AI,Unpaid,3.0,12500.0,Entry (<150k),0,1,0,0,0,1
+Cybersecurity Trainee,Data & AI,Paid internship,1.0,37500.0,Entry (<150k),0,1,0,0,0,1
+Penetration Testing Intern,QA & Testing,Unpaid,3.0,12500.0,Entry (<150k),0,1,0,0,0,1
+Penetration Testing Intern,QA & Testing,Paid internship,1.0,37500.0,Entry (<150k),0,1,0,0,0,1
+Information Security Intern,DevOps & Infra,Unpaid,3.0,12500.0,Entry (<150k),0,1,0,0,0,1
+Information Security Intern,DevOps & Infra,Paid internship,1.0,37500.0,Entry (<150k),0,1,0,0,0,1
+QA Manual Tester Intern,QA & Testing,Unpaid,3.0,12500.0,Entry (<150k),0,1,0,0,0,1
+QA Manual Tester Intern,QA & Testing,Paid internship,1.0,37500.0,Entry (<150k),0,1,0,0,0,1
+QA Automation Intern,QA & Testing,Unpaid,3.0,12500.0,Entry (<150k),0,1,0,0,0,1
+QA Automation Intern,QA & Testing,Paid internship,1.0,37500.0,Entry (<150k),0,1,0,0,0,1
+Performance Testing Intern,QA & Testing,Unpaid,3.0,12500.0,Entry (<150k),0,1,0,0,0,1
+Performance Testing Intern,QA & Testing,Paid internship,1.0,37500.0,Entry (<150k),0,1,0,0,0,1
+UI/UX Designer Intern,Design & UI/UX,Unpaid,3.0,12500.0,Entry (<150k),0,1,0,0,0,1
+UI/UX Designer Intern,Design & UI/UX,Paid internship,1.0,37500.0,Entry (<150k),0,1,0,0,0,1
+Graphic Design Intern,Design & UI/UX,Unpaid,3.0,12500.0,Entry (<150k),0,1,0,0,0,1
+Graphic Design Intern,Design & UI/UX,Paid internship,1.0,37500.0,Entry (<150k),0,1,0,0,0,1
+Business Analyst Intern,Management & Other,Unpaid,3.0,12500.0,Entry (<150k),0,1,0,0,0,1
+Business Analyst Intern,Management & Other,Paid internship,1.0,37500.0,Entry (<150k),0,1,0,0,0,1
+Systems Analyst Intern,Management & Other,Unpaid,3.0,12500.0,Entry (<150k),0,1,0,0,0,1
+Systems Analyst Intern,Management & Other,Paid internship,1.0,37500.0,Entry (<150k),0,1,0,0,0,1
+Solutions Architect Trainee,Data & AI,Unpaid,3.0,12500.0,Entry (<150k),0,1,0,0,0,1
+Solutions Architect Trainee,Data & AI,Paid internship,1.0,37500.0,Entry (<150k),0,1,0,0,0,1
+IT Project Manager Trainee,Data & AI,Unpaid,3.0,12500.0,Entry (<150k),0,1,0,0,0,1
+IT Project Manager Trainee,Data & AI,Paid internship,1.0,37500.0,Entry (<150k),0,1,0,0,0,1
+Scrum Master Trainee,Data & AI,Unpaid,3.0,12500.0,Entry (<150k),0,1,0,0,0,1
+Scrum Master Trainee,Data & AI,Paid internship,1.0,37500.0,Entry (<150k),0,1,0,0,0,1
+Technical Writer Intern,Management & Other,Unpaid,3.0,12500.0,Entry (<150k),0,1,0,0,0,1
+Technical Writer Intern,Management & Other,Paid internship,1.0,37500.0,Entry (<150k),0,1,0,0,0,1
+IT Trainer Intern,Data & AI,Unpaid,3.0,12500.0,Entry (<150k),0,1,0,0,0,1
+IT Trainer Intern,Data & AI,Paid internship,1.0,37500.0,Entry (<150k),0,1,0,0,0,1
+IT Consultant Trainee,Data & AI,Unpaid,3.0,12500.0,Entry (<150k),0,1,0,0,0,1
+IT Consultant Trainee,Data & AI,Paid internship,1.0,37500.0,Entry (<150k),0,1,0,0,0,1
+Business Intelligence Intern,Management & Other,Unpaid,3.0,12500.0,Entry (<150k),0,1,0,0,0,1
+Business Intelligence Intern,Management & Other,Paid internship,1.0,37500.0,Entry (<150k),0,1,0,0,0,1
+Database Developer Intern,Engineering,Unpaid,3.0,12500.0,Entry (<150k),0,1,0,0,0,1
+Database Developer Intern,Engineering,Paid internship,1.0,37500.0,Entry (<150k),0,1,0,0,0,1
+Application Support Intern,Management & Other,Unpaid,3.0,12500.0,Entry (<150k),0,1,0,0,0,1
+Application Support Intern,Management & Other,Paid internship,1.0,37500.0,Entry (<150k),0,1,0,0,0,1
+IT Operations Intern,Management & Other,Unpaid,3.0,12500.0,Entry (<150k),0,1,0,0,0,1
+IT Operations Intern,Management & Other,Paid internship,1.0,37500.0,Entry (<150k),0,1,0,0,0,1
+Infrastructure Engineer Intern,Engineering,Unpaid,3.0,12500.0,Entry (<150k),0,1,0,0,0,1
+Infrastructure Engineer Intern,Engineering,Paid internship,1.0,37500.0,Entry (<150k),0,1,0,0,0,1
+Site Reliability Engineer Intern,Engineering,Unpaid,3.0,12500.0,Entry (<150k),0,1,0,0,0,1
+Site Reliability Engineer Intern,Engineering,Paid internship,1.0,37500.0,Entry (<150k),0,1,0,0,0,1
+API Developer Intern,Engineering,Unpaid,3.0,12500.0,Entry (<150k),0,1,0,0,0,1
+API Developer Intern,Engineering,Paid internship,1.0,37500.0,Entry (<150k),0,1,0,0,0,1
+Integration Engineer Intern,Engineering,Unpaid,3.0,12500.0,Entry (<150k),0,1,0,0,0,1
+Integration Engineer Intern,Engineering,Paid internship,1.0,37500.0,Entry (<150k),0,1,0,0,0,1
+Game Developer Intern,Engineering,Unpaid,3.0,12500.0,Entry (<150k),0,1,0,0,0,1
+Game Developer Intern,Engineering,Paid internship,1.0,37500.0,Entry (<150k),0,1,0,0,0,1
+Embedded Systems Intern,Management & Other,Unpaid,3.0,12500.0,Entry (<150k),0,1,0,0,0,1
+Embedded Systems Intern,Management & Other,Paid internship,1.0,37500.0,Entry (<150k),0,1,0,0,0,1
+Browser Developer Intern,Engineering,Unpaid,3.0,12500.0,Entry (<150k),0,1,0,0,0,1
+Browser Developer Intern,Engineering,Paid internship,1.0,37500.0,Entry (<150k),0,1,0,0,0,1
+Voice/Chat AI Engineer Trainee,Engineering,Unpaid,3.0,12500.0,Entry (<150k),0,1,0,0,0,1
+Voice/Chat AI Engineer Trainee,Engineering,Paid internship,1.0,37500.0,Entry (<150k),0,1,0,0,0,1
+NLP Engineer Intern,Engineering,Unpaid,3.0,12500.0,Entry (<150k),0,1,0,0,0,1
+NLP Engineer Intern,Engineering,Paid internship,1.0,37500.0,Entry (<150k),0,1,0,0,0,1
+Computer Vision Intern,Management & Other,Unpaid,3.0,12500.0,Entry (<150k),0,1,0,0,0,1
+Computer Vision Intern,Management & Other,Paid internship,1.0,37500.0,Entry (<150k),0,1,0,0,0,1
+E-commerce Developer Intern,Engineering,Unpaid,3.0,12500.0,Entry (<150k),0,1,0,0,0,1
+E-commerce Developer Intern,Engineering,Paid internship,1.0,37500.0,Entry (<150k),0,1,0,0,0,1
+Web3/Blockchain Developer Intern,Engineering,Unpaid,3.0,12500.0,Entry (<150k),0,1,0,0,0,1
+Web3/Blockchain Developer Intern,Engineering,Paid internship,1.0,37500.0,Entry (<150k),0,1,0,0,0,1
+Mobile QA Tester Intern,QA & Testing,Unpaid,3.0,12500.0,Entry (<150k),0,1,0,0,0,1
+Mobile QA Tester Intern,QA & Testing,Paid internship,1.0,37500.0,Entry (<150k),0,1,0,0,0,1
+Testing Automation Intern,QA & Testing,Unpaid,3.0,12500.0,Entry (<150k),0,1,0,0,0,1
+Testing Automation Intern,QA & Testing,Paid internship,1.0,37500.0,Entry (<150k),0,1,0,0,0,1
+Salesforce Administrator,Management & Other,Entry,1.5,115000.0,Entry (<150k),0,0,0,0,0,0
+Salesforce Administrator,Management & Other,Mid,4.0,190000.0,Mid (150k-300k),0,0,0,0,0,0
+Salesforce Administrator,Management & Other,Senior,8.0,330000.0,Senior (300k-500k),0,0,0,0,0,0
+Salesforce Business Analyst,Management & Other,Entry,1.5,115000.0,Entry (<150k),0,0,0,0,0,0
+Salesforce Business Analyst,Management & Other,Mid,4.0,190000.0,Mid (150k-300k),0,0,0,0,0,0
+Salesforce Business Analyst,Management & Other,Senior,8.0,330000.0,Senior (300k-500k),0,0,0,0,0,0
+Salesforce Developer,Engineering,Entry,1.5,115000.0,Entry (<150k),0,0,0,0,0,0
+Salesforce Developer,Engineering,Mid,4.0,190000.0,Mid (150k-300k),0,0,0,0,0,0
+Salesforce Developer,Engineering,Senior,8.0,330000.0,Senior (300k-500k),0,0,0,0,0,0
+SAP Consultant (FI-CO),Management & Other,Entry,1.5,115000.0,Entry (<150k),0,0,0,0,0,0
+SAP Consultant (FI-CO),Management & Other,Mid,4.0,190000.0,Mid (150k-300k),0,0,0,0,0,0
+SAP Consultant (FI-CO),Management & Other,Senior,8.0,330000.0,Senior (300k-500k),0,0,0,0,0,0
+SAP Consultant (MM/SD),Management & Other,Entry,1.5,115000.0,Entry (<150k),0,0,0,0,0,0
+SAP Consultant (MM/SD),Management & Other,Mid,4.0,190000.0,Mid (150k-300k),0,0,0,0,0,0
+SAP Consultant (MM/SD),Management & Other,Senior,8.0,330000.0,Senior (300k-500k),0,0,0,0,0,0
+SAP ABAP Developer,Engineering,Entry,1.5,115000.0,Entry (<150k),0,0,0,0,0,0
+SAP ABAP Developer,Engineering,Mid,4.0,190000.0,Mid (150k-300k),0,0,0,0,0,0
+SAP ABAP Developer,Engineering,Senior,8.0,330000.0,Senior (300k-500k),0,0,0,0,0,0
+ERP Implementation Consultant,Management & Other,Entry,1.5,115000.0,Entry (<150k),0,0,0,0,0,0
+ERP Implementation Consultant,Management & Other,Mid,4.0,190000.0,Mid (150k-300k),0,0,0,0,0,0
+ERP Implementation Consultant,Management & Other,Senior,8.0,330000.0,Senior (300k-500k),0,0,0,0,0,0
+ERP Systems Analyst,Management & Other,Entry,1.5,115000.0,Entry (<150k),0,0,0,0,0,0
+ERP Systems Analyst,Management & Other,Mid,4.0,190000.0,Mid (150k-300k),0,0,0,0,0,0
+ERP Systems Analyst,Management & Other,Senior,8.0,330000.0,Senior (300k-500k),0,0,0,0,0,0
+Oracle Database Administrator,Data & AI,Entry,1.5,115000.0,Entry (<150k),0,0,0,0,0,0
+Oracle Database Administrator,Data & AI,Mid,4.0,190000.0,Mid (150k-300k),0,0,0,0,0,0
+Oracle Database Administrator,Data & AI,Senior,8.0,330000.0,Senior (300k-500k),0,0,0,0,0,0
+Oracle Applications Developer,Engineering,Entry,1.5,115000.0,Entry (<150k),0,0,0,0,0,0
+Oracle Applications Developer,Engineering,Mid,4.0,190000.0,Mid (150k-300k),0,0,0,0,0,0
+Oracle Applications Developer,Engineering,Senior,8.0,330000.0,Senior (300k-500k),0,0,0,0,0,0
+Data Warehouse Developer,Engineering,Entry,1.5,115000.0,Entry (<150k),0,0,0,0,0,0
+Data Warehouse Developer,Engineering,Mid,4.0,190000.0,Mid (150k-300k),0,0,0,0,0,0
+Data Warehouse Developer,Engineering,Senior,8.0,330000.0,Senior (300k-500k),0,0,0,0,0,0
+Data Warehouse Architect,Data & AI,Entry,1.5,115000.0,Entry (<150k),0,0,0,0,0,0
+Data Warehouse Architect,Data & AI,Mid,4.0,190000.0,Mid (150k-300k),0,0,0,0,0,0
+Data Warehouse Architect,Data & AI,Senior,8.0,330000.0,Senior (300k-500k),0,0,0,0,0,0
+ETL Developer,Engineering,Entry,1.5,115000.0,Entry (<150k),0,0,0,0,0,0
+ETL Developer,Engineering,Mid,4.0,190000.0,Mid (150k-300k),0,0,0,0,0,0
+ETL Developer,Engineering,Senior,8.0,330000.0,Senior (300k-500k),0,0,0,0,0,0
+Business Intelligence Developer,Engineering,Entry,1.5,115000.0,Entry (<150k),0,0,0,0,0,0
+Business Intelligence Developer,Engineering,Mid,4.0,190000.0,Mid (150k-300k),0,0,0,0,0,0
+Business Intelligence Developer,Engineering,Senior,8.0,330000.0,Senior (300k-500k),0,0,0,0,0,0
+Analytics Engineer,Engineering,Entry,1.5,115000.0,Entry (<150k),0,0,0,0,0,0
+Analytics Engineer,Engineering,Mid,4.0,190000.0,Mid (150k-300k),0,0,0,0,0,0
+Analytics Engineer,Engineering,Senior,8.0,330000.0,Senior (300k-500k),0,0,0,0,0,0
+Release Manager,Management & Other,Entry,1.5,115000.0,Entry (<150k),0,0,0,0,0,0
+Release Manager,Management & Other,Mid,4.0,190000.0,Mid (150k-300k),0,0,0,0,0,0
+Release Manager,Management & Other,Senior,8.0,330000.0,Senior (300k-500k),0,0,0,0,0,0
+Change Manager,Management & Other,Entry,1.5,115000.0,Entry (<150k),0,0,0,0,0,0
+Change Manager,Management & Other,Mid,4.0,190000.0,Mid (150k-300k),0,0,0,0,0,0
+Change Manager,Management & Other,Senior,8.0,330000.0,Senior (300k-500k),0,0,0,0,0,0
+IT Service Manager,Management & Other,Entry,1.5,115000.0,Entry (<150k),0,0,0,0,0,0
+IT Service Manager,Management & Other,Mid,4.0,190000.0,Mid (150k-300k),0,0,0,0,0,0
+IT Service Manager,Management & Other,Senior,8.0,330000.0,Senior (300k-500k),0,0,0,0,0,0
+Configuration Manager,Management & Other,Entry,1.5,115000.0,Entry (<150k),0,0,0,0,0,0
+Configuration Manager,Management & Other,Mid,4.0,190000.0,Mid (150k-300k),0,0,0,0,0,0
+Configuration Manager,Management & Other,Senior,8.0,330000.0,Senior (300k-500k),0,0,0,0,0,0
+IT Program Manager,Management & Other,Entry,1.5,115000.0,Entry (<150k),0,0,0,0,0,0
+IT Program Manager,Management & Other,Mid,4.0,190000.0,Mid (150k-300k),0,0,0,0,0,0
+IT Program Manager,Management & Other,Senior,8.0,330000.0,Senior (300k-500k),0,0,0,0,0,0
+Technical Program Manager,Management & Other,Entry,1.5,115000.0,Entry (<150k),0,0,0,0,0,0
+Technical Program Manager,Management & Other,Mid,4.0,190000.0,Mid (150k-300k),0,0,0,0,0,0
+Technical Program Manager,Management & Other,Senior,8.0,330000.0,Senior (300k-500k),0,0,0,0,0,0
+IT Operations Manager,Management & Other,Entry,1.5,115000.0,Entry (<150k),0,0,0,0,0,0
+IT Operations Manager,Management & Other,Mid,4.0,190000.0,Mid (150k-300k),0,0,0,0,0,0
+IT Operations Manager,Management & Other,Senior,8.0,330000.0,Senior (300k-500k),0,0,0,0,0,0
+IT Manager,Management & Other,Entry,1.5,115000.0,Entry (<150k),0,0,0,0,0,0
+IT Manager,Management & Other,Mid,4.0,190000.0,Mid (150k-300k),0,0,0,0,0,0
+IT Manager,Management & Other,Senior,8.0,330000.0,Senior (300k-500k),0,0,0,0,0,0
+IT Director,Management & Other,Entry,1.5,115000.0,Entry (<150k),0,0,0,0,0,0
+IT Director,Management & Other,Mid,4.0,190000.0,Mid (150k-300k),0,0,0,0,0,0
+IT Director,Management & Other,Senior,8.0,330000.0,Senior (300k-500k),0,0,0,0,0,0
+Chief Technology Officer (CTO),Management & Other,Entry,1.5,115000.0,Entry (<150k),0,0,0,0,0,0
+Chief Technology Officer (CTO),Management & Other,Mid,4.0,190000.0,Mid (150k-300k),0,0,0,0,0,0
+Chief Technology Officer (CTO),Management & Other,Senior,8.0,330000.0,Senior (300k-500k),0,0,0,0,0,0
+Application Security Architect,DevOps & Infra,Entry,1.5,115000.0,Entry (<150k),0,0,0,0,0,0
+Application Security Architect,DevOps & Infra,Mid,4.0,190000.0,Mid (150k-300k),0,0,0,0,0,0
+Application Security Architect,DevOps & Infra,Senior,8.0,330000.0,Senior (300k-500k),0,0,0,0,0,0
+Security Architect,DevOps & Infra,Entry,1.5,115000.0,Entry (<150k),0,0,0,0,0,0
+Security Architect,DevOps & Infra,Mid,4.0,190000.0,Mid (150k-300k),0,0,0,0,0,0
+Security Architect,DevOps & Infra,Senior,8.0,330000.0,Senior (300k-500k),0,0,0,0,0,0
+Compliance Officer,Management & Other,Entry,1.5,115000.0,Entry (<150k),0,0,0,0,0,0
+Compliance Officer,Management & Other,Mid,4.0,190000.0,Mid (150k-300k),0,0,0,0,0,0
+Compliance Officer,Management & Other,Senior,8.0,330000.0,Senior (300k-500k),0,0,0,0,0,0
+Risk Management Specialist,Management & Other,Entry,1.5,115000.0,Entry (<150k),0,0,0,0,0,0
+Risk Management Specialist,Management & Other,Mid,4.0,190000.0,Mid (150k-300k),0,0,0,0,0,0
+Risk Management Specialist,Management & Other,Senior,8.0,330000.0,Senior (300k-500k),0,0,0,0,0,0
+IT Risk Analyst,Management & Other,Entry,1.5,115000.0,Entry (<150k),0,0,0,0,0,0
+IT Risk Analyst,Management & Other,Mid,4.0,190000.0,Mid (150k-300k),0,0,0,0,0,0
+IT Risk Analyst,Management & Other,Senior,8.0,330000.0,Senior (300k-500k),0,0,0,0,0,0
+Solutions Engineer,Engineering,Entry,1.5,115000.0,Entry (<150k),0,0,0,0,0,0
+Solutions Engineer,Engineering,Mid,4.0,190000.0,Mid (150k-300k),0,0,0,0,0,0
+Solutions Engineer,Engineering,Senior,8.0,330000.0,Senior (300k-500k),0,0,0,0,0,0
+Technical Architect,Management & Other,Entry,1.5,115000.0,Entry (<150k),0,0,0,0,0,0
+Technical Architect,Management & Other,Mid,4.0,190000.0,Mid (150k-300k),0,0,0,0,0,0
+Technical Architect,Management & Other,Senior,8.0,330000.0,Senior (300k-500k),0,0,0,0,0,0
+Senior Technology Consultant,Management & Other,Entry,1.5,115000.0,Entry (<150k),0,0,0,0,0,0
+Senior Technology Consultant,Management & Other,Mid,4.0,190000.0,Mid (150k-300k),0,0,0,0,0,0
+Senior Technology Consultant,Management & Other,Senior,8.0,330000.0,Senior (300k-500k),0,0,0,0,0,0
+Technology Strategist,Management & Other,Entry,1.5,115000.0,Entry (<150k),0,0,0,0,0,0
+Technology Strategist,Management & Other,Mid,4.0,190000.0,Mid (150k-300k),0,0,0,0,0,0
+Technology Strategist,Management & Other,Senior,8.0,330000.0,Senior (300k-500k),0,0,0,0,0,0
+Digital Transformation Manager,Management & Other,Entry,1.5,115000.0,Entry (<150k),0,0,0,0,0,0
+Digital Transformation Manager,Management & Other,Mid,4.0,190000.0,Mid (150k-300k),0,0,0,0,0,0
+Digital Transformation Manager,Management & Other,Senior,8.0,330000.0,Senior (300k-500k),0,0,0,0,0,0
+Agile Coach,Management & Other,Entry,1.5,115000.0,Entry (<150k),0,0,0,0,0,0
+Agile Coach,Management & Other,Mid,4.0,190000.0,Mid (150k-300k),0,0,0,0,0,0
+Agile Coach,Management & Other,Senior,8.0,330000.0,Senior (300k-500k),0,0,0,0,0,0
+Product Manager,Management & Other,Entry,1.5,115000.0,Entry (<150k),0,0,0,0,0,0
+Product Manager,Management & Other,Mid,4.0,190000.0,Mid (150k-300k),0,0,0,0,0,0
+Product Manager,Management & Other,Senior,8.0,330000.0,Senior (300k-500k),0,0,0,0,0,0
+Product Owner,Management & Other,Entry,1.5,115000.0,Entry (<150k),0,0,0,0,0,0
+Product Owner,Management & Other,Mid,4.0,190000.0,Mid (150k-300k),0,0,0,0,0,0
+Product Owner,Management & Other,Senior,8.0,330000.0,Senior (300k-500k),0,0,0,0,0,0
+Technical Product Manager,Management & Other,Entry,1.5,115000.0,Entry (<150k),0,0,0,0,0,0
+Technical Product Manager,Management & Other,Mid,4.0,190000.0,Mid (150k-300k),0,0,0,0,0,0
+Technical Product Manager,Management & Other,Senior,8.0,330000.0,Senior (300k-500k),0,0,0,0,0,0
+Software Architect,Management & Other,Entry,1.5,115000.0,Entry (<150k),0,0,0,0,0,0
+Software Architect,Management & Other,Mid,4.0,190000.0,Mid (150k-300k),0,0,0,0,0,0
+Software Architect,Management & Other,Senior,8.0,330000.0,Senior (300k-500k),0,0,0,0,0,0
+Microservices Architect,Management & Other,Entry,1.5,115000.0,Entry (<150k),0,0,0,0,0,0
+Microservices Architect,Management & Other,Mid,4.0,190000.0,Mid (150k-300k),0,0,0,0,0,0
+Microservices Architect,Management & Other,Senior,8.0,330000.0,Senior (300k-500k),0,0,0,0,0,0
+Blockchain Developer,Engineering,Entry,1.5,115000.0,Entry (<150k),0,0,0,0,0,0
+Blockchain Developer,Engineering,Mid,4.0,190000.0,Mid (150k-300k),0,0,0,0,0,0
+Blockchain Developer,Engineering,Senior,8.0,330000.0,Senior (300k-500k),0,0,0,0,0,0
+Cryptocurrency/Web3 Specialist,Management & Other,Entry,1.5,115000.0,Entry (<150k),0,0,0,0,0,0
+Cryptocurrency/Web3 Specialist,Management & Other,Mid,4.0,190000.0,Mid (150k-300k),0,0,0,0,0,0
+Cryptocurrency/Web3 Specialist,Management & Other,Senior,8.0,330000.0,Senior (300k-500k),0,0,0,0,0,0
+IoT Solutions Architect,Management & Other,Entry,1.5,115000.0,Entry (<150k),0,0,0,0,0,0
+IoT Solutions Architect,Management & Other,Mid,4.0,190000.0,Mid (150k-300k),0,0,0,0,0,0
+IoT Solutions Architect,Management & Other,Senior,8.0,330000.0,Senior (300k-500k),0,0,0,0,0,0
+Robotics Process Automation (RPA) Developer,Engineering,Entry,1.5,115000.0,Entry (<150k),0,0,0,0,0,0
+Robotics Process Automation (RPA) Developer,Engineering,Mid,4.0,190000.0,Mid (150k-300k),0,0,0,0,0,0
+Robotics Process Automation (RPA) Developer,Engineering,Senior,8.0,330000.0,Senior (300k-500k),0,0,0,0,0,0
+Power BI Developer,Engineering,Entry,1.5,115000.0,Entry (<150k),0,0,0,0,0,0
+Power BI Developer,Engineering,Mid,4.0,190000.0,Mid (150k-300k),0,0,0,0,0,0
+Power BI Developer,Engineering,Senior,8.0,330000.0,Senior (300k-500k),0,0,0,0,0,0
+Tableau Developer,Engineering,Entry,1.5,115000.0,Entry (<150k),0,0,0,0,0,0
+Tableau Developer,Engineering,Mid,4.0,190000.0,Mid (150k-300k),0,0,0,0,0,0
+Tableau Developer,Engineering,Senior,8.0,330000.0,Senior (300k-500k),0,0,0,0,0,0
+Informatica Developer,Engineering,Entry,1.5,115000.0,Entry (<150k),0,0,0,0,0,0
+Informatica Developer,Engineering,Mid,4.0,190000.0,Mid (150k-300k),0,0,0,0,0,0
+Informatica Developer,Engineering,Senior,8.0,330000.0,Senior (300k-500k),0,0,0,0,0,0
+Talend Developer,Engineering,Entry,1.5,115000.0,Entry (<150k),0,0,0,0,0,0
+Talend Developer,Engineering,Mid,4.0,190000.0,Mid (150k-300k),0,0,0,0,0,0
+Talend Developer,Engineering,Senior,8.0,330000.0,Senior (300k-500k),0,0,0,0,0,0
+Kubernetes Administrator,Management & Other,Entry,1.5,115000.0,Entry (<150k),0,0,0,0,0,0
+Kubernetes Administrator,Management & Other,Mid,4.0,190000.0,Mid (150k-300k),0,0,0,0,0,0
+Kubernetes Administrator,Management & Other,Senior,8.0,330000.0,Senior (300k-500k),0,0,0,0,0,0
+Cloud Solutions Intern,DevOps & Infra,Unpaid,3.0,10000.0,Entry (<150k),0,0,0,0,1,0
+Cloud Solutions Intern,DevOps & Infra,Paid internship,1.0,35000.0,Entry (<150k),0,0,0,0,1,0
+AWS Solutions Intern,Management & Other,Unpaid,3.0,12500.0,Entry (<150k),0,0,0,0,1,0
+AWS Solutions Intern,Management & Other,Paid internship,1.0,42500.0,Entry (<150k),0,0,0,0,1,0
+Azure Cloud Intern,DevOps & Infra,Unpaid,3.0,10000.0,Entry (<150k),0,0,0,1,1,0
+Azure Cloud Intern,DevOps & Infra,Paid internship,1.0,37500.0,Entry (<150k),0,0,0,1,1,0
+GCP Cloud Intern,DevOps & Infra,Unpaid,3.0,11000.0,Entry (<150k),0,0,0,0,1,0
+GCP Cloud Intern,DevOps & Infra,Paid internship,1.0,38500.0,Entry (<150k),0,0,0,0,1,0
+Salesforce Intern,Management & Other,Unpaid,3.0,9000.0,Entry (<150k),0,0,0,0,0,0
+Salesforce Intern,Management & Other,Paid internship,1.0,31500.0,Entry (<150k),0,0,0,0,0,0
+SAP Intern,Management & Other,Unpaid,3.0,10000.0,Entry (<150k),0,0,0,0,0,0
+SAP Intern,Management & Other,Paid internship,1.0,35000.0,Entry (<150k),0,0,0,0,0,0
+Oracle Intern,Management & Other,Unpaid,3.0,9000.0,Entry (<150k),0,0,0,1,0,0
+Oracle Intern,Management & Other,Paid internship,1.0,31500.0,Entry (<150k),0,0,0,1,0,0
+ERP Systems Intern,Management & Other,Unpaid,3.0,10000.0,Entry (<150k),0,0,0,0,0,0
+ERP Systems Intern,Management & Other,Paid internship,1.0,34000.0,Entry (<150k),0,0,0,0,0,0
+Mainframe Developer Intern,Engineering,Unpaid,3.0,11000.0,Entry (<150k),0,0,0,0,0,1
+Mainframe Developer Intern,Engineering,Paid internship,1.0,36000.0,Entry (<150k),0,0,0,0,0,1
+COBOL Developer Intern,Engineering,Unpaid,3.0,10000.0,Entry (<150k),0,0,0,0,0,1
+COBOL Developer Intern,Engineering,Paid internship,1.0,34000.0,Entry (<150k),0,0,0,0,0,1
+Kubernetes Intern,Management & Other,Unpaid,3.0,12500.0,Entry (<150k),0,0,0,0,0,1
+Kubernetes Intern,Management & Other,Paid internship,1.0,42500.0,Entry (<150k),0,0,0,0,0,1
+Docker Intern,Management & Other,Unpaid,3.0,11000.0,Entry (<150k),0,0,0,0,0,1
+Docker Intern,Management & Other,Paid internship,1.0,38500.0,Entry (<150k),0,0,0,0,0,1
+Jenkins DevOps Intern,DevOps & Infra,Unpaid,3.0,12000.0,Entry (<150k),0,0,0,0,0,0
+Jenkins DevOps Intern,DevOps & Infra,Paid internship,1.0,41000.0,Entry (<150k),0,0,0,0,0,0
+Linux System Administration Intern,Design & UI/UX,Unpaid,3.0,9000.0,Entry (<150k),0,0,0,0,0,0
+Linux System Administration Intern,Design & UI/UX,Paid internship,1.0,31500.0,Entry (<150k),0,0,0,0,0,0
+Windows System Administration Intern,Management & Other,Unpaid,3.0,9000.0,Entry (<150k),0,0,0,0,0,0
+Windows System Administration Intern,Management & Other,Paid internship,1.0,31500.0,Entry (<150k),0,0,0,0,0,0
+Hadoop Big Data Intern,Data & AI,Unpaid,3.0,12500.0,Entry (<150k),0,0,0,0,0,0
+Hadoop Big Data Intern,Data & AI,Paid internship,1.0,42500.0,Entry (<150k),0,0,0,0,0,0
+Apache Spark Intern,Management & Other,Unpaid,3.0,12500.0,Entry (<150k),0,0,0,1,0,0
+Apache Spark Intern,Management & Other,Paid internship,1.0,42500.0,Entry (<150k),0,0,0,1,0,0
+Data Analytics Intern,Data & AI,Unpaid,3.0,11000.0,Entry (<150k),1,0,0,1,0,0
+Data Analytics Intern,Data & AI,Paid internship,1.0,38500.0,Entry (<150k),1,0,0,1,0,0
+Power BI Intern,Management & Other,Unpaid,3.0,10000.0,Entry (<150k),0,0,0,0,0,0
+Power BI Intern,Management & Other,Paid internship,1.0,35000.0,Entry (<150k),0,0,0,0,0,0
+Tableau Intern,Management & Other,Unpaid,3.0,10000.0,Entry (<150k),0,0,0,1,0,0
+Tableau Intern,Management & Other,Paid internship,1.0,35000.0,Entry (<150k),0,0,0,1,0,0
+Informatica Intern,Management & Other,Unpaid,3.0,11000.0,Entry (<150k),0,0,0,0,1,0
+Informatica Intern,Management & Other,Paid internship,1.0,38500.0,Entry (<150k),0,0,0,0,1,0
+Talend Intern,Management & Other,Unpaid,3.0,11000.0,Entry (<150k),0,0,0,0,0,0
+Talend Intern,Management & Other,Paid internship,1.0,38500.0,Entry (<150k),0,0,0,0,0,0
+MongoDB Developer Intern,Engineering,Unpaid,3.0,9000.0,Entry (<150k),0,0,0,1,0,0
+MongoDB Developer Intern,Engineering,Paid internship,1.0,31500.0,Entry (<150k),0,0,0,1,0,0
+PostgreSQL Developer Intern,Engineering,Unpaid,3.0,10000.0,Entry (<150k),0,0,0,1,0,0
+PostgreSQL Developer Intern,Engineering,Paid internship,1.0,35000.0,Entry (<150k),0,0,0,1,0,0
+MySQL Developer Intern,Engineering,Unpaid,3.0,9000.0,Entry (<150k),1,0,0,1,0,0
+MySQL Developer Intern,Engineering,Paid internship,1.0,33000.0,Entry (<150k),1,0,0,1,0,0
+Redis Developer Intern,Engineering,Unpaid,3.0,10000.0,Entry (<150k),0,0,0,0,0,0
+Redis Developer Intern,Engineering,Paid internship,1.0,35000.0,Entry (<150k),0,0,0,0,0,0
+GraphQL API Developer Intern,Engineering,Unpaid,3.0,9000.0,Entry (<150k),0,0,0,0,0,0
+GraphQL API Developer Intern,Engineering,Paid internship,1.0,31500.0,Entry (<150k),0,0,0,0,0,0
+Microservices Architecture Intern,Management & Other,Unpaid,3.0,12500.0,Entry (<150k),0,0,0,0,0,1
+Microservices Architecture Intern,Management & Other,Paid internship,1.0,42500.0,Entry (<150k),0,0,0,0,0,1
+Service Mesh Intern,Management & Other,Unpaid,3.0,12000.0,Entry (<150k),0,0,0,0,0,0
+Service Mesh Intern,Management & Other,Paid internship,1.0,41000.0,Entry (<150k),0,0,0,0,0,0
+API Gateway Intern,Management & Other,Unpaid,3.0,11000.0,Entry (<150k),0,0,0,0,1,0
+API Gateway Intern,Management & Other,Paid internship,1.0,38500.0,Entry (<150k),0,0,0,0,1,0
+Message Queue Developer Intern (Kafka/RabbitMQ),Engineering,Unpaid,3.0,11000.0,Entry (<150k),0,0,0,0,0,0
+Message Queue Developer Intern (Kafka/RabbitMQ),Engineering,Paid internship,1.0,38500.0,Entry (<150k),0,0,0,0,0,0
+IoT Developer Intern,Engineering,Unpaid,3.0,10000.0,Entry (<150k),0,0,0,0,1,0
+IoT Developer Intern,Engineering,Paid internship,1.0,35000.0,Entry (<150k),0,0,0,0,1,0
+Edge Computing Intern,Management & Other,Unpaid,3.0,10000.0,Entry (<150k),0,0,0,0,0,0
+Edge Computing Intern,Management & Other,Paid internship,1.0,35000.0,Entry (<150k),0,0,0,0,0,0
+Firmware Developer Intern,Engineering,Unpaid,3.0,11000.0,Entry (<150k),0,0,0,0,0,0
+Firmware Developer Intern,Engineering,Paid internship,1.0,38500.0,Entry (<150k),0,0,0,0,0,0
+Mobile App Testing Intern,QA & Testing,Unpaid,3.0,9000.0,Entry (<150k),0,0,0,0,0,0
+Mobile App Testing Intern,QA & Testing,Paid internship,1.0,31500.0,Entry (<150k),0,0,0,0,0,0
+Cross-Platform Development Intern,Management & Other,Unpaid,3.0,9000.0,Entry (<150k),0,1,0,0,0,0
+Cross-Platform Development Intern,Management & Other,Paid internship,1.0,31500.0,Entry (<150k),0,1,0,0,0,0
+Progressive Web App (PWA) Developer Intern,Engineering,Unpaid,3.0,9000.0,Entry (<150k),0,0,0,0,0,1
+Progressive Web App (PWA) Developer Intern,Engineering,Paid internship,1.0,31500.0,Entry (<150k),0,0,0,0,0,1
+Augmented Reality (AR) Developer Intern,Engineering,Unpaid,3.0,12500.0,Entry (<150k),0,0,0,0,0,0
+Augmented Reality (AR) Developer Intern,Engineering,Paid internship,1.0,45000.0,Entry (<150k),0,0,0,0,0,0
+Virtual Reality (VR) Developer Intern,Engineering,Unpaid,3.0,12500.0,Entry (<150k),0,0,0,0,0,0
+Virtual Reality (VR) Developer Intern,Engineering,Paid internship,1.0,45000.0,Entry (<150k),0,0,0,0,0,0
+Chatbot Development Intern,Management & Other,Unpaid,3.0,10000.0,Entry (<150k),0,0,0,0,0,1
+Chatbot Development Intern,Management & Other,Paid internship,1.0,35000.0,Entry (<150k),0,0,0,0,0,1
+RPA Testing Intern,QA & Testing,Unpaid,3.0,10000.0,Entry (<150k),0,0,0,0,0,0
+RPA Testing Intern,QA & Testing,Paid internship,1.0,35000.0,Entry (<150k),0,0,0,0,0,0
