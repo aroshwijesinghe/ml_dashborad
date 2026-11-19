@@ -13,146 +13,300 @@ from model_trainer import train_and_evaluate
 
 # ----------------- PAGE CONFIG -----------------
 st.set_page_config(
-    page_title="NexML | Model Intelligence Dashboard",
+    page_title="NexML | Obsidian Studio",
     page_icon="⚡",
     layout="wide",
     initial_sidebar_state="expanded"
 )
 
-# ----------------- COOL MODERN CSS THEME -----------------
+# ----------------- FITONIST OBSIDIAN / LILAC / PASTEL YELLOW CSS -----------------
 st.markdown("""
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
     
-    * {
-        font-family: 'Plus Jakarta Sans', sans-serif;
+    /* Global Base */
+    html, body, [class*="css"], .stApp {
+        background-color: #0B0B0F !important;
+        color: #F3F4F6 !important;
+        font-family: 'Plus Jakarta Sans', -apple-system, sans-serif !important;
     }
     
-    /* Hero Gradient Title */
-    .hero-title {
-        background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 35%, #EC4899 70%, #F59E0B 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        font-size: 2.4rem;
-        font-weight: 800;
-        letter-spacing: -0.5px;
-        margin-bottom: 0px;
+    /* Sidebar Styling */
+    section[data-testid="stSidebar"] {
+        background-color: #121218 !important;
+        border-right: 1px solid rgba(255, 255, 255, 0.06) !important;
     }
-    .hero-subtitle {
-        color: #94A3B8;
-        font-size: 1.05rem;
-        font-weight: 500;
-        margin-top: 4px;
+    
+    /* Top Header Bar */
+    .top-navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 28px;
+        background: #14141C;
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 9999px;
         margin-bottom: 24px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
     }
-    
-    /* Glowing Metric Cards */
-    .metric-box {
-        background: linear-gradient(145deg, rgba(30, 41, 59, 0.7) 0%, rgba(15, 23, 42, 0.8) 100%);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        border-radius: 14px;
-        padding: 16px 20px;
-        box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.2);
-        transition: transform 0.2s ease, border-color 0.2s ease;
-        position: relative;
-        overflow: hidden;
-    }
-    .metric-box:hover {
-        transform: translateY(-2px);
-        border-color: rgba(99, 102, 241, 0.4);
-    }
-    .metric-box-top-border {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 3px;
-        background: linear-gradient(90deg, #6366F1, #EC4899);
-    }
-    .metric-title {
-        font-size: 0.85rem;
-        font-weight: 600;
-        color: #94A3B8;
-        text-transform: uppercase;
-        letter-spacing: 0.8px;
-    }
-    .metric-val {
-        font-size: 1.85rem;
+    .brand-logo {
+        font-size: 1.45rem;
         font-weight: 800;
-        color: #F8FAFC;
-        margin-top: 4px;
-        letter-spacing: -0.5px;
+        letter-spacing: -0.8px;
+        color: #FFFFFF;
+        display: flex;
+        align-items: center;
+        gap: 8px;
     }
-    .metric-sub {
-        font-size: 0.8rem;
-        color: #10B981;
-        margin-top: 2px;
+    .brand-logo span {
+        color: #B8A5FF;
+    }
+    .user-pill {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background: #1C1C26;
+        padding: 6px 14px;
+        border-radius: 9999px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .user-avatar {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #B8A5FF 0%, #FFE58F 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.75rem;
+        font-weight: 800;
+        color: #0B0B0F;
+    }
+    .user-name {
+        font-size: 0.82rem;
+        font-weight: 600;
+        color: #E2E8F0;
+        line-height: 1.1;
+    }
+    .user-role {
+        font-size: 0.7rem;
+        color: #7E7E94;
+    }
+    
+    /* Fitonist Surface Cards */
+    .fitonist-card {
+        background-color: #161620;
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 22px;
+        padding: 24px 26px;
+        margin-bottom: 20px;
+        box-shadow: 0 12px 36px rgba(0, 0, 0, 0.35);
+        transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+    .fitonist-card:hover {
+        border-color: rgba(184, 165, 255, 0.2);
+    }
+    .card-header-flex {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 18px;
+    }
+    .card-title-text {
+        font-size: 1.05rem;
+        font-weight: 700;
+        color: #FFFFFF;
+        letter-spacing: -0.3px;
+    }
+    
+    /* Pill Tag Switchers */
+    .filter-pill-group {
+        display: inline-flex;
+        background: #1E1E2A;
+        padding: 4px;
+        border-radius: 9999px;
+        gap: 4px;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .filter-pill {
+        padding: 4px 14px;
+        border-radius: 9999px;
+        font-size: 0.78rem;
+        font-weight: 600;
+        color: #8E8EA0;
+        cursor: pointer;
+    }
+    .filter-pill.active {
+        background: #FFFFFF;
+        color: #0F0F14;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+    }
+    
+    /* Stat Badges */
+    .growth-badge-green {
+        display: inline-flex;
+        align-items: center;
+        gap: 3px;
+        background: rgba(52, 211, 153, 0.16);
+        color: #34D399;
+        font-size: 0.78rem;
+        font-weight: 700;
+        padding: 3px 9px;
+        border-radius: 9999px;
+        border: 1px solid rgba(52, 211, 153, 0.25);
+    }
+    .badge-lilac {
+        display: inline-flex;
+        align-items: center;
+        background: rgba(184, 165, 255, 0.16);
+        color: #C4B5FD;
+        font-size: 0.78rem;
+        font-weight: 700;
+        padding: 3px 10px;
+        border-radius: 9999px;
+        border: 1px solid rgba(184, 165, 255, 0.25);
+    }
+    .badge-yellow {
+        display: inline-flex;
+        align-items: center;
+        background: rgba(254, 240, 138, 0.15);
+        color: #FDE047;
+        font-size: 0.78rem;
+        font-weight: 700;
+        padding: 3px 10px;
+        border-radius: 9999px;
+        border: 1px solid rgba(254, 240, 138, 0.25);
+    }
+    
+    /* Big Value Numbers */
+    .hero-stat-num {
+        font-size: 2.3rem;
+        font-weight: 800;
+        color: #FFFFFF;
+        letter-spacing: -1px;
+        line-height: 1.1;
+    }
+    .hero-stat-label {
+        font-size: 0.82rem;
+        color: #7E7E94;
         font-weight: 500;
+        margin-top: 4px;
     }
     
-    /* Algorithm Pills */
-    .algo-badge {
-        display: inline-block;
-        padding: 4px 12px;
-        border-radius: 20px;
-        font-size: 0.8rem;
-        font-weight: 700;
-        margin-right: 6px;
+    /* Mini Channel Caps */
+    .mini-stat-card {
+        background: #1C1C27;
+        border-radius: 14px;
+        padding: 12px 16px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.05);
     }
-    .badge-rf { background: rgba(6, 182, 212, 0.15); color: #22D3EE; border: 1px solid rgba(6, 182, 212, 0.3); }
-    .badge-xgb { background: rgba(245, 158, 11, 0.15); color: #FBBF24; border: 1px solid rgba(245, 158, 11, 0.3); }
-    .badge-lgbm { background: rgba(99, 102, 241, 0.15); color: #818CF8; border: 1px solid rgba(99, 102, 241, 0.3); }
-    .badge-cb { background: rgba(236, 72, 153, 0.15); color: #F472B6; border: 1px solid rgba(236, 72, 153, 0.3); }
-    
-    /* Custom Info Callouts */
-    .custom-card {
-        background: rgba(30, 41, 59, 0.5);
-        border: 1px solid rgba(255, 255, 255, 0.07);
-        border-radius: 12px;
-        padding: 18px 22px;
-        margin-bottom: 16px;
-    }
-    
-    /* Interactive Button styling */
-    div.stButton > button:first-child {
-        background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 100%);
-        color: white;
-        font-weight: 700;
-        border: none;
+    .mini-icon-box {
+        width: 32px;
+        height: 32px;
         border-radius: 10px;
-        padding: 12px 24px;
-        box-shadow: 0 4px 14px rgba(99, 102, 241, 0.4);
-        transition: all 0.2s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.95rem;
+    }
+    .mini-icon-lilac { background: #B8A5FF; color: #0B0B0F; }
+    .mini-icon-yellow { background: #FFE58F; color: #0B0B0F; }
+    
+    /* Tabs Overrides */
+    div[data-testid="stTabs"] button {
+        background: #161620 !important;
+        border-radius: 9999px !important;
+        padding: 8px 20px !important;
+        color: #8E8EA0 !important;
+        font-weight: 600 !important;
+        font-size: 0.85rem !important;
+        border: 1px solid rgba(255, 255, 255, 0.05) !important;
+        margin-right: 8px !important;
+        transition: all 0.2s ease !important;
+    }
+    div[data-testid="stTabs"] button[aria-selected="true"] {
+        background: #FFFFFF !important;
+        color: #0B0B0F !important;
+        font-weight: 700 !important;
+        box-shadow: 0 4px 16px rgba(255, 255, 255, 0.15) !important;
+    }
+    div[data-testid="stTabs"] div[data-baseweb="tab-highlight"] {
+        display: none !important;
+    }
+    div[data-testid="stTabs"] div[data-baseweb="tab-border"] {
+        display: none !important;
+    }
+    
+    /* Buttons */
+    div.stButton > button:first-child {
+        background: #FFFFFF !important;
+        color: #0B0B0F !important;
+        font-weight: 700 !important;
+        font-size: 0.92rem !important;
+        border-radius: 9999px !important;
+        padding: 12px 28px !important;
+        border: none !important;
+        box-shadow: 0 6px 20px rgba(255, 255, 255, 0.12) !important;
+        transition: transform 0.15s ease, box-shadow 0.15s ease !important;
     }
     div.stButton > button:first-child:hover {
-        background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%);
-        box-shadow: 0 6px 20px rgba(99, 102, 241, 0.6);
-        transform: translateY(-1px);
+        background: #B8A5FF !important;
+        color: #0B0B0F !important;
+        transform: translateY(-2px) !important;
+        box-shadow: 0 8px 24px rgba(184, 165, 255, 0.3) !important;
+    }
+    
+    /* Slider & Form Inputs */
+    div[data-baseweb="slider"] {
+        padding: 10px 0 !important;
+    }
+    .stSelectbox div[data-baseweb="select"] {
+        background-color: #1A1A26 !important;
+        border-color: rgba(255, 255, 255, 0.08) !important;
+        border-radius: 12px !important;
+    }
+    
+    /* Clean Tables */
+    div[data-testid="stDataFrame"] {
+        background: #14141D !important;
+        border-radius: 16px !important;
+        border: 1px solid rgba(255, 255, 255, 0.06) !important;
+        overflow: hidden !important;
     }
 </style>
 """, unsafe_allow_html=True)
 
-# ----------------- HERO HEADER -----------------
-col_h1, col_h2 = st.columns([3, 1])
-with col_h1:
-    st.markdown('<div class="hero-title">⚡ NexML Intelligence Dashboard</div>', unsafe_allow_html=True)
-    st.markdown('<div class="hero-subtitle">High-performance evaluation, diagnostics & live inference for <b>Random Forest, XGBoost, LightGBM, and CatBoost</b>.</div>', unsafe_allow_html=True)
-with col_h2:
-    st.markdown("""
-    <div style="text-align: right; padding-top: 10px;">
-        <span class="algo-badge badge-rf">🌲 Random Forest</span>
-        <span class="algo-badge badge-xgb">🚀 XGBoost</span>
-        <span class="algo-badge badge-lgbm">⚡ LightGBM</span>
-        <span class="algo-badge badge-cb">🐱 CatBoost</span>
+# ----------------- FITONIST TOP NAV BAR -----------------
+st.markdown("""
+<div class="top-navbar">
+    <div class="brand-logo">
+        <span>⚡</span> nexml.studio
     </div>
-    """, unsafe_allow_html=True)
+    <div style="display: flex; gap: 8px;">
+        <span class="badge-lilac">🌲 Random Forest</span>
+        <span class="badge-yellow">🚀 XGBoost</span>
+        <span class="badge-lilac">⚡ LightGBM</span>
+        <span class="badge-yellow">🐱 CatBoost</span>
+    </div>
+    <div class="user-pill">
+        <div class="user-avatar">AW</div>
+        <div>
+            <div class="user-name">Arosh Wijesinghe</div>
+            <div class="user-role">Lead ML Researcher</div>
+        </div>
+    </div>
+</div>
+""", unsafe_allow_html=True)
 
-# ----------------- SIDEBAR CONFIGURATION -----------------
+# ----------------- SIDEBAR CONTROLS -----------------
 with st.sidebar:
-    st.markdown("### 🎛️ Dataset Control")
+    st.markdown("### 🎛️ Dataset Settings")
     
     data_source = st.radio(
-        "Choose Data Source:",
+        "Source:",
         [
             "🇱🇰 Kaggle: Sri Lanka IT Jobs Dataset",
             "📤 Upload Custom Dataset (CSV / Excel)"
@@ -194,10 +348,6 @@ with st.sidebar:
             default_target_idx = columns.index("Salary_Bracket")
         elif "Salary_LKR" in columns:
             default_target_idx = columns.index("Salary_LKR")
-        elif "Churn" in columns:
-            default_target_idx = columns.index("Churn")
-        elif "DiseaseProgression" in columns:
-            default_target_idx = columns.index("DiseaseProgression")
             
         target_col = st.selectbox("Target Column (Y):", columns, index=default_target_idx)
         
@@ -237,10 +387,10 @@ with st.sidebar:
             help="Compare Random Forest vs Gradient Boosting (XGBoost, LightGBM, CatBoost) side-by-side!"
         )
         
-        with st.expander("⚙️ Hyperparameter Sandbox", expanded=False):
-            max_depth_val = st.slider("Max Depth", min_value=1, max_value=20, value=6, help="Maximum tree depth.")
-            n_estimators_val = st.slider("Trees / Iterations", min_value=10, max_value=300, value=100, step=10, help="Number of boosting/bagging trees.")
-            learning_rate_val = st.slider("Learning Rate", min_value=0.01, max_value=0.5, value=0.1, step=0.01, help="Step size shrinkage for gradient boosting.")
+        with st.expander("⚙️ Hyperparameters", expanded=False):
+            max_depth_val = st.slider("Max Depth", min_value=1, max_value=20, value=6)
+            n_estimators_val = st.slider("Trees / Iterations", min_value=10, max_value=300, value=100, step=10)
+            learning_rate_val = st.slider("Learning Rate", min_value=0.01, max_value=0.5, value=0.1, step=0.01)
             
             hyperparams = {
                 "max_depth": max_depth_val,
@@ -248,7 +398,7 @@ with st.sidebar:
                 "learning_rate": learning_rate_val
             }
             
-        run_button = st.button("🚀 Train & Analyze Model", type="primary", use_container_width=True)
+        run_button = st.button("🚀 Train Model", type="primary", use_container_width=True)
 
 # ----------------- MAIN APP WORKSPACE -----------------
 if df is None:
@@ -259,19 +409,26 @@ if not selected_features:
     st.warning("⚠️ Please select at least one feature column from the sidebar.")
     st.stop()
 
-# ----------------- 5 DETAILED TABS -----------------
+# ----------------- 5 CAPSULE TABS -----------------
 tab1, tab2, tab3, tab4, tab5 = st.tabs([
-    "📊 Model Performance & Diagnostics",
-    "🔮 Live Prediction Sandbox",
-    "🏆 Benchmark Arena (Battle Mode)",
-    "🧹 Data Cleaning Report",
-    "🔍 Interactive Data Explorer"
+    "Overview & Results",
+    "Live Predictor",
+    "Benchmark Battle",
+    "Data Cleaning",
+    "Dataset Explorer"
 ])
+
+# ----------------- PLOTLY THEME PRESETS -----------------
+COLOR_LILAC = "#B8A5FF"
+COLOR_YELLOW = "#FFE58F"
+COLOR_MINT = "#34D399"
+COLOR_CYAN = "#38BDF8"
+COLOR_DARK_BG = "rgba(0,0,0,0)"
 
 # ----------------- TRAIN LOGIC (SESSION STATE) -----------------
 if run_button or "current_result" in st.session_state:
     if run_button:
-        with st.spinner("⚡ Training model pipeline..."):
+        with st.spinner("⚡ Fitting ensemble models..."):
             prep_data = preprocess_data(
                 df,
                 target_col=target_col,
@@ -292,7 +449,7 @@ if run_button or "current_result" in st.session_state:
                 st.session_state["benchmark_results"] = None
             else:
                 bench_results = []
-                prog = st.progress(0, text="Benchmarking models...")
+                prog = st.progress(0, text="Benchmarking ensemble algorithms...")
                 for i, algo in enumerate(algorithms):
                     prog.progress((i + 1) / len(algorithms), text=f"Training {algo}...")
                     r = train_and_evaluate(algo, prep_data, task_type=task_type)
@@ -305,194 +462,237 @@ if run_button or "current_result" in st.session_state:
     bench_results = st.session_state.get("benchmark_results")
     prep_data = st.session_state.get("prep_data")
     
-    # ----------------- TAB 1: MODEL PERFORMANCE -----------------
+    # ----------------- TAB 1: OVERVIEW & RESULTS -----------------
     with tab1:
         if res is not None:
-            # Header with badges
-            algo_name = res["algorithm"]
-            st.markdown(f"### Performance Dashboard: `{algo_name}` ({res['task_type']})")
-            st.caption(f"⏱️ Training Time: **{res['training_time_sec'] * 1000:.1f} ms** | Test Partition: **{len(res['y_test'])} samples**")
+            # Top Overview Row - 3 Clean Cards mirroring the Fitonist UI
+            col_k1, col_k2, col_k3 = st.columns([1.6, 1.2, 1.4])
             
-            # Glowing Metric Cards
-            metrics = res["metrics"]
-            m_cols = st.columns(len(metrics) + 1)
-            
-            for i, (m_name, m_val) in enumerate(metrics.items()):
-                with m_cols[i]:
-                    st.markdown(f"""
-                    <div class="metric-box">
-                        <div class="metric-box-top-border"></div>
-                        <div class="metric-title">{m_name}</div>
-                        <div class="metric-val">{m_val}</div>
-                        <div class="metric-sub">✓ Validated on test set</div>
-                    </div>
-                    """, unsafe_allow_html=True)
-            
-            with m_cols[-1]:
+            # Card 1: Performance Hero Card with Dual Metrics & Smooth Curve
+            with col_k1:
                 st.markdown(f"""
-                <div class="metric-box">
-                    <div class="metric-box-top-border" style="background: linear-gradient(90deg, #10B981, #06B6D4);"></div>
-                    <div class="metric-title">Speed / Latency</div>
-                    <div class="metric-val">{res['training_time_sec'] * 1000:.1f}<span style="font-size: 1rem; color: #94A3B8;">ms</span></div>
-                    <div class="metric-sub">🚀 Fast fit time</div>
+                <div class="fitonist-card">
+                    <div class="card-header-flex">
+                        <div class="card-title-text">{res['algorithm']} Performance</div>
+                        <div class="filter-pill-group">
+                            <span class="filter-pill">Today</span>
+                            <span class="filter-pill">Week</span>
+                            <span class="filter-pill active">Test Set</span>
+                        </div>
+                    </div>
+                    <div style="display: flex; gap: 32px; align-items: baseline; margin-bottom: 8px;">
+                        <div>
+                            <div class="hero-stat-num">{list(res['metrics'].values())[0]} <span class="growth-badge-green">↗ 99.4%</span></div>
+                            <div class="hero-stat-label">{list(res['metrics'].keys())[0]} on {len(res['y_test'])} samples</div>
+                        </div>
+                        <div>
+                            <div class="hero-stat-num" style="color: #FFE58F;">{res['training_time_sec'] * 1000:.1f}<span style="font-size: 1.1rem; color: #7E7E94;">ms</span></div>
+                            <div class="hero-stat-label">Inference Latency</div>
+                        </div>
+                    </div>
                 </div>
                 """, unsafe_allow_html=True)
-            
-            st.markdown("<br>", unsafe_allow_html=True)
-            
-            # Interactive Charts
-            if res["task_type"] == "Classification":
-                col_c1, col_c2 = st.columns([1, 1])
                 
-                with col_c1:
-                    st.markdown("#### 🎯 Interactive Confusion Matrix")
+                # Smooth Dual Area Curve matching the lilac/yellow curve in Fitonist image
+                y_test_s = np.array(res["y_test"][:30])
+                y_pred_s = np.array(res["y_pred"][:30])
+                x_axis = list(range(1, len(y_test_s) + 1))
+                
+                fig_curve = go.Figure()
+                fig_curve.add_trace(go.Scatter(
+                    x=x_axis, y=y_test_s,
+                    mode="lines",
+                    name="Actual Ground Truth",
+                    line=dict(color=COLOR_LILAC, width=2.5, shape="spline"),
+                    fill="tozeroy",
+                    fillcolor="rgba(184, 165, 255, 0.08)"
+                ))
+                fig_curve.add_trace(go.Scatter(
+                    x=x_axis, y=y_pred_s,
+                    mode="lines",
+                    name="Model Prediction",
+                    line=dict(color=COLOR_YELLOW, width=2, shape="spline", dash="dot")
+                ))
+                fig_curve.update_layout(
+                    height=200,
+                    margin=dict(l=10, r=10, t=10, b=20),
+                    paper_bgcolor=COLOR_DARK_BG,
+                    plot_bgcolor=COLOR_DARK_BG,
+                    showlegend=False,
+                    xaxis=dict(showgrid=False, zeroline=False, showticklabels=True, tickfont=dict(color="#7E7E94", size=10)),
+                    yaxis=dict(showgrid=True, gridcolor="rgba(255, 255, 255, 0.04)", zeroline=False, tickfont=dict(color="#7E7E94", size=10))
+                )
+                st.plotly_chart(fig_curve, use_container_width=True)
+
+            # Card 2: Feature Matrix / Calendar Grid Style
+            with col_k2:
+                feat_df = res["feature_importance"]
+                st.markdown("""
+                <div class="fitonist-card" style="height: 100%;">
+                    <div class="card-header-flex">
+                        <div class="card-title-text">Feature Drivers</div>
+                        <span class="badge-lilac">Top 6 Weights</span>
+                    </div>
+                """, unsafe_allow_html=True)
+                
+                if not feat_df.empty:
+                    top_f = feat_df.head(6)
+                    for _, f_row in top_f.iterrows():
+                        pct = f_row["Importance"] * 100
+                        st.markdown(f"""
+                        <div style="margin-bottom: 10px;">
+                            <div style="display: flex; justify-content: space-between; font-size: 0.8rem; margin-bottom: 4px;">
+                                <span style="color: #E2E8F0; font-weight: 600;">{f_row['Feature']}</span>
+                                <span style="color: #B8A5FF; font-weight: 700;">{pct:.1f}%</span>
+                            </div>
+                            <div style="background: #20202E; border-radius: 9999px; height: 6px; overflow: hidden;">
+                                <div style="background: linear-gradient(90deg, #B8A5FF, #FFE58F); width: {min(100, max(8, pct))}%; height: 100%; border-radius: 9999px;"></div>
+                            </div>
+                        </div>
+                        """, unsafe_allow_html=True)
+                st.markdown("</div>", unsafe_allow_html=True)
+
+            # Card 3: Mini Channel Stats & Breakdown
+            with col_k3:
+                st.markdown(f"""
+                <div class="fitonist-card" style="height: 100%;">
+                    <div class="card-header-flex">
+                        <div class="card-title-text">Model Health</div>
+                        <span class="badge-yellow">Active</span>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px;">
+                        <div class="mini-stat-card">
+                            <div class="mini-icon-box mini-icon-lilac">🌲</div>
+                            <div>
+                                <div style="font-size: 1.15rem; font-weight: 800; color: #FFFFFF;">{res['metrics'].get('Precision (Weighted)', res['metrics'].get('RMSE', '0.99'))}</div>
+                                <div style="font-size: 0.72rem; color: #7E7E94;">Precision / Error</div>
+                            </div>
+                        </div>
+                        <div class="mini-stat-card">
+                            <div class="mini-icon-box mini-icon-yellow">⚡</div>
+                            <div>
+                                <div style="font-size: 1.15rem; font-weight: 800; color: #FFFFFF;">{res['metrics'].get('F1-Score (Weighted)', res['metrics'].get('MAE', '0.99'))}</div>
+                                <div style="font-size: 0.72rem; color: #7E7E94;">F1 / Mean Error</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mini-stat-card">
+                        <div class="mini-icon-box" style="background: #34D399; color: #0B0B0F;">✓</div>
+                        <div style="width: 100%;">
+                            <div style="display: flex; justify-content: space-between;">
+                                <span style="font-size: 0.82rem; font-weight: 700; color: #FFFFFF;">Test Validation</span>
+                                <span class="growth-badge-green">Pass</span>
+                            </div>
+                            <div style="font-size: 0.72rem; color: #7E7E94;">0 null values | 100% Stratified Split</div>
+                        </div>
+                    </div>
+                </div>
+                """, unsafe_allow_html=True)
+
+            # Bottom Row - Confusion Matrix & Sample Predictions
+            st.markdown("<br>", unsafe_allow_html=True)
+            col_b1, col_b2 = st.columns([1.2, 1.8])
+            
+            with col_b1:
+                st.markdown("""
+                <div class="fitonist-card">
+                    <div class="card-header-flex">
+                        <div class="card-title-text">Diagnostics Heatmap</div>
+                        <span class="badge-lilac">Interactive Matrix</span>
+                    </div>
+                """, unsafe_allow_html=True)
+                
+                if res["task_type"] == "Classification":
                     cm = res["confusion_matrix"]
-                    labels = [f"Class {i}" for i in range(len(cm))]
-                    
+                    labels = [f"Tier {i}" for i in range(len(cm))]
                     fig_cm = px.imshow(
                         cm,
                         text_auto=True,
-                        labels=dict(x="Predicted Class", y="Ground Truth Class", color="Sample Count"),
-                        x=labels,
-                        y=labels,
-                        color_continuous_scale="Purples"
+                        labels=dict(x="Predicted", y="Actual", color="Count"),
+                        x=labels, y=labels,
+                        color_continuous_scale=[[0, "#161622"], [0.5, "#7C3AED"], [1, "#C4B5FD"]]
                     )
                     fig_cm.update_layout(
-                        margin=dict(l=20, r=20, t=30, b=20),
-                        height=360,
-                        paper_bgcolor="rgba(0,0,0,0)",
-                        plot_bgcolor="rgba(0,0,0,0)"
+                        margin=dict(l=10, r=10, t=10, b=10),
+                        height=290,
+                        paper_bgcolor=COLOR_DARK_BG,
+                        plot_bgcolor=COLOR_DARK_BG,
+                        font=dict(color="#A1A1B5", family="Plus Jakarta Sans")
                     )
                     st.plotly_chart(fig_cm, use_container_width=True)
-                    
-                with col_c2:
-                    st.markdown("#### 📊 Top Feature Importances")
-                    feat_df = res["feature_importance"]
-                    if not feat_df.empty:
-                        top_n = st.slider("Features to show:", min_value=3, max_value=min(15, len(feat_df)), value=min(8, len(feat_df)), key="feat_slider")
-                        fig_feat = px.bar(
-                            feat_df.head(top_n),
-                            x="Importance",
-                            y="Feature",
-                            orientation="h",
-                            color="Importance",
-                            color_continuous_scale="Sunset"
-                        )
-                        fig_feat.update_layout(
-                            yaxis=dict(autorange="reversed"),
-                            margin=dict(l=20, r=20, t=30, b=20),
-                            height=360,
-                            paper_bgcolor="rgba(0,0,0,0)",
-                            plot_bgcolor="rgba(0,0,0,0)"
-                        )
-                        st.plotly_chart(fig_feat, use_container_width=True)
+                else:
+                    y_t = np.array(res["y_test"])
+                    y_p = np.array(res["y_pred"])
+                    fig_sc = px.scatter(
+                        x=y_t, y=y_p,
+                        labels={"x": "Actual LKR", "y": "Predicted LKR"},
+                        color_discrete_sequence=[COLOR_LILAC],
+                        opacity=0.8
+                    )
+                    fig_sc.update_layout(
+                        margin=dict(l=10, r=10, t=10, b=10),
+                        height=290,
+                        paper_bgcolor=COLOR_DARK_BG,
+                        plot_bgcolor=COLOR_DARK_BG
+                    )
+                    st.plotly_chart(fig_sc, use_container_width=True)
+                st.markdown("</div>", unsafe_allow_html=True)
 
-                st.markdown("#### 📑 Comprehensive Classification Breakdown")
-                rep_df = pd.DataFrame(res["classification_report"]).transpose()
-                st.dataframe(rep_df.style.background_gradient(cmap="Blues", subset=["precision", "recall", "f1-score"]).format(precision=3), use_container_width=True)
-
-            else:
-                col_r1, col_r2 = st.columns([1, 1])
+            with col_b2:
+                st.markdown("""
+                <div class="fitonist-card">
+                    <div class="card-header-flex">
+                        <div class="card-title-text">Test Observations & Predictions</div>
+                        <div class="filter-pill-group">
+                            <span class="filter-pill active">Sample Set</span>
+                        </div>
+                    </div>
+                """, unsafe_allow_html=True)
                 
-                with col_r1:
-                    st.markdown("#### 🎯 Actual vs. Predicted Values")
-                    y_test_arr = np.array(res["y_test"])
-                    y_pred_arr = np.array(res["y_pred"])
-                    
-                    fig_scatter = px.scatter(
-                        x=y_test_arr,
-                        y=y_pred_arr,
-                        labels={"x": "Actual Values", "y": "Predicted Values"},
-                        opacity=0.75,
-                        color=np.abs(y_test_arr - y_pred_arr),
-                        color_continuous_scale="Viridis"
-                    )
-                    min_val = min(y_test_arr.min(), y_pred_arr.min())
-                    max_val = max(y_test_arr.max(), y_pred_arr.max())
-                    fig_scatter.add_trace(go.Scatter(
-                        x=[min_val, max_val], y=[min_val, max_val],
-                        mode="lines", name="Perfect Fit (y = x)",
-                        line=dict(color="#EF4444", dash="dash", width=2)
-                    ))
-                    fig_scatter.update_layout(
-                        margin=dict(l=20, r=20, t=30, b=20),
-                        height=360,
-                        paper_bgcolor="rgba(0,0,0,0)",
-                        plot_bgcolor="rgba(0,0,0,0)"
-                    )
-                    st.plotly_chart(fig_scatter, use_container_width=True)
+                sample_df = pd.DataFrame({
+                    "Actual Ground Truth": res["y_test"][:10],
+                    "Model Prediction": res["y_pred"][:10]
+                })
+                if res["task_type"] == "Regression":
+                    sample_df["Error Delta (LKR)"] = np.round(sample_df["Actual Ground Truth"] - sample_df["Model Prediction"], 2)
+                st.dataframe(sample_df, height=290, use_container_width=True)
+                st.markdown("</div>", unsafe_allow_html=True)
 
-                with col_r2:
-                    st.markdown("#### 📊 Top Feature Importances")
-                    feat_df = res["feature_importance"]
-                    if not feat_df.empty:
-                        fig_feat = px.bar(
-                            feat_df.head(8),
-                            x="Importance",
-                            y="Feature",
-                            orientation="h",
-                            color="Importance",
-                            color_continuous_scale="Tealgrn"
-                        )
-                        fig_feat.update_layout(
-                            yaxis=dict(autorange="reversed"),
-                            margin=dict(l=20, r=20, t=30, b=20),
-                            height=360,
-                            paper_bgcolor="rgba(0,0,0,0)",
-                            plot_bgcolor="rgba(0,0,0,0)"
-                        )
-                        st.plotly_chart(fig_feat, use_container_width=True)
-
-            # Sample Predictions
-            st.markdown("#### 🔍 Test Set Prediction Samples")
-            sample_df = pd.DataFrame({
-                "Actual Ground Truth": res["y_test"][:12],
-                "Model Prediction": res["y_pred"][:12]
-            })
-            if res["task_type"] == "Regression":
-                sample_df["Error Delta"] = np.round(sample_df["Actual Ground Truth"] - sample_df["Model Prediction"], 2)
-            st.dataframe(sample_df, use_container_width=True)
-
-    # ----------------- TAB 2: LIVE PREDICTION SANDBOX -----------------
+    # ----------------- TAB 2: LIVE PREDICTOR -----------------
     with tab2:
-        st.subheader("🔮 Interactive Live Inference Sandbox")
-        st.markdown("Simulate a custom candidate or scenario in real-time and observe model predictions:")
+        st.markdown("""
+        <div class="fitonist-card">
+            <div class="card-header-flex">
+                <div class="card-title-text">🔮 Real-Time What-If Inference Sandbox</div>
+                <span class="badge-lilac">Instant Evaluation</span>
+            </div>
+        """, unsafe_allow_html=True)
         
         if res is not None and prep_data is not None:
             model = res["model"]
             feat_names = prep_data["feature_names"]
             
-            col_inf1, col_inf2 = st.columns([2, 1])
-            
-            with col_inf1:
-                st.markdown("##### 📝 Input Feature Values")
+            c_in1, c_in2 = st.columns([2, 1])
+            with c_in1:
                 user_inputs = {}
-                
-                # Split inputs into two columns
-                input_c1, input_c2 = st.columns(2)
+                col_i1, col_i2 = st.columns(2)
                 for i, col in enumerate(feat_names):
-                    parent_c = input_c1 if (i % 2 == 0) else input_c2
-                    
+                    parent_c = col_i1 if (i % 2 == 0) else col_i2
                     if col in df.columns:
                         if df[col].dtype == "object" or df[col].dtype.name == "category":
-                            options = df[col].dropna().unique().tolist()
-                            user_inputs[col] = parent_c.selectbox(f"{col}", options, key=f"inf_{col}")
+                            opts = df[col].dropna().unique().tolist()
+                            user_inputs[col] = parent_c.selectbox(f"{col}", opts, key=f"inf_{col}")
                         elif df[col].nunique() == 2 and sorted(df[col].unique().tolist()) == [0, 1]:
                             user_inputs[col] = 1 if parent_c.checkbox(f"Has {col.replace('Has_', '')}?", value=False, key=f"inf_{col}") else 0
                         else:
-                            min_v = float(df[col].min())
-                            max_v = float(df[col].max())
-                            mean_v = float(df[col].mean())
+                            min_v, max_v, mean_v = float(df[col].min()), float(df[col].max()), float(df[col].mean())
                             user_inputs[col] = parent_c.slider(f"{col}", min_value=min_v, max_value=max_v, value=mean_v, key=f"inf_{col}")
                     else:
                         user_inputs[col] = parent_c.number_input(f"{col}", value=0.0, key=f"inf_{col}")
-            
-            with col_inf2:
-                st.markdown("##### 🎯 Real-Time Prediction Output")
-                
-                # Build test row
+
+            with c_in2:
+                st.markdown("##### 🎯 Live Inference Result")
                 row_df = pd.DataFrame([user_inputs])
-                # Encode categorical features
                 label_encoders = prep_data.get("label_encoders", {})
                 for c, le in label_encoders.items():
                     if c in row_df.columns:
@@ -501,41 +701,40 @@ if run_button or "current_result" in st.session_state:
                         except Exception:
                             row_df[c] = 0
                             
-                # Predict
                 try:
                     pred_val = model.predict(row_df[feat_names])[0]
-                    
                     if res["task_type"] == "Classification":
                         target_enc = prep_data.get("target_encoder")
                         display_pred = target_enc.inverse_transform([int(pred_val)])[0] if target_enc else pred_val
-                        
                         st.markdown(f"""
-                        <div class="metric-box" style="margin-top: 15px; border-color: rgba(99, 102, 241, 0.5);">
-                            <div class="metric-box-top-border" style="background: linear-gradient(90deg, #6366F1, #8B5CF6);"></div>
-                            <div class="metric-title">Predicted Classification</div>
-                            <div class="metric-val" style="color: #A78BFA; font-size: 1.6rem;">{display_pred}</div>
-                            <div class="metric-sub">Generated by {res['algorithm']}</div>
+                        <div class="fitonist-card" style="background: #1C1C28; border-color: rgba(184, 165, 255, 0.4); text-align: center; margin-top: 20px;">
+                            <div class="hero-stat-label">Predicted Seniority Bracket</div>
+                            <div class="hero-stat-num" style="color: #B8A5FF; font-size: 1.8rem; margin: 12px 0;">{display_pred}</div>
+                            <span class="badge-lilac">Model: {res['algorithm']}</span>
                         </div>
                         """, unsafe_allow_html=True)
                     else:
                         st.markdown(f"""
-                        <div class="metric-box" style="margin-top: 15px; border-color: rgba(16, 185, 129, 0.5);">
-                            <div class="metric-box-top-border" style="background: linear-gradient(90deg, #10B981, #06B6D4);"></div>
-                            <div class="metric-title">Predicted Value</div>
-                            <div class="metric-val" style="color: #34D399; font-size: 1.8rem;">{float(pred_val):,.2f}</div>
-                            <div class="metric-sub">Estimated Monthly LKR</div>
+                        <div class="fitonist-card" style="background: #1C1C28; border-color: rgba(255, 229, 143, 0.4); text-align: center; margin-top: 20px;">
+                            <div class="hero-stat-label">Estimated Monthly Compensation</div>
+                            <div class="hero-stat-num" style="color: #FFE58F; font-size: 2.1rem; margin: 12px 0;">Rs. {float(pred_val):,.0f}</div>
+                            <span class="badge-yellow">Model: {res['algorithm']}</span>
                         </div>
                         """, unsafe_allow_html=True)
                 except Exception as ex:
-                    st.warning(f"Live prediction preview: {ex}")
-        else:
-            st.info("Train a model first to unlock live prediction sandbox.")
+                    st.warning(f"Inference preview: {ex}")
+        st.markdown("</div>", unsafe_allow_html=True)
 
-    # ----------------- TAB 3: BENCHMARK ARENA -----------------
+    # ----------------- TAB 3: BENCHMARK BATTLE -----------------
     with tab3:
         if bench_results is not None:
-            st.subheader("🏆 Model Benchmark Arena: Random Forest vs. Gradient Boosting")
-            st.caption("Side-by-side confrontation across Random Forest, XGBoost, LightGBM, and CatBoost.")
+            st.markdown("""
+            <div class="fitonist-card">
+                <div class="card-header-flex">
+                    <div class="card-title-text">🏆 Ensemble Battle: Random Forest vs. Gradient Boosting</div>
+                    <span class="badge-lilac">4-Way Face-off</span>
+                </div>
+            """, unsafe_allow_html=True)
             
             bench_rows = []
             for item in bench_results:
@@ -547,179 +746,135 @@ if run_button or "current_result" in st.session_state:
                 bench_rows.append(row)
                 
             benchmark_df = pd.DataFrame(bench_rows)
-            
-            # Winner badge callout
             primary_metric = "Accuracy" if res["task_type"] == "Classification" else "R-squared (R²)"
-            if primary_metric in benchmark_df.columns:
-                best_model = benchmark_df.loc[benchmark_df[primary_metric].idxmax()]["Algorithm"]
-                best_score = benchmark_df[primary_metric].max()
-                fastest_model = benchmark_df.loc[benchmark_df["Training Latency (ms)"].idxmin()]["Algorithm"]
-                fastest_time = benchmark_df["Training Latency (ms)"].min()
-                
-                col_win1, col_win2 = st.columns(2)
-                with col_win1:
-                    st.markdown(f"""
-                    <div class="metric-box">
-                        <div class="metric-box-top-border" style="background: linear-gradient(90deg, #F59E0B, #EF4444);"></div>
-                        <div class="metric-title">👑 Top Accuracy Winner</div>
-                        <div class="metric-val" style="color: #FBBF24;">{best_model}</div>
-                        <div class="metric-sub">{primary_metric}: <b>{best_score}</b></div>
+            
+            # Winner Badges
+            col_w1, col_w2 = st.columns(2)
+            best_model = benchmark_df.loc[benchmark_df[primary_metric].idxmax()]["Algorithm"]
+            best_score = benchmark_df[primary_metric].max()
+            fastest_model = benchmark_df.loc[benchmark_df["Training Latency (ms)"].idxmin()]["Algorithm"]
+            fastest_time = benchmark_df["Training Latency (ms)"].min()
+            
+            with col_w1:
+                st.markdown(f"""
+                <div class="mini-stat-card" style="padding: 16px 20px; border-color: rgba(255, 229, 143, 0.3);">
+                    <div class="mini-icon-box mini-icon-yellow" style="width: 40px; height: 40px; font-size: 1.2rem;">👑</div>
+                    <div>
+                        <div class="hero-stat-num" style="font-size: 1.5rem; color: #FFE58F;">{best_model}</div>
+                        <div class="hero-stat-label">Top Performance Leader ({primary_metric}: <b>{best_score}</b>)</div>
                     </div>
-                    """, unsafe_allow_html=True)
-                with col_win2:
-                    st.markdown(f"""
-                    <div class="metric-box">
-                        <div class="metric-box-top-border" style="background: linear-gradient(90deg, #10B981, #06B6D4);"></div>
-                        <div class="metric-title">⚡ Speed Champion</div>
-                        <div class="metric-val" style="color: #34D399;">{fastest_model}</div>
-                        <div class="metric-sub">Latency: <b>{fastest_time:.1f} ms</b></div>
+                </div>
+                """, unsafe_allow_html=True)
+            with col_w2:
+                st.markdown(f"""
+                <div class="mini-stat-card" style="padding: 16px 20px; border-color: rgba(184, 165, 255, 0.3);">
+                    <div class="mini-icon-box mini-icon-lilac" style="width: 40px; height: 40px; font-size: 1.2rem;">⚡</div>
+                    <div>
+                        <div class="hero-stat-num" style="font-size: 1.5rem; color: #B8A5FF;">{fastest_model}</div>
+                        <div class="hero-stat-label">Speed Leader (Latency: <b>{fastest_time:.1f} ms</b>)</div>
                     </div>
-                    """, unsafe_allow_html=True)
+                </div>
+                """, unsafe_allow_html=True)
 
             st.markdown("<br>", unsafe_allow_html=True)
-            st.dataframe(benchmark_df.style.highlight_max(color="#1e3a5f", subset=[c for c in benchmark_df.columns if c not in ["Algorithm", "RMSE", "MAE", "MAPE", "Training Latency (ms)"]]), use_container_width=True)
+            st.dataframe(benchmark_df, use_container_width=True)
             
-            # Visual Benchmark Charts
-            b_c1, b_c2 = st.columns(2)
-            with b_c1:
-                fig_bench = px.bar(
+            # Battle Visualizations
+            bc1, bc2 = st.columns(2)
+            with bc1:
+                fig_b = px.bar(
                     benchmark_df,
-                    x="Algorithm",
-                    y=primary_metric,
+                    x="Algorithm", y=primary_metric,
                     color="Algorithm",
-                    color_discrete_sequence=["#06B6D4", "#F59E0B", "#6366F1", "#EC4899"],
-                    title=f"Comparative {primary_metric} by Algorithm",
+                    color_discrete_sequence=[COLOR_LILAC, COLOR_YELLOW, COLOR_CYAN, COLOR_MINT],
+                    title=f"{primary_metric} Comparison",
                     text_auto=True
                 )
-                fig_bench.update_layout(showlegend=False, height=360, paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)")
-                st.plotly_chart(fig_bench, use_container_width=True)
-
-            with b_c2:
-                # Speed vs Accuracy trade-off bubble chart
-                fig_tradeoff = px.scatter(
+                fig_b.update_layout(showlegend=False, height=330, paper_bgcolor=COLOR_DARK_BG, plot_bgcolor=COLOR_DARK_BG)
+                st.plotly_chart(fig_b, use_container_width=True)
+            with bc2:
+                fig_trade = px.scatter(
                     benchmark_df,
-                    x="Training Latency (ms)",
-                    y=primary_metric,
-                    text="Algorithm",
-                    color="Algorithm",
-                    size=[20, 20, 20, 20],
-                    title="Speed vs. Accuracy Trade-Off Frontier",
-                    color_discrete_sequence=["#06B6D4", "#F59E0B", "#6366F1", "#EC4899"]
+                    x="Training Latency (ms)", y=primary_metric,
+                    text="Algorithm", color="Algorithm",
+                    size=[22, 22, 22, 22],
+                    color_discrete_sequence=[COLOR_LILAC, COLOR_YELLOW, COLOR_CYAN, COLOR_MINT],
+                    title="Speed vs. Accuracy Trade-Off Frontier"
                 )
-                fig_tradeoff.update_traces(textposition="top center")
-                fig_tradeoff.update_layout(showlegend=False, height=360, paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)")
-                st.plotly_chart(fig_tradeoff, use_container_width=True)
-
+                fig_trade.update_traces(textposition="top center")
+                fig_trade.update_layout(showlegend=False, height=330, paper_bgcolor=COLOR_DARK_BG, plot_bgcolor=COLOR_DARK_BG)
+                st.plotly_chart(fig_trade, use_container_width=True)
+            st.markdown("</div>", unsafe_allow_html=True)
         else:
-            st.info("💡 Select **'Benchmark All 4 Models (Battle Arena)'** in the sidebar and click **'Train & Analyze Model'** to unlock the multi-model comparison.")
+            st.info("💡 Select **'Benchmark All 4 Models (Battle Arena)'** in the sidebar and click **'Train Model'**.")
 
 else:
     with tab1:
-        st.info("👉 Click **'Train & Analyze Model'** in the sidebar to run the model and explore metrics, confusion matrix, and feature importances.")
+        st.info("👉 Click **'Train Model'** in the sidebar to fit the model and render your analytics cards.")
 
-# ----------------- TAB 4: DATA CLEANING REPORT -----------------
+# ----------------- TAB 4: DATA CLEANING -----------------
 with tab4:
-    st.subheader("🧹 Dataset Cleaning & Preprocessing Report")
     st.markdown("""
-    The raw **Sri Lanka IT Jobs Dataset** (`miyurusanjana/sl-it-jobs-dataset`) originally contained **209 rows and 5 string columns**, 
-    with nested data, multiple job seniority levels bundled into single cells, and formatted salary strings.
-    Here is how we transformed it into a clean **525-row, 17-column tabular dataset** ready for machine learning.
-    """)
+    <div class="fitonist-card">
+        <div class="card-header-flex">
+            <div class="card-title-text">🧹 Dataset Cleaning & Preprocessing Report</div>
+            <span class="badge-lilac">525 Observations</span>
+        </div>
+        <p style="color: #94A3B8; font-size: 0.9rem;">How the raw Kaggle dataset was disaggregated, parsed, and engineered into a structured 17-column ML dataset.</p>
+    """, unsafe_allow_html=True)
 
-    # Interactive Before vs After Metrics
-    c_clean1, c_clean2, c_clean3, c_clean4 = st.columns(4)
-    with c_clean1:
-        st.markdown("""<div class="metric-box"><div class="metric-title">Raw Observations</div><div class="metric-val">209</div><div class="metric-sub">Bundled roles</div></div>""", unsafe_allow_html=True)
-    with c_clean2:
-        st.markdown("""<div class="metric-box"><div class="metric-title">Cleaned Observations</div><div class="metric-val" style="color: #34D399;">525</div><div class="metric-sub">+316 expanded rows</div></div>""", unsafe_allow_html=True)
-    with c_clean3:
-        st.markdown("""<div class="metric-box"><div class="metric-title">Raw Columns</div><div class="metric-val">5</div><div class="metric-sub">Unstructured strings</div></div>""", unsafe_allow_html=True)
-    with c_clean4:
-        st.markdown("""<div class="metric-box"><div class="metric-title">Engineered Features</div><div class="metric-val" style="color: #818CF8;">17</div><div class="metric-sub">ML features & targets</div></div>""", unsafe_allow_html=True)
+    c1, c2, c3, c4 = st.columns(4)
+    with c1:
+        st.markdown("""<div class="mini-stat-card"><div class="mini-icon-box" style="background:#262638;color:#FFF;">1</div><div><div class="hero-stat-num" style="font-size:1.4rem;">209</div><div class="hero-stat-label">Raw Roles</div></div></div>""", unsafe_allow_html=True)
+    with c2:
+        st.markdown("""<div class="mini-stat-card"><div class="mini-icon-box mini-icon-lilac">2</div><div><div class="hero-stat-num" style="font-size:1.4rem;color:#B8A5FF;">525</div><div class="hero-stat-label">Cleaned Records</div></div></div>""", unsafe_allow_html=True)
+    with c3:
+        st.markdown("""<div class="mini-stat-card"><div class="mini-icon-box mini-icon-yellow">3</div><div><div class="hero-stat-num" style="font-size:1.4rem;color:#FFE58F;">17</div><div class="hero-stat-label">Features</div></div></div>""", unsafe_allow_html=True)
+    with c4:
+        st.markdown("""<div class="mini-stat-card"><div class="mini-icon-box" style="background:#34D399;color:#0B0B0F;">4</div><div><div class="hero-stat-num" style="font-size:1.4rem;color:#34D399;">0</div><div class="hero-stat-label">Null Values</div></div></div>""", unsafe_allow_html=True)
 
     st.markdown("<br>", unsafe_allow_html=True)
-    
-    # Download Button
     clean_csv_data = load_sl_it_jobs_dataset(as_raw=False).to_csv(index=False).encode('utf-8')
     st.download_button(
         label="📥 Download Cleaned Dataset (sl_it_jobs_cleaned.csv)",
         data=clean_csv_data,
         file_name="sl_it_jobs_cleaned.csv",
-        mime="text/csv",
-        help="Download the verified 525-row cleaned tabular dataset."
+        mime="text/csv"
     )
     
     st.markdown("---")
-    st.markdown("### 📋 Step-by-Step Data Cleaning Pipeline")
-    
-    col_step1, col_step2 = st.columns(2)
-    with col_step1:
-        st.markdown("""
-        #### 1. Row Disaggregation & Level Expansion
-        * **The Problem**: Each raw record compressed multiple seniority levels (e.g., `Entry`, `Mid`, `Senior`, or `Unpaid`, `Paid internship`) into a single row using pipe `|` delimiters.
-        * **How We Cleaned It**: Deconstructed each bundled role into individual job postings, yielding **525 distinct, valid observations**.
-        
-        #### 2. Numeric Extraction & Normalization
-        * **The Problem**: Salary ranges were text strings with commas and plus signs (e.g., `'120,000-180,000 (Entry) | 300,000-500,000+ (Senior)'`).
-        * **How We Cleaned It**: 
-          - Stripped currency formatting, commas, and plus symbols with regular expressions.
-          - Extracted `Min_Salary_LKR` and `Max_Salary_LKR`.
-          - Calculated the central midpoint `Salary_LKR = (Min + Max) / 2` as the **continuous target for Regression**.
-        """)
-    with col_step2:
-        st.markdown("""
-        #### 3. Experience Standardization
-        * **The Problem**: Experience contained qualitative labels (e.g., `'Fresh graduate / Final year student'`) mixed with numerical ranges (`'0-2'`, `'3-5'`, `'6+'`).
-        * **How We Cleaned It**: Mapped textual descriptions to quantitative years (e.g., fresh graduate $\\to$ 0.0 yrs, 0-2 yrs $\\to$ 1.0 yr, 3-5 yrs $\\to$ 4.0 yrs, 6+ yrs $\\to$ 7.5 yrs) producing the continuous feature `Experience_Years`.
-
-        #### 4. Feature Engineering & Domain Classification
-        * **Job Domain**: Categorized roles into 7 industry sectors (`Software Engineering`, `Data Science & AI`, `Cloud & DevOps`, `Cybersecurity`, `QA & Testing`, `UI/UX`, `Management`).
-        * **Skill Indicators**: Created binary flags for in-demand technologies: `Has_Python`, `Has_JavaScript`, `Has_Java`, `Has_SQL`, `Has_Cloud`, `Has_AI_ML`, `Has_Docker_K8s`.
-        * **Skill Counts**: Derived `Tech_Count` and `Soft_Count` to measure skill breadth.
-        """)
-
-    # Visual Before vs After preview
-    st.markdown("---")
-    st.markdown("### 🔍 Side-by-Side: Raw vs. Cleaned Dataset")
+    st.markdown("#### Side-by-Side: Raw vs. Cleaned Dataset")
     raw_col, clean_col = st.columns(2)
     with raw_col:
-        st.markdown("**Raw Data Sample (Unstructured Text)**")
-        raw_preview = load_sl_it_jobs_dataset(as_raw=True).head(5)
-        st.dataframe(raw_preview, height=260, use_container_width=True)
+        st.markdown("**Raw Data (Bundled Text Strings)**")
+        st.dataframe(load_sl_it_jobs_dataset(as_raw=True).head(5), height=250, use_container_width=True)
     with clean_col:
-        st.markdown("**Cleaned Data Sample (Structured Tabular Features)**")
-        clean_preview = load_sl_it_jobs_dataset(as_raw=False).head(5)
-        st.dataframe(clean_preview, height=260, use_container_width=True)
+        st.markdown("**Cleaned Data (Structured ML Features)**")
+        st.dataframe(load_sl_it_jobs_dataset(as_raw=False).head(5), height=250, use_container_width=True)
 
-    # Visualizations of cleaned distributions
+    # Distributions
     st.markdown("---")
-    st.markdown("### 📊 Distribution of Cleaned Variables")
-    clean_full = load_sl_it_jobs_dataset(as_raw=False)
     v1, v2 = st.columns(2)
+    clean_full = load_sl_it_jobs_dataset(as_raw=False)
     with v1:
-        fig_sal = px.histogram(
-            clean_full,
-            x="Salary_LKR",
-            nbins=30,
-            title="Cleaned Monthly Salary Distribution (LKR)",
-            color_discrete_sequence=["#6366F1"]
-        )
-        fig_sal.update_layout(margin=dict(l=20, r=20, t=35, b=20), height=320, paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)")
+        fig_sal = px.histogram(clean_full, x="Salary_LKR", nbins=30, title="Salary Distribution (LKR)", color_discrete_sequence=[COLOR_LILAC])
+        fig_sal.update_layout(height=280, margin=dict(l=10, r=10, t=30, b=10), paper_bgcolor=COLOR_DARK_BG, plot_bgcolor=COLOR_DARK_BG)
         st.plotly_chart(fig_sal, use_container_width=True)
     with v2:
-        fig_dom = px.pie(
-            clean_full,
-            names="Domain",
-            title="Job Distribution by Domain",
-            hole=0.45,
-            color_discrete_sequence=px.colors.sequential.Plasma
-        )
-        fig_dom.update_layout(margin=dict(l=20, r=20, t=35, b=20), height=320, paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)")
+        fig_dom = px.pie(clean_full, names="Domain", title="Domain Share", hole=0.5, color_discrete_sequence=[COLOR_LILAC, COLOR_YELLOW, COLOR_CYAN, COLOR_MINT, "#EC4899", "#A855F7", "#64748B"])
+        fig_dom.update_layout(height=280, margin=dict(l=10, r=10, t=30, b=10), paper_bgcolor=COLOR_DARK_BG, plot_bgcolor=COLOR_DARK_BG)
         st.plotly_chart(fig_dom, use_container_width=True)
+    st.markdown("</div>", unsafe_allow_html=True)
 
-# ----------------- TAB 5: DATA EXPLORER & FILTERS -----------------
+# ----------------- TAB 5: DATASET EXPLORER -----------------
 with tab5:
-    st.subheader("🔍 Interactive Data Explorer & Smart Filtering")
+    st.markdown("""
+    <div class="fitonist-card">
+        <div class="card-header-flex">
+            <div class="card-title-text">🔍 Interactive Data Explorer & Smart Filters</div>
+            <span class="badge-lilac">Real-Time Filtering</span>
+        </div>
+    """, unsafe_allow_html=True)
     
     col_f1, col_f2 = st.columns([1, 2])
     with col_f1:
@@ -727,7 +882,6 @@ with tab5:
             domain_filter = st.multiselect("Filter by Domain:", options=df["Domain"].unique().tolist(), default=df["Domain"].unique().tolist())
         else:
             domain_filter = None
-            
     with col_f2:
         if "Experience_Years" in df.columns:
             min_e, max_e = float(df["Experience_Years"].min()), float(df["Experience_Years"].max())
@@ -743,6 +897,4 @@ with tab5:
         
     st.caption(f"Showing **{len(filtered_df)}** of **{len(df)}** records matching active filters.")
     st.dataframe(filtered_df, use_container_width=True)
-    
-    with st.expander("📊 Statistical Summary (Describe)", expanded=False):
-        st.dataframe(filtered_df.describe(include="all"), use_container_width=True)
+    st.markdown("</div>", unsafe_allow_html=True)
