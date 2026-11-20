@@ -425,13 +425,6 @@ st.markdown("""
         <span class="embossed-pill pill-cyan">⚡ LightGBM</span>
         <span class="embossed-pill pill-pink">🐱 CatBoost</span>
     </div>
-    <div class="user-pill-embossed">
-        <div class="user-avatar-pulse">AW</div>
-        <div>
-            <div style="font-size: 0.82rem; font-weight: 700; color: #26324A;">Arosh Wijesinghe</div>
-            <div style="font-size: 0.68rem; color: #8490A8; font-weight: 600;">Lead ML Researcher</div>
-        </div>
-    </div>
 </div>
 """, unsafe_allow_html=True)
 
