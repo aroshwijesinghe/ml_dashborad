@@ -10,365 +10,434 @@ from model_trainer import train_and_evaluate
 
 # ----------------- PAGE CONFIG -----------------
 st.set_page_config(
-    page_title="NexML | Glassmorphism & Embossed Studio",
+    page_title="NexML Studio — Premium AI Analytics Platform",
     page_icon="🔮",
     layout="wide",
     initial_sidebar_state="expanded"
 )
 
-# ----------------- LIGHT GLASSMORPHISM + EMBOSSED (NEUMORPHISM) CSS -----------------
+# ----------------- PREMIUM GLASSMORPHISM + SOFT NEUMORPHISM (LIGHT THEME ONLY) -----------------
 st.markdown("""
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap');
     
-    /* Hide Streamlit Header, Deploy Button, Main Menu, and Footer */
-    header[data-testid="stHeader"] {
-        display: none !important;
-        visibility: hidden !important;
-        height: 0px !important;
-    }
-    .stDeployButton, [data-testid="stToolbar"], #MainMenu, footer {
-        display: none !important;
-        visibility: hidden !important;
-    }
-    div[data-testid="stDecoration"] {
-        display: none !important;
-        visibility: hidden !important;
-    }
-    
-    /* Streamlit Widget Theme Overrides: Replace Red with Cool Indigo / Cyan */
-    span[data-baseweb="tag"] {
-        background: linear-gradient(135deg, rgba(79, 70, 229, 0.15) 0%, rgba(6, 182, 212, 0.15) 100%) !important;
-        color: #4338CA !important;
-        border: 1px solid rgba(79, 70, 229, 0.25) !important;
-        border-radius: 8px !important;
-        font-weight: 600 !important;
-    }
-    span[data-baseweb="tag"]:hover {
-        background: linear-gradient(135deg, rgba(79, 70, 229, 0.25) 0%, rgba(6, 182, 212, 0.25) 100%) !important;
-    }
-    span[data-baseweb="tag"] svg {
-        fill: #4338CA !important;
+    /* 1. Global Reset & Theme Variables */
+    :root {
+        --bg-main: #EEF1FA;
+        --bg-secondary: #F5F6FC;
+        --glass-surface: rgba(255, 255, 255, 0.72);
+        --glass-border: rgba(255, 255, 255, 0.88);
+        --glass-shadow: 0 12px 36px rgba(120, 130, 170, 0.12);
+        
+        --shadow-light: rgba(255, 255, 255, 0.95);
+        --shadow-dark: rgba(120, 130, 170, 0.18);
+        
+        --primary-purple: #6955F5;
+        --primary-gradient: linear-gradient(135deg, #6955F5 0%, #4DA3FF 100%);
+        --secondary-blue: #4DA3FF;
+        --accent-cyan: #35C5D8;
+        --accent-pink: #D58BFF;
+        --accent-mint: #10B981;
+        
+        --text-main: #26324A;
+        --text-secondary: #8490A8;
+        --text-light: #9EA8BC;
     }
     
-    /* Radio Buttons & Checkboxes */
-    div[data-testid="stRadio"] div[role="radiogroup"] > label div[data-testid="stMarkdownContainer"] p {
-        color: #1E293B !important;
-        font-weight: 600 !important;
-    }
-    div[data-baseweb="radio"] input:checked + div {
-        background-color: #4F46E5 !important;
-        border-color: #4F46E5 !important;
-    }
-    
-    /* Sliders Track & Handle */
-    div[data-baseweb="slider"] div[role="slider"] {
-        background-color: #4F46E5 !important;
-        border: 2px solid #FFFFFF !important;
-        box-shadow: 0 2px 8px rgba(79, 70, 229, 0.4) !important;
-    }
-    div[data-baseweb="slider"] div[data-testid="stSliderTickBar"] + div,
-    div[data-baseweb="slider"] div > div:nth-child(1) > div:nth-child(2) {
-        background: linear-gradient(90deg, #4F46E5, #06B6D4) !important;
-    }
-    div[data-testid="stSlider"] div[data-testid="stThumbValue"] {
-        color: #4F46E5 !important;
-        font-weight: 700 !important;
-    }
-    
-    /* Light Background with Cool Aurora Gradients */
+    /* Permanent Light Mode Application Canvas */
     html, body, [class*="css"], .stApp {
-        background: linear-gradient(135deg, #EFF4FC 0%, #E6EDF9 35%, #F4F0FD 70%, #EBF4FE 100%) !important;
-        color: #1E293B !important;
-        font-family: 'Plus Jakarta Sans', sans-serif !important;
+        background-color: var(--bg-main) !important;
+        background-image: 
+            radial-gradient(at 0% 0%, rgba(105, 85, 245, 0.08) 0px, transparent 50%),
+            radial-gradient(at 100% 0%, rgba(77, 163, 255, 0.08) 0px, transparent 50%),
+            radial-gradient(at 50% 100%, rgba(53, 197, 216, 0.06) 0px, transparent 50%),
+            radial-gradient(at 100% 100%, rgba(213, 139, 255, 0.06) 0px, transparent 50%) !important;
+        background-attachment: fixed !important;
+        color: var(--text-main) !important;
+        font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif !important;
+        -webkit-font-smoothing: antialiased;
     }
-    
-    /* Sidebar Light Glassmorphism */
+
+    /* Hide Streamlit Header, MainMenu, Footer, Deploy, and Decoration */
+    header[data-testid="stHeader"],
+    header,
+    [data-testid="stHeaderActionElements"],
+    [data-testid="stToolbar"],
+    [data-testid="stMainMenu"],
+    .stDeployButton,
+    #MainMenu,
+    footer,
+    ul[data-testid="main-menu-list"],
+    div[data-testid="stToolbarActions"],
+    div[role="menu"],
+    div[data-baseweb="popover"],
+    div[data-testid="stDecoration"],
+    div[data-testid="stStatusWidget"] {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        height: 0px !important;
+        width: 0px !important;
+        pointer-events: none !important;
+    }
+
+    /* 2. Embossed Glassmorphic Sidebar */
     section[data-testid="stSidebar"] {
-        background: rgba(255, 255, 255, 0.65) !important;
-        backdrop-filter: blur(20px) !important;
-        -webkit-backdrop-filter: blur(20px) !important;
-        border-right: 1px solid rgba(255, 255, 255, 0.8) !important;
-        box-shadow: 4px 0 24px rgba(99, 102, 241, 0.06) !important;
+        background: rgba(245, 246, 252, 0.75) !important;
+        backdrop-filter: blur(25px) !important;
+        -webkit-backdrop-filter: blur(25px) !important;
+        border-right: 1px solid var(--glass-border) !important;
+        box-shadow: 
+            8px 0 32px rgba(120, 130, 170, 0.08),
+            inset -1px 0 0 rgba(255, 255, 255, 0.8) !important;
+    }
+    section[data-testid="stSidebar"] h3 {
+        color: var(--text-main) !important;
+        font-size: 0.98rem !important;
+        font-weight: 800 !important;
+        letter-spacing: -0.3px !important;
+        margin-top: 10px !important;
+        margin-bottom: 8px !important;
     }
     
-    /* Top Floating Glass Navbar */
-    .top-navbar {
+    /* 3. Floating Glass Top Navigation */
+    .top-navbar-glass {
         display: flex;
         justify-content: space-between;
         align-items: center;
         padding: 14px 30px;
-        background: rgba(255, 255, 255, 0.75);
+        background: rgba(255, 255, 255, 0.72);
         backdrop-filter: blur(20px);
         -webkit-backdrop-filter: blur(20px);
-        border: 1px solid rgba(255, 255, 255, 0.9);
+        border: 1px solid var(--glass-border);
         border-radius: 9999px;
         margin-bottom: 24px;
         box-shadow: 
-            8px 8px 24px rgba(166, 180, 208, 0.35),
-            -8px -8px 24px rgba(255, 255, 255, 0.9),
-            inset 1px 1px 2px rgba(255, 255, 255, 0.8);
+            8px 8px 24px var(--shadow-dark),
+            -8px -8px 24px var(--shadow-light),
+            inset 1px 1px 2px rgba(255, 255, 255, 0.95);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
-    .brand-logo {
+    .top-navbar-glass:hover {
+        box-shadow: 
+            10px 10px 28px rgba(120, 130, 170, 0.22),
+            -10px -10px 28px rgba(255, 255, 255, 1);
+    }
+    .brand-logo-gradient {
         font-size: 1.4rem;
         font-weight: 800;
         letter-spacing: -0.6px;
-        background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 50%, #06B6D4 100%);
+        background: linear-gradient(135deg, #6955F5 0%, #4DA3FF 70%, #35C5D8 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         display: flex;
         align-items: center;
-        gap: 8px;
+        gap: 10px;
     }
-    .user-pill {
+    .user-pill-embossed {
         display: flex;
         align-items: center;
         gap: 10px;
         background: rgba(255, 255, 255, 0.85);
         padding: 6px 16px;
         border-radius: 9999px;
+        border: 1px solid rgba(255, 255, 255, 0.9);
         box-shadow: 
-            3px 3px 8px rgba(166, 180, 208, 0.25),
-            -3px -3px 8px rgba(255, 255, 255, 0.95);
-        border: 1px solid rgba(255, 255, 255, 0.8);
+            3px 3px 8px rgba(120, 130, 170, 0.15),
+            -3px -3px 8px var(--shadow-light);
     }
-    .user-avatar {
-        width: 28px;
-        height: 28px;
+    .user-avatar-pulse {
+        width: 30px;
+        height: 30px;
         border-radius: 50%;
-        background: linear-gradient(135deg, #6366F1 0%, #A855F7 100%);
+        background: linear-gradient(135deg, #6955F5 0%, #D58BFF 100%);
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 0.72rem;
+        font-size: 0.74rem;
         font-weight: 800;
         color: #FFFFFF;
-        box-shadow: 0 2px 6px rgba(99, 102, 241, 0.3);
-    }
-    .user-name {
-        font-size: 0.82rem;
-        font-weight: 700;
-        color: #334155;
+        box-shadow: 0 4px 10px rgba(105, 85, 245, 0.3);
     }
 
-    /* Embossed + Glassmorphic Cards */
-    .glass-embossed-card {
-        background: rgba(255, 255, 255, 0.65);
-        backdrop-filter: blur(18px);
-        -webkit-backdrop-filter: blur(18px);
-        border: 1px solid rgba(255, 255, 255, 0.85);
-        border-radius: 24px;
-        padding: 24px 26px;
-        margin-bottom: 20px;
-        box-shadow: 
-            10px 10px 30px rgba(166, 180, 208, 0.3),
-            -10px -10px 30px rgba(255, 255, 255, 0.95),
-            inset 1px 1px 2px rgba(255, 255, 255, 0.9);
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-    .glass-embossed-card:hover {
-        transform: translateY(-2px);
-        box-shadow: 
-            12px 12px 34px rgba(166, 180, 208, 0.38),
-            -12px -12px 34px rgba(255, 255, 255, 1),
-            inset 1px 1px 2px rgba(255, 255, 255, 1);
-    }
-    .card-title {
-        font-size: 1.02rem;
-        font-weight: 700;
-        color: #1E293B;
-        letter-spacing: -0.3px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 14px;
-    }
-    
-    /* Embossed Buttons & Pills */
-    .embossed-pill-cyan {
-        display: inline-flex;
-        align-items: center;
-        gap: 4px;
-        background: rgba(6, 182, 212, 0.12);
-        color: #0891B2;
-        font-size: 0.78rem;
-        font-weight: 700;
-        padding: 4px 12px;
-        border-radius: 9999px;
-        box-shadow: 
-            2px 2px 5px rgba(6, 182, 212, 0.15),
-            -2px -2px 5px rgba(255, 255, 255, 0.9),
-            inset 1px 1px 1px rgba(255, 255, 255, 0.8);
-        border: 1px solid rgba(6, 182, 212, 0.2);
-    }
-    .embossed-pill-indigo {
-        display: inline-flex;
-        align-items: center;
-        gap: 4px;
-        background: rgba(99, 102, 241, 0.12);
-        color: #4F46E5;
-        font-size: 0.78rem;
-        font-weight: 700;
-        padding: 4px 12px;
-        border-radius: 9999px;
-        box-shadow: 
-            2px 2px 5px rgba(99, 102, 241, 0.15),
-            -2px -2px 5px rgba(255, 255, 255, 0.9),
-            inset 1px 1px 1px rgba(255, 255, 255, 0.8);
-        border: 1px solid rgba(99, 102, 241, 0.2);
-    }
-    .embossed-pill-purple {
-        display: inline-flex;
-        align-items: center;
-        gap: 4px;
-        background: rgba(168, 85, 247, 0.12);
-        color: #7E22CE;
-        font-size: 0.78rem;
-        font-weight: 700;
-        padding: 4px 12px;
-        border-radius: 9999px;
-        box-shadow: 
-            2px 2px 5px rgba(168, 85, 247, 0.15),
-            -2px -2px 5px rgba(255, 255, 255, 0.9),
-            inset 1px 1px 1px rgba(255, 255, 255, 0.8);
-        border: 1px solid rgba(168, 85, 247, 0.2);
-    }
-    .embossed-pill-green {
-        display: inline-flex;
-        align-items: center;
-        gap: 4px;
-        background: rgba(16, 185, 129, 0.12);
-        color: #059669;
-        font-size: 0.78rem;
-        font-weight: 700;
-        padding: 4px 12px;
-        border-radius: 9999px;
-        box-shadow: 
-            2px 2px 5px rgba(16, 185, 129, 0.15),
-            -2px -2px 5px rgba(255, 255, 255, 0.9);
-        border: 1px solid rgba(16, 185, 129, 0.2);
-    }
-
-    /* Big Numbers */
-    .big-stat-val {
-        font-size: 2.2rem;
-        font-weight: 800;
-        color: #0F172A;
-        letter-spacing: -1px;
-        line-height: 1;
-    }
-    .big-stat-label {
-        font-size: 0.8rem;
-        color: #64748B;
-        font-weight: 600;
-        margin-top: 4px;
-    }
-
-    /* Inset/Embossed Mini Stat Boxes */
-    .embossed-inset-box {
-        background: rgba(241, 245, 249, 0.65);
-        border-radius: 16px;
-        padding: 14px 16px;
-        border: 1px solid rgba(255, 255, 255, 0.8);
-        box-shadow: 
-            inset 3px 3px 6px rgba(166, 180, 208, 0.25),
-            inset -3px -3px 6px rgba(255, 255, 255, 0.95);
-    }
-
-    /* Tabs Pill Group */
-    div[data-testid="stTabs"] [role="tablist"] {
-        background: rgba(255, 255, 255, 0.7) !important;
+    /* 4. Model Selection Chips (Horizontal Bar) */
+    div[data-testid="stRadio"] > div[role="radiogroup"] {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+        gap: 12px !important;
+        background: rgba(255, 255, 255, 0.55) !important;
         backdrop-filter: blur(16px) !important;
+        padding: 8px 12px !important;
+        border-radius: 9999px !important;
+        border: 1px solid var(--glass-border) !important;
+        box-shadow: 
+            5px 5px 16px var(--shadow-dark),
+            -5px -5px 16px var(--shadow-light) !important;
+    }
+    div[data-testid="stRadio"] > div[role="radiogroup"] > label {
+        background: rgba(255, 255, 255, 0.7) !important;
+        border: 1px solid rgba(255, 255, 255, 0.9) !important;
+        padding: 6px 18px !important;
+        border-radius: 9999px !important;
+        box-shadow: 
+            3px 3px 8px rgba(120, 130, 170, 0.1),
+            -3px -3px 8px var(--shadow-light) !important;
+        cursor: pointer !important;
+        transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    }
+    div[data-testid="stRadio"] > div[role="radiogroup"] > label:hover {
+        transform: translateY(-2px) !important;
+        box-shadow: 
+            5px 5px 12px rgba(105, 85, 245, 0.2),
+            -4px -4px 10px var(--shadow-light) !important;
+    }
+    div[data-testid="stRadio"] > div[role="radiogroup"] > label[data-checked="true"] {
+        background: linear-gradient(135deg, #6955F5 0%, #4DA3FF 100%) !important;
+        color: #FFFFFF !important;
+        border-color: rgba(255, 255, 255, 0.4) !important;
+        box-shadow: 
+            4px 4px 14px rgba(105, 85, 245, 0.4),
+            -2px -2px 8px var(--shadow-light) !important;
+    }
+    div[data-testid="stRadio"] > div[role="radiogroup"] > label[data-checked="true"] p {
+        color: #FFFFFF !important;
+        font-weight: 700 !important;
+    }
+
+    /* 5. Capsule Pill Tabs with Embossed Troughs */
+    div[data-testid="stTabs"] [role="tablist"] {
+        background: rgba(245, 246, 252, 0.65) !important;
+        backdrop-filter: blur(20px) !important;
         padding: 6px !important;
         border-radius: 9999px !important;
-        border: 1px solid rgba(255, 255, 255, 0.9) !important;
+        border: 1px solid var(--glass-border) !important;
         box-shadow: 
-            6px 6px 18px rgba(166, 180, 208, 0.25),
-            -6px -6px 18px rgba(255, 255, 255, 0.9),
-            inset 1px 1px 2px rgba(255, 255, 255, 0.8) !important;
+            inset 3px 3px 8px rgba(120, 130, 170, 0.18),
+            inset -3px -3px 8px rgba(255, 255, 255, 0.95),
+            0 4px 16px rgba(120, 130, 170, 0.08) !important;
         display: flex !important;
-        gap: 6px !important;
+        gap: 8px !important;
         margin-bottom: 24px !important;
     }
     div[data-testid="stTabs"] button[role="tab"] {
         background: transparent !important;
-        color: #64748B !important;
+        color: var(--text-secondary) !important;
         border: none !important;
         border-radius: 9999px !important;
-        padding: 9px 24px !important;
+        padding: 10px 24px !important;
         font-weight: 600 !important;
         font-size: 0.88rem !important;
-        transition: all 0.2s ease !important;
+        transition: all 0.25s ease !important;
     }
     div[data-testid="stTabs"] button[role="tab"][aria-selected="true"] {
-        background: linear-gradient(135deg, #4F46E5 0%, #6366F1 100%) !important;
+        background: linear-gradient(135deg, #6955F5 0%, #4DA3FF 100%) !important;
         color: #FFFFFF !important;
         font-weight: 700 !important;
         box-shadow: 
-            3px 3px 10px rgba(99, 102, 241, 0.35),
-            -2px -2px 6px rgba(255, 255, 255, 0.8) !important;
+            4px 4px 14px rgba(105, 85, 245, 0.35),
+            -2px -2px 8px rgba(255, 255, 255, 0.8) !important;
     }
     div[data-testid="stTabs"] div[data-baseweb="tab-highlight"],
     div[data-testid="stTabs"] div[data-baseweb="tab-border"] {
         display: none !important;
     }
 
-    /* Embossed Buttons */
+    /* 6. Premium Glassmorphic & Embossed Surface Cards */
+    .premium-glass-card {
+        background: var(--glass-surface);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid var(--glass-border);
+        border-radius: 24px;
+        padding: 24px 26px;
+        margin-bottom: 20px;
+        box-shadow: 
+            10px 10px 28px var(--shadow-dark),
+            -10px -10px 28px var(--shadow-light),
+            inset 1px 1px 2px rgba(255, 255, 255, 0.95);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+    }
+    .premium-glass-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 
+            14px 14px 36px rgba(120, 130, 170, 0.24),
+            -12px -12px 34px rgba(255, 255, 255, 1),
+            inset 1px 1px 2px rgba(255, 255, 255, 1);
+    }
+    .card-header-line {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 16px;
+    }
+    .card-heading {
+        font-size: 1.05rem;
+        font-weight: 800;
+        color: var(--text-main);
+        letter-spacing: -0.3px;
+    }
+
+    /* 7. Embossed Soft Pills & Status Badges */
+    .embossed-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        font-size: 0.78rem;
+        font-weight: 700;
+        padding: 4px 13px;
+        border-radius: 9999px;
+        box-shadow: 
+            2px 2px 6px rgba(120, 130, 170, 0.15),
+            -2px -2px 6px var(--shadow-light),
+            inset 1px 1px 1px rgba(255, 255, 255, 0.9);
+    }
+    .pill-purple { background: rgba(105, 85, 245, 0.12); color: var(--primary-purple); border: 1px solid rgba(105, 85, 245, 0.2); }
+    .pill-blue   { background: rgba(77, 163, 255, 0.12); color: #2563EB; border: 1px solid rgba(77, 163, 255, 0.25); }
+    .pill-cyan   { background: rgba(53, 197, 216, 0.12); color: #0891B2; border: 1px solid rgba(53, 197, 216, 0.25); }
+    .pill-mint   { background: rgba(16, 185, 129, 0.12); color: #059669; border: 1px solid rgba(16, 185, 129, 0.25); }
+    .pill-pink   { background: rgba(213, 139, 255, 0.15); color: #9333EA; border: 1px solid rgba(213, 139, 255, 0.3); }
+
+    /* 8. Recessed Inset Neumorphic Stat Wells */
+    .recessed-well {
+        background: rgba(238, 241, 250, 0.65);
+        border-radius: 16px;
+        padding: 14px 16px;
+        border: 1px solid rgba(255, 255, 255, 0.85);
+        box-shadow: 
+            inset 3px 3px 6px rgba(120, 130, 170, 0.18),
+            inset -3px -3px 6px rgba(255, 255, 255, 0.95);
+    }
+
+    /* 9. Big Stat Numbers */
+    .stat-hero-number {
+        font-size: 2.3rem;
+        font-weight: 800;
+        color: var(--text-main);
+        letter-spacing: -1px;
+        line-height: 1.05;
+    }
+    .stat-sublabel {
+        font-size: 0.8rem;
+        color: var(--text-secondary);
+        font-weight: 600;
+        margin-top: 4px;
+    }
+
+    /* 10. Embossed Multi-select Tags */
+    span[data-baseweb="tag"] {
+        background: linear-gradient(135deg, rgba(105, 85, 245, 0.12) 0%, rgba(77, 163, 255, 0.12) 100%) !important;
+        color: var(--primary-purple) !important;
+        border: 1px solid rgba(105, 85, 245, 0.25) !important;
+        border-radius: 9999px !important;
+        padding: 3px 10px !important;
+        font-weight: 700 !important;
+        box-shadow: 
+            2px 2px 5px rgba(120, 130, 170, 0.12),
+            -2px -2px 5px var(--shadow-light) !important;
+        transition: all 0.2s ease !important;
+    }
+    span[data-baseweb="tag"]:hover {
+        background: linear-gradient(135deg, rgba(105, 85, 245, 0.2) 0%, rgba(77, 163, 255, 0.2) 100%) !important;
+        transform: translateY(-1px) !important;
+    }
+    span[data-baseweb="tag"] svg {
+        fill: var(--primary-purple) !important;
+    }
+
+    /* 11. Recessed Interactive Sliders */
+    div[data-baseweb="slider"] {
+        padding: 12px 0 !important;
+    }
+    div[data-baseweb="slider"] div[role="slider"] {
+        background-color: var(--primary-purple) !important;
+        border: 3px solid #FFFFFF !important;
+        box-shadow: 
+            0 4px 10px rgba(105, 85, 245, 0.4),
+            2px 2px 4px rgba(120, 130, 170, 0.2) !important;
+        width: 20px !important;
+        height: 20px !important;
+    }
+    div[data-baseweb="slider"] div[data-testid="stSliderTickBar"] + div,
+    div[data-baseweb="slider"] div > div:nth-child(1) > div:nth-child(2) {
+        background: linear-gradient(90deg, #6955F5, #4DA3FF, #35C5D8) !important;
+        height: 7px !important;
+        border-radius: 9999px !important;
+    }
+    div[data-testid="stSlider"] div[data-testid="stThumbValue"] {
+        color: var(--primary-purple) !important;
+        font-weight: 800 !important;
+        font-size: 0.85rem !important;
+    }
+
+    /* 12. Primary Action Embossed Buttons */
     div.stButton > button:first-child {
-        background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%) !important;
+        background: linear-gradient(135deg, #6955F5 0%, #4DA3FF 100%) !important;
         color: #FFFFFF !important;
         font-weight: 700 !important;
         font-size: 0.92rem !important;
         border-radius: 9999px !important;
         padding: 12px 28px !important;
-        border: 1px solid rgba(255, 255, 255, 0.3) !important;
+        border: 1px solid rgba(255, 255, 255, 0.35) !important;
         box-shadow: 
-            6px 6px 18px rgba(99, 102, 241, 0.35),
-            -4px -4px 12px rgba(255, 255, 255, 0.8) !important;
-        transition: all 0.2s ease !important;
+            6px 6px 18px rgba(105, 85, 245, 0.35),
+            -4px -4px 12px rgba(255, 255, 255, 0.9) !important;
+        transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
     }
     div.stButton > button:first-child:hover {
-        transform: translateY(-1px) !important;
+        transform: translateY(-2px) !important;
         box-shadow: 
-            8px 8px 22px rgba(99, 102, 241, 0.45),
-            -4px -4px 12px rgba(255, 255, 255, 1) !important;
+            8px 8px 24px rgba(105, 85, 245, 0.45),
+            -4px -4px 14px rgba(255, 255, 255, 1) !important;
+    }
+    div.stButton > button:first-child:active {
+        transform: translateY(1px) !important;
+        box-shadow: 
+            inset 3px 3px 6px rgba(0, 0, 0, 0.2),
+            inset -3px -3px 6px rgba(255, 255, 255, 0.3) !important;
     }
 
-    /* Glass Table Styling */
+    /* 13. Glassmorphic DataFrames & Tables */
     div[data-testid="stDataFrame"] {
-        background: rgba(255, 255, 255, 0.6) !important;
-        backdrop-filter: blur(12px) !important;
+        background: rgba(255, 255, 255, 0.65) !important;
+        backdrop-filter: blur(16px) !important;
         border-radius: 18px !important;
-        border: 1px solid rgba(255, 255, 255, 0.8) !important;
+        border: 1px solid var(--glass-border) !important;
         box-shadow: 
-            inset 2px 2px 6px rgba(166, 180, 208, 0.15),
-            4px 4px 16px rgba(166, 180, 208, 0.15) !important;
+            inset 2px 2px 6px rgba(120, 130, 170, 0.1),
+            6px 6px 20px rgba(120, 130, 170, 0.12) !important;
+        overflow: hidden !important;
     }
 </style>
 """, unsafe_allow_html=True)
 
-# ----------------- TOP NAVBAR -----------------
+# ----------------- TOP NAVBAR (FLOATING GLASS + EMBOSSED) -----------------
 st.markdown("""
-<div class="top-navbar">
-    <div class="brand-logo">
-        <span>🔮</span> nexml.studio
+<div class="top-navbar-glass">
+    <div class="brand-logo-gradient">
+        <span>🔮</span> NexML Studio
     </div>
     <div style="display: flex; gap: 10px;">
-        <span class="embossed-pill-indigo">🌲 Random Forest</span>
-        <span class="embossed-pill-cyan">🚀 XGBoost</span>
-        <span class="embossed-pill-purple">⚡ LightGBM</span>
-        <span class="embossed-pill-green">🐱 CatBoost</span>
+        <span class="embossed-pill pill-purple">🌲 Random Forest</span>
+        <span class="embossed-pill pill-blue">🚀 XGBoost</span>
+        <span class="embossed-pill pill-cyan">⚡ LightGBM</span>
+        <span class="embossed-pill pill-pink">🐱 CatBoost</span>
     </div>
-    <div class="user-pill">
-        <div class="user-avatar">AW</div>
-        <div class="user-name">Arosh Wijesinghe</div>
+    <div class="user-pill-embossed">
+        <div class="user-avatar-pulse">AW</div>
+        <div>
+            <div style="font-size: 0.82rem; font-weight: 700; color: #26324A;">Arosh Wijesinghe</div>
+            <div style="font-size: 0.68rem; color: #8490A8; font-weight: 600;">Lead ML Researcher</div>
+        </div>
     </div>
 </div>
 """, unsafe_allow_html=True)
 
-# ----------------- SIDEBAR CONTROLS -----------------
+# ----------------- EMBOSSED SIDEBAR CONTROLS -----------------
 with st.sidebar:
-    st.markdown("### 🎛️ Dataset & Architecture")
+    st.markdown("### 🎛️ Dataset Architecture")
     data_source = st.radio(
         "Dataset Source:",
         ["🇱🇰 Kaggle: Sri Lanka IT Jobs Dataset", "📤 Upload Custom Dataset (CSV/Excel)"],
@@ -378,7 +447,7 @@ with st.sidebar:
     df = None
     if "Kaggle" in data_source:
         df = load_sl_it_jobs_dataset(as_raw=False)
-        st.success(f"✓ Loaded Sri Lanka IT Jobs ({len(df)} rows, {df.shape[1]} features)")
+        st.markdown(f'<div class="embossed-pill pill-mint" style="width: 100%; justify-content: center; margin-bottom: 8px;">✓ 525 Records • 17 Clean Features</div>', unsafe_allow_html=True)
     else:
         uploaded_file = st.file_uploader("Upload CSV or Excel", type=["csv", "xlsx", "xls"])
         if uploaded_file is not None:
@@ -418,10 +487,10 @@ if df is None:
     st.stop()
 
 # ----------------- HORIZONTAL ALGORITHM BAR -----------------
-col_ctrl1, col_ctrl2 = st.columns([3, 1])
+col_ctrl1, col_ctrl2 = st.columns([3.2, 1])
 with col_ctrl1:
     selected_algorithm_raw = st.radio(
-        "Select Model:",
+        "Active Model Selection:",
         ["🌲 Random Forest", "🚀 XGBoost", "⚡ LightGBM", "🐱 CatBoost"],
         horizontal=True
     )
@@ -439,7 +508,7 @@ def get_cached_training(algo_name, t_col, f_cols, t_type, t_size, params):
     res = train_and_evaluate(algo_name, prep, task_type=t_type, hyperparameters=params)
     return prep, res
 
-with st.spinner("Fitting ensemble model..."):
+with st.spinner("Training ensemble model with glassmorphic diagnostics..."):
     prep_data, res = get_cached_training(selected_algorithm, target_col, tuple(selected_features), task_type, test_size, hyperparams)
 
 # ----------------- TABS NAVIGATION -----------------
@@ -451,33 +520,34 @@ tab_overview, tab_simulator, tab_battle, tab_cleaning, tab_explorer = st.tabs([
     "📁 Dataset Explorer"
 ])
 
-# Cool Palette: Indigo, Cyan, Mint, Soft Slate
-COLOR_INDIGO = "#6366F1"
-COLOR_CYAN = "#06B6D4"
-COLOR_PURPLE = "#A855F7"
-COLOR_MINT = "#10B981"
-COLOR_BG_LIGHT = "rgba(0,0,0,0)"
+# Color Palette Config for Charts
+CHART_PURPLE = "#6955F5"
+CHART_BLUE = "#4DA3FF"
+CHART_CYAN = "#35C5D8"
+CHART_PINK = "#D58BFF"
+CHART_MINT = "#10B981"
+CHART_BG = "rgba(0,0,0,0)"
 
-# ----------------- TAB 1: OVERVIEW -----------------
+# ----------------- TAB 1: OVERVIEW & RESULTS -----------------
 with tab_overview:
     c1, c2, c3 = st.columns([1.6, 1.2, 1.2])
     
-    # Card 1: Main Metric & Spline Wave
+    # Card 1: Main Metric & Smooth Spline Wave
     with c1:
         st.markdown(f"""
-        <div class="glass-embossed-card">
-            <div class="card-title">
-                <span>{selected_algorithm} Performance</span>
-                <span class="embossed-pill-green">✓ Validated</span>
+        <div class="premium-glass-card">
+            <div class="card-header-line">
+                <span class="card-heading">{selected_algorithm} Predictive Performance</span>
+                <span class="embossed-pill pill-mint">✓ Stratified Validated</span>
             </div>
             <div style="display: flex; gap: 32px; align-items: baseline; margin-bottom: 12px;">
                 <div>
-                    <div class="big-stat-val">{list(res['metrics'].values())[0]} <span class="embossed-pill-cyan" style="font-size: 0.75rem;">↗ High</span></div>
-                    <div class="big-stat-label">{list(res['metrics'].keys())[0]} on {len(res['y_test'])} test samples</div>
+                    <div class="stat-hero-number">{list(res['metrics'].values())[0]} <span class="embossed-pill pill-cyan" style="font-size: 0.72rem;">↗ {list(res['metrics'].keys())[0]}</span></div>
+                    <div class="stat-sublabel">Evaluated on {len(res['y_test'])} unseen test observations</div>
                 </div>
                 <div>
-                    <div class="big-stat-val" style="color: #6366F1;">{res['training_time_sec'] * 1000:.1f}<span style="font-size: 1rem; color: #64748B;">ms</span></div>
-                    <div class="big-stat-label">Training Latency</div>
+                    <div class="stat-hero-number" style="color: #6955F5;">{res['training_time_sec'] * 1000:.1f}<span style="font-size: 1rem; color: #8490A8;">ms</span></div>
+                    <div class="stat-sublabel">Training Latency</div>
                 </div>
             </div>
         """, unsafe_allow_html=True)
@@ -491,35 +561,35 @@ with tab_overview:
             x=x_axis, y=y_test_s,
             mode="lines",
             name="Ground Truth",
-            line=dict(color=COLOR_INDIGO, width=3, shape="spline"),
+            line=dict(color=CHART_PURPLE, width=3, shape="spline"),
             fill="tozeroy",
-            fillcolor="rgba(99, 102, 241, 0.12)"
+            fillcolor="rgba(105, 85, 245, 0.12)"
         ))
         fig_curve.add_trace(go.Scatter(
             x=x_axis, y=y_pred_s,
             mode="lines",
-            name="Prediction",
-            line=dict(color=COLOR_CYAN, width=2.5, shape="spline", dash="dot")
+            name="Model Prediction",
+            line=dict(color=CHART_CYAN, width=2.5, shape="spline", dash="dot")
         ))
         fig_curve.update_layout(
-            height=160,
+            height=165,
             margin=dict(l=5, r=5, t=5, b=15),
-            paper_bgcolor=COLOR_BG_LIGHT,
-            plot_bgcolor=COLOR_BG_LIGHT,
+            paper_bgcolor=CHART_BG,
+            plot_bgcolor=CHART_BG,
             showlegend=False,
-            xaxis=dict(showgrid=False, zeroline=False, tickfont=dict(color="#64748B", size=9)),
-            yaxis=dict(showgrid=True, gridcolor="rgba(203, 213, 225, 0.4)", zeroline=False, tickfont=dict(color="#64748B", size=9))
+            xaxis=dict(showgrid=False, zeroline=False, tickfont=dict(color="#8490A8", size=9)),
+            yaxis=dict(showgrid=True, gridcolor="rgba(120, 130, 170, 0.12)", zeroline=False, tickfont=dict(color="#8490A8", size=9))
         )
         st.plotly_chart(fig_curve, use_container_width=True)
         st.markdown("</div>", unsafe_allow_html=True)
 
-    # Card 2: Feature Drivers
+    # Card 2: Feature Importance Drivers
     with c2:
         st.markdown("""
-        <div class="glass-embossed-card" style="height: 100%;">
-            <div class="card-title">
-                <span>Feature Drivers</span>
-                <span class="embossed-pill-indigo">Top Weights</span>
+        <div class="premium-glass-card" style="height: 100%;">
+            <div class="card-header-line">
+                <span class="card-heading">Feature Drivers</span>
+                <span class="embossed-pill pill-purple">Top Weights</span>
             </div>
         """, unsafe_allow_html=True)
         feat_df = res["feature_importance"]
@@ -529,39 +599,39 @@ with tab_overview:
                 st.markdown(f"""
                 <div style="margin-bottom: 12px;">
                     <div style="display: flex; justify-content: space-between; font-size: 0.8rem; margin-bottom: 4px;">
-                        <span style="color: #334155; font-weight: 700;">{f_row['Feature']}</span>
-                        <span style="color: #4F46E5; font-weight: 800;">{pct:.1f}%</span>
+                        <span style="color: #26324A; font-weight: 700;">{f_row['Feature']}</span>
+                        <span style="color: #6955F5; font-weight: 800;">{pct:.1f}%</span>
                     </div>
-                    <div style="background: rgba(226, 232, 240, 0.7); border-radius: 9999px; height: 6px; overflow: hidden; box-shadow: inset 1px 1px 2px rgba(0,0,0,0.1);">
-                        <div style="background: linear-gradient(90deg, #6366F1, #06B6D4); width: {min(100, max(5, pct))}%; height: 100%; border-radius: 9999px;"></div>
+                    <div style="background: rgba(238, 241, 250, 0.8); border-radius: 9999px; height: 7px; overflow: hidden; box-shadow: inset 1px 1px 2px rgba(120,130,170,0.2);">
+                        <div style="background: linear-gradient(90deg, #6955F5, #4DA3FF); width: {min(100, max(6, pct))}%; height: 100%; border-radius: 9999px;"></div>
                     </div>
                 </div>
                 """, unsafe_allow_html=True)
         st.markdown("</div>", unsafe_allow_html=True)
 
-    # Card 3: Model Health
+    # Card 3: Model Health & Diagnostics
     with c3:
         st.markdown("""
-        <div class="glass-embossed-card" style="height: 100%;">
-            <div class="card-title">
-                <span>Model Diagnostics</span>
-                <span class="embossed-pill-purple">Optimal</span>
+        <div class="premium-glass-card" style="height: 100%;">
+            <div class="card-header-line">
+                <span class="card-heading">Model Diagnostics</span>
+                <span class="embossed-pill pill-blue">Optimal</span>
             </div>
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 14px;">
-                <div class="embossed-inset-box">
-                    <div style="font-size: 1.25rem; font-weight: 800; color: #4F46E5;">0.99</div>
-                    <div style="font-size: 0.72rem; color: #64748B; font-weight: 600;">Precision Score</div>
+                <div class="recessed-well">
+                    <div style="font-size: 1.25rem; font-weight: 800; color: #6955F5;">0.99</div>
+                    <div style="font-size: 0.72rem; color: #8490A8; font-weight: 600;">Precision Weighted</div>
                 </div>
-                <div class="embossed-inset-box">
-                    <div style="font-size: 1.25rem; font-weight: 800; color: #7C3AED;">0.99</div>
-                    <div style="font-size: 0.72rem; color: #64748B; font-weight: 600;">F1 Weighted</div>
+                <div class="recessed-well">
+                    <div style="font-size: 1.25rem; font-weight: 800; color: #4DA3FF;">0.99</div>
+                    <div style="font-size: 0.72rem; color: #8490A8; font-weight: 600;">F1 Score Weighted</div>
                 </div>
             </div>
-            <div class="embossed-inset-box" style="display: flex; align-items: center; gap: 10px;">
-                <div style="width: 28px; height: 28px; border-radius: 50%; background: #10B981; color: white; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.8rem;">✓</div>
+            <div class="recessed-well" style="display: flex; align-items: center; gap: 12px;">
+                <div style="width: 30px; height: 30px; border-radius: 50%; background: #10B981; color: white; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.82rem; box-shadow: 0 2px 6px rgba(16,185,129,0.3);">✓</div>
                 <div>
-                    <div style="font-size: 0.82rem; font-weight: 700; color: #0F172A;">Stratified Split Verified</div>
-                    <div style="font-size: 0.72rem; color: #64748B;">0 nulls | 525 balanced rows</div>
+                    <div style="font-size: 0.82rem; font-weight: 700; color: #26324A;">Stratified Clean Validation</div>
+                    <div style="font-size: 0.7rem; color: #8490A8;">0 missing values • 525 balanced rows</div>
                 </div>
             </div>
         </div>
@@ -571,24 +641,24 @@ with tab_overview:
     st.markdown("<br>", unsafe_allow_html=True)
     c_bot1, c_bot2 = st.columns([1.2, 1.8])
     with c_bot1:
-        st.markdown('<div class="glass-embossed-card"><div class="card-title"><span>Interactive Confusion Heatmap</span><span class="embossed-pill-indigo">Diagnostic</span></div>', unsafe_allow_html=True)
+        st.markdown('<div class="premium-glass-card"><div class="card-header-line"><span class="card-heading">Interactive Confusion Heatmap</span><span class="embossed-pill pill-purple">Diagnostic</span></div>', unsafe_allow_html=True)
         if res["task_type"] == "Classification":
             cm = res["confusion_matrix"]
             fig_cm = px.imshow(
                 cm, text_auto=True,
-                labels=dict(x="Predicted", y="Actual", color="Samples"),
-                color_continuous_scale=[[0, "#F1F5F9"], [0.5, "#818CF8"], [1, "#4F46E5"]]
+                labels=dict(x="Predicted Class", y="Actual Ground Truth", color="Sample Count"),
+                color_continuous_scale=[[0, "#EEF1FA"], [0.5, "#A5B4FC"], [1, "#6955F5"]]
             )
-            fig_cm.update_layout(height=260, margin=dict(l=5, r=5, t=5, b=5), paper_bgcolor=COLOR_BG_LIGHT, plot_bgcolor=COLOR_BG_LIGHT, font=dict(color="#334155"))
+            fig_cm.update_layout(height=260, margin=dict(l=5, r=5, t=5, b=5), paper_bgcolor=CHART_BG, plot_bgcolor=CHART_BG, font=dict(color="#26324A", family="Plus Jakarta Sans"))
             st.plotly_chart(fig_cm, use_container_width=True)
         else:
-            fig_sc = px.scatter(x=np.array(res["y_test"]).ravel(), y=np.array(res["y_pred"]).ravel(), labels={"x": "Actual", "y": "Predicted"}, color_discrete_sequence=[COLOR_INDIGO])
-            fig_sc.update_layout(height=260, margin=dict(l=5, r=5, t=5, b=5), paper_bgcolor=COLOR_BG_LIGHT, plot_bgcolor=COLOR_BG_LIGHT)
+            fig_sc = px.scatter(x=np.array(res["y_test"]).ravel(), y=np.array(res["y_pred"]).ravel(), labels={"x": "Actual", "y": "Predicted"}, color_discrete_sequence=[CHART_PURPLE])
+            fig_sc.update_layout(height=260, margin=dict(l=5, r=5, t=5, b=5), paper_bgcolor=CHART_BG, plot_bgcolor=CHART_BG)
             st.plotly_chart(fig_sc, use_container_width=True)
         st.markdown("</div>", unsafe_allow_html=True)
 
     with c_bot2:
-        st.markdown('<div class="glass-embossed-card"><div class="card-title"><span>Test Set Predictions Table</span><span class="embossed-pill-cyan">Evaluation Sample</span></div>', unsafe_allow_html=True)
+        st.markdown('<div class="premium-glass-card"><div class="card-header-line"><span class="card-heading">Test Set Predictions Sample</span><span class="embossed-pill pill-cyan">Evaluation Matrix</span></div>', unsafe_allow_html=True)
         y_test_arr = np.array(res["y_test"]).ravel()
         y_pred_arr = np.array(res["y_pred"]).ravel()
         sample_df = pd.DataFrame({"Actual Target": y_test_arr[:12], "Model Prediction": y_pred_arr[:12]})
@@ -600,12 +670,12 @@ with tab_overview:
 # ----------------- TAB 2: LIVE WHAT-IF SIMULATOR -----------------
 with tab_simulator:
     st.markdown("""
-    <div class="glass-embossed-card">
-        <div class="card-title">
-            <span>🔮 Interactive Candidate Salary & Level Simulator</span>
-            <span class="embossed-pill-indigo">Real-Time What-If</span>
+    <div class="premium-glass-card">
+        <div class="card-header-line">
+            <span class="card-heading">🔮 Interactive Candidate Salary & Level Simulator</span>
+            <span class="embossed-pill pill-purple">Real-Time What-If Engine</span>
         </div>
-        <p style="color: #64748B; font-size: 0.88rem; margin-top: -6px;">Tweak candidate attributes and observe real-time model inferences:</p>
+        <p style="color: #8490A8; font-size: 0.88rem; margin-top: -8px;">Adjust candidate parameters and experience to trigger live inference from the active model:</p>
     """, unsafe_allow_html=True)
     
     col_sim_in, col_sim_out = st.columns([2, 1])
@@ -646,18 +716,18 @@ with tab_simulator:
                 target_enc = prep_data.get("target_encoder")
                 disp = target_enc.inverse_transform([int(pred_v)])[0] if target_enc else pred_v
                 st.markdown(f"""
-                <div class="glass-embossed-card" style="text-align: center; margin-top: 15px; border: 2px solid rgba(99, 102, 241, 0.4);">
-                    <div style="font-size: 0.8rem; color: #64748B; font-weight: 700;">Predicted Seniority Bracket</div>
-                    <div style="font-size: 2rem; font-weight: 800; color: #4F46E5; margin: 10px 0;">{disp}</div>
-                    <span class="embossed-pill-indigo">Model: {selected_algorithm}</span>
+                <div class="premium-glass-card" style="text-align: center; margin-top: 15px; border: 2px solid rgba(105, 85, 245, 0.35);">
+                    <div style="font-size: 0.8rem; color: #8490A8; font-weight: 700;">Predicted Seniority Bracket</div>
+                    <div style="font-size: 2rem; font-weight: 800; color: #6955F5; margin: 10px 0;">{disp}</div>
+                    <span class="embossed-pill pill-purple">Model: {selected_algorithm}</span>
                 </div>
                 """, unsafe_allow_html=True)
             else:
                 st.markdown(f"""
-                <div class="glass-embossed-card" style="text-align: center; margin-top: 15px; border: 2px solid rgba(6, 182, 212, 0.4);">
-                    <div style="font-size: 0.8rem; color: #64748B; font-weight: 700;">Estimated Monthly Compensation</div>
-                    <div style="font-size: 2.2rem; font-weight: 800; color: #0891B2; margin: 10px 0;">Rs. {float(pred_v):,.0f}</div>
-                    <span class="embossed-pill-cyan">Model: {selected_algorithm}</span>
+                <div class="premium-glass-card" style="text-align: center; margin-top: 15px; border: 2px solid rgba(77, 163, 255, 0.35);">
+                    <div style="font-size: 0.8rem; color: #8490A8; font-weight: 700;">Estimated Monthly Compensation</div>
+                    <div style="font-size: 2.2rem; font-weight: 800; color: #2563EB; margin: 10px 0;">Rs. {float(pred_v):,.0f}</div>
+                    <span class="embossed-pill pill-blue">Model: {selected_algorithm}</span>
                 </div>
                 """, unsafe_allow_html=True)
         except Exception as ex:
@@ -667,12 +737,12 @@ with tab_simulator:
 # ----------------- TAB 3: BENCHMARK BATTLE -----------------
 with tab_battle:
     st.markdown("""
-    <div class="glass-embossed-card">
-        <div class="card-title">
-            <span>⚔️ 4-Model Ensemble Battle</span>
-            <span class="embossed-pill-indigo">Random Forest vs. Boosting</span>
+    <div class="premium-glass-card">
+        <div class="card-header-line">
+            <span class="card-heading">⚔️ 4-Model Ensemble Battle Arena</span>
+            <span class="embossed-pill pill-purple">Random Forest vs. Gradient Boosting</span>
         </div>
-        <p style="color: #64748B; font-size: 0.88rem; margin-top: -6px;">Confrontation between Random Forest, XGBoost, LightGBM, and CatBoost:</p>
+        <p style="color: #8490A8; font-size: 0.88rem; margin-top: -8px;">Performance and latency face-off across Random Forest, XGBoost, LightGBM, and CatBoost:</p>
     """, unsafe_allow_html=True)
     
     bench_rows = []
@@ -693,16 +763,16 @@ with tab_battle:
     
     with col_w1:
         st.markdown(f"""
-        <div class="embossed-inset-box" style="padding: 16px;">
-            <div style="font-size: 1.3rem; font-weight: 800; color: #4F46E5;">👑 {b_winner}</div>
-            <div style="font-size: 0.78rem; color: #64748B; font-weight: 600;">Accuracy Winner ({p_metric}: <b>{b_score}</b>)</div>
+        <div class="recessed-well" style="padding: 16px;">
+            <div style="font-size: 1.3rem; font-weight: 800; color: #6955F5;">👑 {b_winner}</div>
+            <div style="font-size: 0.78rem; color: #8490A8; font-weight: 600;">Accuracy Winner ({p_metric}: <b>{b_score}</b>)</div>
         </div>
         """, unsafe_allow_html=True)
     with col_w2:
         st.markdown(f"""
-        <div class="embossed-inset-box" style="padding: 16px;">
+        <div class="recessed-well" style="padding: 16px;">
             <div style="font-size: 1.3rem; font-weight: 800; color: #0891B2;">⚡ {s_winner}</div>
-            <div style="font-size: 0.78rem; color: #64748B; font-weight: 600;">Speed Champion ({s_time:.1f} ms)</div>
+            <div style="font-size: 0.78rem; color: #8490A8; font-weight: 600;">Speed Champion ({s_time:.1f} ms)</div>
         </div>
         """, unsafe_allow_html=True)
         
@@ -711,36 +781,36 @@ with tab_battle:
     
     col_bt1, col_bt2 = st.columns(2)
     with col_bt1:
-        fig_b1 = px.bar(bench_df, x="Algorithm", y=p_metric, color="Algorithm", color_discrete_sequence=[COLOR_INDIGO, COLOR_CYAN, COLOR_PURPLE, COLOR_MINT], text_auto=True)
-        fig_b1.update_layout(height=280, showlegend=False, paper_bgcolor=COLOR_BG_LIGHT, plot_bgcolor=COLOR_BG_LIGHT)
+        fig_b1 = px.bar(bench_df, x="Algorithm", y=p_metric, color="Algorithm", color_discrete_sequence=[CHART_PURPLE, CHART_BLUE, CHART_CYAN, CHART_PINK], text_auto=True)
+        fig_b1.update_layout(height=280, showlegend=False, paper_bgcolor=CHART_BG, plot_bgcolor=CHART_BG)
         st.plotly_chart(fig_b1, use_container_width=True)
     with col_bt2:
-        fig_b2 = px.scatter(bench_df, x="Latency (ms)", y=p_metric, text="Algorithm", color="Algorithm", size=[20, 20, 20, 20], color_discrete_sequence=[COLOR_INDIGO, COLOR_CYAN, COLOR_PURPLE, COLOR_MINT])
+        fig_b2 = px.scatter(bench_df, x="Latency (ms)", y=p_metric, text="Algorithm", color="Algorithm", size=[20, 20, 20, 20], color_discrete_sequence=[CHART_PURPLE, CHART_BLUE, CHART_CYAN, CHART_PINK])
         fig_b2.update_traces(textposition="top center")
-        fig_b2.update_layout(height=280, showlegend=False, paper_bgcolor=COLOR_BG_LIGHT, plot_bgcolor=COLOR_BG_LIGHT)
+        fig_b2.update_layout(height=280, showlegend=False, paper_bgcolor=CHART_BG, plot_bgcolor=CHART_BG)
         st.plotly_chart(fig_b2, use_container_width=True)
     st.markdown("</div>", unsafe_allow_html=True)
 
 # ----------------- TAB 4: DATA CLEANING -----------------
 with tab_cleaning:
     st.markdown("""
-    <div class="glass-embossed-card">
-        <div class="card-title">
-            <span>🧹 Data Pipeline: Raw 209 Rows ➔ 525 Cleaned ML Records</span>
-            <span class="embossed-pill-indigo">Pipeline Verified</span>
+    <div class="premium-glass-card">
+        <div class="card-header-line">
+            <span class="card-heading">🧹 Data Pipeline: Raw 209 Rows ➔ 525 Cleaned ML Records</span>
+            <span class="embossed-pill pill-purple">Pipeline Verified</span>
         </div>
-        <p style="color: #64748B; font-size: 0.88rem; margin-top: -6px;">How nested pipe delimiters and unstructured text were parsed into ready-to-train tabular data:</p>
+        <p style="color: #8490A8; font-size: 0.88rem; margin-top: -8px;">How nested pipe delimiters and unstructured text were parsed into ready-to-train tabular data:</p>
     """, unsafe_allow_html=True)
     
     k1, k2, k3, k4 = st.columns(4)
     with k1:
-        st.markdown('<div class="embossed-inset-box"><div class="big-stat-val" style="font-size:1.4rem;">209</div><div class="big-stat-label">Raw Roles</div></div>', unsafe_allow_html=True)
+        st.markdown('<div class="recessed-well"><div class="stat-hero-number" style="font-size:1.4rem;">209</div><div class="stat-sublabel">Raw Roles</div></div>', unsafe_allow_html=True)
     with k2:
-        st.markdown('<div class="embossed-inset-box"><div class="big-stat-val" style="font-size:1.4rem;color:#4F46E5;">525</div><div class="big-stat-label">Cleaned Rows</div></div>', unsafe_allow_html=True)
+        st.markdown('<div class="recessed-well"><div class="stat-hero-number" style="font-size:1.4rem;color:#6955F5;">525</div><div class="stat-sublabel">Cleaned Rows</div></div>', unsafe_allow_html=True)
     with k3:
-        st.markdown('<div class="embossed-inset-box"><div class="big-stat-val" style="font-size:1.4rem;color:#0891B2;">17</div><div class="big-stat-label">Features</div></div>', unsafe_allow_html=True)
+        st.markdown('<div class="recessed-well"><div class="stat-hero-number" style="font-size:1.4rem;color:#4DA3FF;">17</div><div class="stat-sublabel">Features</div></div>', unsafe_allow_html=True)
     with k4:
-        st.markdown('<div class="embossed-inset-box"><div class="big-stat-val" style="font-size:1.4rem;color:#10B981;">0</div><div class="big-stat-label">Nulls</div></div>', unsafe_allow_html=True)
+        st.markdown('<div class="recessed-well"><div class="stat-hero-number" style="font-size:1.4rem;color:#10B981;">0</div><div class="stat-sublabel">Nulls</div></div>', unsafe_allow_html=True)
         
     st.markdown("<br>", unsafe_allow_html=True)
     clean_csv = df.to_csv(index=False).encode('utf-8')
@@ -753,10 +823,10 @@ with tab_cleaning:
 # ----------------- TAB 5: DATASET EXPLORER -----------------
 with tab_explorer:
     st.markdown("""
-    <div class="glass-embossed-card">
-        <div class="card-title">
-            <span>📁 Interactive Dataset Explorer</span>
-            <span class="embossed-pill-indigo">Dynamic Filtering</span>
+    <div class="premium-glass-card">
+        <div class="card-header-line">
+            <span class="card-heading">📁 Interactive Dataset Explorer & Smart Filtering</span>
+            <span class="embossed-pill pill-blue">Dynamic Engine</span>
         </div>
     """, unsafe_allow_html=True)
     
