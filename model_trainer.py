@@ -81,6 +81,8 @@ def train_and_evaluate(algorithm_name, preprocessed_data, task_type="Classificat
     training_time = time.time() - start_time
     
     y_pred = model.predict(X_test)
+    if isinstance(y_pred, np.ndarray):
+        y_pred = y_pred.ravel()
     
     # Feature importances extraction
     feature_importance_df = pd.DataFrame()

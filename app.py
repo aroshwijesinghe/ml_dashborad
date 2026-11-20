@@ -349,8 +349,8 @@ with tab_overview:
         """, unsafe_allow_html=True)
         
         # Dual-line spline wave
-        y_test_s = np.array(res["y_test"][:25])
-        y_pred_s = np.array(res["y_pred"][:25])
+        y_test_s = np.array(res["y_test"]).ravel()[:25]
+        y_pred_s = np.array(res["y_pred"]).ravel()[:25]
         x_axis = list(range(1, len(y_test_s) + 1))
         
         fig_curve = go.Figure()
@@ -453,14 +453,19 @@ with tab_overview:
             fig_cm.update_layout(height=260, margin=dict(l=5, r=5, t=5, b=5), paper_bgcolor=COLOR_DARK_BG, plot_bgcolor=COLOR_DARK_BG)
             st.plotly_chart(fig_cm, use_container_width=True)
         else:
-            fig_sc = px.scatter(x=res["y_test"], y=res["y_pred"], labels={"x": "Actual", "y": "Predicted"}, color_discrete_sequence=[COLOR_LILAC])
+            fig_sc = px.scatter(x=np.array(res["y_test"]).ravel(), y=np.array(res["y_pred"]).ravel(), labels={"x": "Actual", "y": "Predicted"}, color_discrete_sequence=[COLOR_LILAC])
             fig_sc.update_layout(height=260, margin=dict(l=5, r=5, t=5, b=5), paper_bgcolor=COLOR_DARK_BG, plot_bgcolor=COLOR_DARK_BG)
             st.plotly_chart(fig_sc, use_container_width=True)
         st.markdown("</div>", unsafe_allow_html=True)
 
     with c_bot2:
         st.markdown('<div class="saas-card"><div class="card-title"><span>Test Set Predictions Table</span><span class="badge-pill-yellow">Evaluation Sample</span></div>', unsafe_allow_html=True)
-        sample_df = pd.DataFrame({"Actual Target": res["y_test"][:12], "Model Prediction": res["y_pred"][:12]})
+        y_test_arr = np.array(res["y_test"]).ravel()
+        y_pred_arr = np.array(res["y_pred"]).ravel()
+        sample_df = pd.DataFrame({
+            "Actual Target": y_test_arr[:12],
+            "Model Prediction": y_pred_arr[:12]
+        })
         if res["task_type"] == "Regression":
             sample_df["Error Delta"] = np.round(sample_df["Actual Target"] - sample_df["Model Prediction"], 2)
         st.dataframe(sample_df, height=260, use_container_width=True)
