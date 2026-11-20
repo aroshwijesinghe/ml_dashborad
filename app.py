@@ -36,6 +36,46 @@ st.markdown("""
         visibility: hidden !important;
     }
     
+    /* Streamlit Widget Theme Overrides: Replace Red with Cool Indigo / Cyan */
+    span[data-baseweb="tag"] {
+        background: linear-gradient(135deg, rgba(79, 70, 229, 0.15) 0%, rgba(6, 182, 212, 0.15) 100%) !important;
+        color: #4338CA !important;
+        border: 1px solid rgba(79, 70, 229, 0.25) !important;
+        border-radius: 8px !important;
+        font-weight: 600 !important;
+    }
+    span[data-baseweb="tag"]:hover {
+        background: linear-gradient(135deg, rgba(79, 70, 229, 0.25) 0%, rgba(6, 182, 212, 0.25) 100%) !important;
+    }
+    span[data-baseweb="tag"] svg {
+        fill: #4338CA !important;
+    }
+    
+    /* Radio Buttons & Checkboxes */
+    div[data-testid="stRadio"] div[role="radiogroup"] > label div[data-testid="stMarkdownContainer"] p {
+        color: #1E293B !important;
+        font-weight: 600 !important;
+    }
+    div[data-baseweb="radio"] input:checked + div {
+        background-color: #4F46E5 !important;
+        border-color: #4F46E5 !important;
+    }
+    
+    /* Sliders Track & Handle */
+    div[data-baseweb="slider"] div[role="slider"] {
+        background-color: #4F46E5 !important;
+        border: 2px solid #FFFFFF !important;
+        box-shadow: 0 2px 8px rgba(79, 70, 229, 0.4) !important;
+    }
+    div[data-baseweb="slider"] div[data-testid="stSliderTickBar"] + div,
+    div[data-baseweb="slider"] div > div:nth-child(1) > div:nth-child(2) {
+        background: linear-gradient(90deg, #4F46E5, #06B6D4) !important;
+    }
+    div[data-testid="stSlider"] div[data-testid="stThumbValue"] {
+        color: #4F46E5 !important;
+        font-weight: 700 !important;
+    }
+    
     /* Light Background with Cool Aurora Gradients */
     html, body, [class*="css"], .stApp {
         background: linear-gradient(135deg, #EFF4FC 0%, #E6EDF9 35%, #F4F0FD 70%, #EBF4FE 100%) !important;
