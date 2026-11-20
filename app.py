@@ -10,206 +10,284 @@ from model_trainer import train_and_evaluate
 
 # ----------------- PAGE CONFIG -----------------
 st.set_page_config(
-    page_title="NexML Studio | ML Intelligence Dashboard",
-    page_icon="⚡",
+    page_title="NexML | Glassmorphism & Embossed Studio",
+    page_icon="🔮",
     layout="wide",
-    initial_sidebar_state="collapsed"
+    initial_sidebar_state="expanded"
 )
 
-# ----------------- MODERN OBSIDIAN / LILAC / PASTEL YELLOW CSS -----------------
+# ----------------- LIGHT GLASSMORPHISM + EMBOSSED (NEUMORPHISM) CSS -----------------
 st.markdown("""
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
     
-    /* Global Base */
+    /* Light Background with Cool Aurora Gradients */
     html, body, [class*="css"], .stApp {
-        background-color: #0A0A0E !important;
-        color: #F1F5F9 !important;
+        background: linear-gradient(135deg, #EFF4FC 0%, #E6EDF9 35%, #F4F0FD 70%, #EBF4FE 100%) !important;
+        color: #1E293B !important;
         font-family: 'Plus Jakarta Sans', sans-serif !important;
     }
     
-    /* Top Header Bar */
+    /* Sidebar Light Glassmorphism */
+    section[data-testid="stSidebar"] {
+        background: rgba(255, 255, 255, 0.65) !important;
+        backdrop-filter: blur(20px) !important;
+        -webkit-backdrop-filter: blur(20px) !important;
+        border-right: 1px solid rgba(255, 255, 255, 0.8) !important;
+        box-shadow: 4px 0 24px rgba(99, 102, 241, 0.06) !important;
+    }
+    
+    /* Top Floating Glass Navbar */
     .top-navbar {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 14px 28px;
-        background: #13131B;
-        border: 1px solid rgba(255, 255, 255, 0.07);
+        padding: 14px 30px;
+        background: rgba(255, 255, 255, 0.75);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.9);
         border-radius: 9999px;
-        margin-bottom: 22px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        margin-bottom: 24px;
+        box-shadow: 
+            8px 8px 24px rgba(166, 180, 208, 0.35),
+            -8px -8px 24px rgba(255, 255, 255, 0.9),
+            inset 1px 1px 2px rgba(255, 255, 255, 0.8);
     }
     .brand-logo {
-        font-size: 1.35rem;
+        font-size: 1.4rem;
         font-weight: 800;
         letter-spacing: -0.6px;
-        color: #FFFFFF;
+        background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 50%, #06B6D4 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
         display: flex;
         align-items: center;
         gap: 8px;
-    }
-    .brand-logo span {
-        color: #B8A5FF;
     }
     .user-pill {
         display: flex;
         align-items: center;
         gap: 10px;
-        background: #1A1A24;
-        padding: 6px 14px;
+        background: rgba(255, 255, 255, 0.85);
+        padding: 6px 16px;
         border-radius: 9999px;
-        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 
+            3px 3px 8px rgba(166, 180, 208, 0.25),
+            -3px -3px 8px rgba(255, 255, 255, 0.95);
+        border: 1px solid rgba(255, 255, 255, 0.8);
     }
     .user-avatar {
-        width: 26px;
-        height: 26px;
+        width: 28px;
+        height: 28px;
         border-radius: 50%;
-        background: linear-gradient(135deg, #B8A5FF 0%, #FFE58F 100%);
+        background: linear-gradient(135deg, #6366F1 0%, #A855F7 100%);
         display: flex;
         align-items: center;
         justify-content: center;
         font-size: 0.72rem;
         font-weight: 800;
-        color: #0A0A0E;
+        color: #FFFFFF;
+        box-shadow: 0 2px 6px rgba(99, 102, 241, 0.3);
     }
     .user-name {
-        font-size: 0.8rem;
-        font-weight: 600;
-        color: #E2E8F0;
+        font-size: 0.82rem;
+        font-weight: 700;
+        color: #334155;
     }
 
-    /* Capsule Pill Tabs */
-    div[data-testid="stTabs"] [role="tablist"] {
-        background-color: #14141E !important;
-        padding: 6px !important;
-        border-radius: 9999px !important;
-        border: 1px solid rgba(255, 255, 255, 0.08) !important;
-        display: flex !important;
-        gap: 6px !important;
-        margin-bottom: 20px !important;
+    /* Embossed + Glassmorphic Cards */
+    .glass-embossed-card {
+        background: rgba(255, 255, 255, 0.65);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        border: 1px solid rgba(255, 255, 255, 0.85);
+        border-radius: 24px;
+        padding: 24px 26px;
+        margin-bottom: 20px;
+        box-shadow: 
+            10px 10px 30px rgba(166, 180, 208, 0.3),
+            -10px -10px 30px rgba(255, 255, 255, 0.95),
+            inset 1px 1px 2px rgba(255, 255, 255, 0.9);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
-    div[data-testid="stTabs"] button[role="tab"] {
-        background-color: transparent !important;
-        color: #8E8EA2 !important;
-        border: none !important;
-        border-radius: 9999px !important;
-        padding: 8px 22px !important;
-        font-weight: 600 !important;
-        font-size: 0.86rem !important;
-        transition: all 0.2s ease !important;
-    }
-    div[data-testid="stTabs"] button[role="tab"][aria-selected="true"] {
-        background-color: #FFFFFF !important;
-        color: #0A0A0E !important;
-        font-weight: 700 !important;
-        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3) !important;
-    }
-    div[data-testid="stTabs"] div[data-baseweb="tab-highlight"],
-    div[data-testid="stTabs"] div[data-baseweb="tab-border"] {
-        display: none !important;
-    }
-
-    /* Cards */
-    .saas-card {
-        background-color: #14141D;
-        border: 1px solid rgba(255, 255, 255, 0.07);
-        border-radius: 20px;
-        padding: 22px 24px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
-        margin-bottom: 18px;
+    .glass-embossed-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 
+            12px 12px 34px rgba(166, 180, 208, 0.38),
+            -12px -12px 34px rgba(255, 255, 255, 1),
+            inset 1px 1px 2px rgba(255, 255, 255, 1);
     }
     .card-title {
-        font-size: 0.95rem;
+        font-size: 1.02rem;
         font-weight: 700;
-        color: #FFFFFF;
-        letter-spacing: -0.2px;
+        color: #1E293B;
+        letter-spacing: -0.3px;
         display: flex;
         justify-content: space-between;
         align-items: center;
         margin-bottom: 14px;
     }
     
-    /* Stat Badges */
-    .badge-pill-green {
-        background: rgba(52, 211, 153, 0.15);
-        color: #34D399;
-        font-size: 0.75rem;
+    /* Embossed Buttons & Pills */
+    .embossed-pill-cyan {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        background: rgba(6, 182, 212, 0.12);
+        color: #0891B2;
+        font-size: 0.78rem;
         font-weight: 700;
-        padding: 3px 9px;
+        padding: 4px 12px;
         border-radius: 9999px;
-        border: 1px solid rgba(52, 211, 153, 0.25);
+        box-shadow: 
+            2px 2px 5px rgba(6, 182, 212, 0.15),
+            -2px -2px 5px rgba(255, 255, 255, 0.9),
+            inset 1px 1px 1px rgba(255, 255, 255, 0.8);
+        border: 1px solid rgba(6, 182, 212, 0.2);
     }
-    .badge-pill-lilac {
-        background: rgba(184, 165, 255, 0.15);
-        color: #C4B5FD;
-        font-size: 0.75rem;
+    .embossed-pill-indigo {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        background: rgba(99, 102, 241, 0.12);
+        color: #4F46E5;
+        font-size: 0.78rem;
         font-weight: 700;
-        padding: 3px 9px;
+        padding: 4px 12px;
         border-radius: 9999px;
-        border: 1px solid rgba(184, 165, 255, 0.25);
+        box-shadow: 
+            2px 2px 5px rgba(99, 102, 241, 0.15),
+            -2px -2px 5px rgba(255, 255, 255, 0.9),
+            inset 1px 1px 1px rgba(255, 255, 255, 0.8);
+        border: 1px solid rgba(99, 102, 241, 0.2);
     }
-    .badge-pill-yellow {
-        background: rgba(254, 240, 138, 0.15);
-        color: #FDE047;
-        font-size: 0.75rem;
+    .embossed-pill-purple {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        background: rgba(168, 85, 247, 0.12);
+        color: #7E22CE;
+        font-size: 0.78rem;
         font-weight: 700;
-        padding: 3px 9px;
+        padding: 4px 12px;
         border-radius: 9999px;
-        border: 1px solid rgba(254, 240, 138, 0.25);
+        box-shadow: 
+            2px 2px 5px rgba(168, 85, 247, 0.15),
+            -2px -2px 5px rgba(255, 255, 255, 0.9),
+            inset 1px 1px 1px rgba(255, 255, 255, 0.8);
+        border: 1px solid rgba(168, 85, 247, 0.2);
+    }
+    .embossed-pill-green {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        background: rgba(16, 185, 129, 0.12);
+        color: #059669;
+        font-size: 0.78rem;
+        font-weight: 700;
+        padding: 4px 12px;
+        border-radius: 9999px;
+        box-shadow: 
+            2px 2px 5px rgba(16, 185, 129, 0.15),
+            -2px -2px 5px rgba(255, 255, 255, 0.9);
+        border: 1px solid rgba(16, 185, 129, 0.2);
     }
 
     /* Big Numbers */
     .big-stat-val {
         font-size: 2.2rem;
         font-weight: 800;
-        color: #FFFFFF;
+        color: #0F172A;
         letter-spacing: -1px;
         line-height: 1;
     }
     .big-stat-label {
-        font-size: 0.78rem;
-        color: #7E7E94;
-        font-weight: 500;
+        font-size: 0.8rem;
+        color: #64748B;
+        font-weight: 600;
         margin-top: 4px;
     }
 
-    /* Mini Stat Grid */
-    .mini-box {
-        background: #1B1B26;
-        border-radius: 12px;
-        padding: 12px 14px;
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        border: 1px solid rgba(255, 255, 255, 0.05);
-    }
-    .mini-icon {
-        width: 32px;
-        height: 32px;
-        border-radius: 8px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 0.95rem;
+    /* Inset/Embossed Mini Stat Boxes */
+    .embossed-inset-box {
+        background: rgba(241, 245, 249, 0.65);
+        border-radius: 16px;
+        padding: 14px 16px;
+        border: 1px solid rgba(255, 255, 255, 0.8);
+        box-shadow: 
+            inset 3px 3px 6px rgba(166, 180, 208, 0.25),
+            inset -3px -3px 6px rgba(255, 255, 255, 0.95);
     }
 
-    /* Primary Action Buttons */
-    div.stButton > button:first-child {
-        background: #FFFFFF !important;
-        color: #0A0A0E !important;
-        font-weight: 700 !important;
-        font-size: 0.88rem !important;
+    /* Tabs Pill Group */
+    div[data-testid="stTabs"] [role="tablist"] {
+        background: rgba(255, 255, 255, 0.7) !important;
+        backdrop-filter: blur(16px) !important;
+        padding: 6px !important;
         border-radius: 9999px !important;
-        padding: 10px 24px !important;
+        border: 1px solid rgba(255, 255, 255, 0.9) !important;
+        box-shadow: 
+            6px 6px 18px rgba(166, 180, 208, 0.25),
+            -6px -6px 18px rgba(255, 255, 255, 0.9),
+            inset 1px 1px 2px rgba(255, 255, 255, 0.8) !important;
+        display: flex !important;
+        gap: 6px !important;
+        margin-bottom: 24px !important;
+    }
+    div[data-testid="stTabs"] button[role="tab"] {
+        background: transparent !important;
+        color: #64748B !important;
         border: none !important;
-        box-shadow: 0 4px 14px rgba(255, 255, 255, 0.15) !important;
+        border-radius: 9999px !important;
+        padding: 9px 24px !important;
+        font-weight: 600 !important;
+        font-size: 0.88rem !important;
+        transition: all 0.2s ease !important;
+    }
+    div[data-testid="stTabs"] button[role="tab"][aria-selected="true"] {
+        background: linear-gradient(135deg, #4F46E5 0%, #6366F1 100%) !important;
+        color: #FFFFFF !important;
+        font-weight: 700 !important;
+        box-shadow: 
+            3px 3px 10px rgba(99, 102, 241, 0.35),
+            -2px -2px 6px rgba(255, 255, 255, 0.8) !important;
+    }
+    div[data-testid="stTabs"] div[data-baseweb="tab-highlight"],
+    div[data-testid="stTabs"] div[data-baseweb="tab-border"] {
+        display: none !important;
+    }
+
+    /* Embossed Buttons */
+    div.stButton > button:first-child {
+        background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%) !important;
+        color: #FFFFFF !important;
+        font-weight: 700 !important;
+        font-size: 0.92rem !important;
+        border-radius: 9999px !important;
+        padding: 12px 28px !important;
+        border: 1px solid rgba(255, 255, 255, 0.3) !important;
+        box-shadow: 
+            6px 6px 18px rgba(99, 102, 241, 0.35),
+            -4px -4px 12px rgba(255, 255, 255, 0.8) !important;
         transition: all 0.2s ease !important;
     }
     div.stButton > button:first-child:hover {
-        background: #B8A5FF !important;
-        color: #0A0A0E !important;
         transform: translateY(-1px) !important;
+        box-shadow: 
+            8px 8px 22px rgba(99, 102, 241, 0.45),
+            -4px -4px 12px rgba(255, 255, 255, 1) !important;
+    }
+
+    /* Glass Table Styling */
+    div[data-testid="stDataFrame"] {
+        background: rgba(255, 255, 255, 0.6) !important;
+        backdrop-filter: blur(12px) !important;
+        border-radius: 18px !important;
+        border: 1px solid rgba(255, 255, 255, 0.8) !important;
+        box-shadow: 
+            inset 2px 2px 6px rgba(166, 180, 208, 0.15),
+            4px 4px 16px rgba(166, 180, 208, 0.15) !important;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -218,13 +296,13 @@ st.markdown("""
 st.markdown("""
 <div class="top-navbar">
     <div class="brand-logo">
-        <span>⚡</span> nexml.studio
+        <span>🔮</span> nexml.studio
     </div>
-    <div style="display: flex; gap: 8px;">
-        <span class="badge-pill-lilac">🌲 Random Forest</span>
-        <span class="badge-pill-yellow">🚀 XGBoost</span>
-        <span class="badge-pill-lilac">⚡ LightGBM</span>
-        <span class="badge-pill-yellow">🐱 CatBoost</span>
+    <div style="display: flex; gap: 10px;">
+        <span class="embossed-pill-indigo">🌲 Random Forest</span>
+        <span class="embossed-pill-cyan">🚀 XGBoost</span>
+        <span class="embossed-pill-purple">⚡ LightGBM</span>
+        <span class="embossed-pill-green">🐱 CatBoost</span>
     </div>
     <div class="user-pill">
         <div class="user-avatar">AW</div>
@@ -318,37 +396,37 @@ tab_overview, tab_simulator, tab_battle, tab_cleaning, tab_explorer = st.tabs([
     "📁 Dataset Explorer"
 ])
 
-COLOR_LILAC = "#B8A5FF"
-COLOR_YELLOW = "#FFE58F"
-COLOR_MINT = "#34D399"
-COLOR_DARK_BG = "rgba(0,0,0,0)"
+# Cool Palette: Indigo, Cyan, Mint, Soft Slate
+COLOR_INDIGO = "#6366F1"
+COLOR_CYAN = "#06B6D4"
+COLOR_PURPLE = "#A855F7"
+COLOR_MINT = "#10B981"
+COLOR_BG_LIGHT = "rgba(0,0,0,0)"
 
 # ----------------- TAB 1: OVERVIEW -----------------
 with tab_overview:
-    # Top Row: 3 Fitonist-style Dashboard Cards
     c1, c2, c3 = st.columns([1.6, 1.2, 1.2])
     
-    # Card 1: Main Metric & Dual Spline Wave
+    # Card 1: Main Metric & Spline Wave
     with c1:
         st.markdown(f"""
-        <div class="saas-card">
+        <div class="glass-embossed-card">
             <div class="card-title">
                 <span>{selected_algorithm} Performance</span>
-                <span class="badge-pill-green">✓ Validated</span>
+                <span class="embossed-pill-green">✓ Validated</span>
             </div>
             <div style="display: flex; gap: 32px; align-items: baseline; margin-bottom: 12px;">
                 <div>
-                    <div class="big-stat-val">{list(res['metrics'].values())[0]} <span class="badge-pill-green" style="font-size: 0.75rem;">↗ High</span></div>
+                    <div class="big-stat-val">{list(res['metrics'].values())[0]} <span class="embossed-pill-cyan" style="font-size: 0.75rem;">↗ High</span></div>
                     <div class="big-stat-label">{list(res['metrics'].keys())[0]} on {len(res['y_test'])} test samples</div>
                 </div>
                 <div>
-                    <div class="big-stat-val" style="color: #FFE58F;">{res['training_time_sec'] * 1000:.1f}<span style="font-size: 1rem; color: #7E7E94;">ms</span></div>
+                    <div class="big-stat-val" style="color: #6366F1;">{res['training_time_sec'] * 1000:.1f}<span style="font-size: 1rem; color: #64748B;">ms</span></div>
                     <div class="big-stat-label">Training Latency</div>
                 </div>
             </div>
         """, unsafe_allow_html=True)
         
-        # Dual-line spline wave
         y_test_s = np.array(res["y_test"]).ravel()[:25]
         y_pred_s = np.array(res["y_pred"]).ravel()[:25]
         x_axis = list(range(1, len(y_test_s) + 1))
@@ -358,24 +436,24 @@ with tab_overview:
             x=x_axis, y=y_test_s,
             mode="lines",
             name="Ground Truth",
-            line=dict(color=COLOR_LILAC, width=2.5, shape="spline"),
+            line=dict(color=COLOR_INDIGO, width=3, shape="spline"),
             fill="tozeroy",
-            fillcolor="rgba(184, 165, 255, 0.08)"
+            fillcolor="rgba(99, 102, 241, 0.12)"
         ))
         fig_curve.add_trace(go.Scatter(
             x=x_axis, y=y_pred_s,
             mode="lines",
             name="Prediction",
-            line=dict(color=COLOR_YELLOW, width=2, shape="spline", dash="dot")
+            line=dict(color=COLOR_CYAN, width=2.5, shape="spline", dash="dot")
         ))
         fig_curve.update_layout(
             height=160,
             margin=dict(l=5, r=5, t=5, b=15),
-            paper_bgcolor=COLOR_DARK_BG,
-            plot_bgcolor=COLOR_DARK_BG,
+            paper_bgcolor=COLOR_BG_LIGHT,
+            plot_bgcolor=COLOR_BG_LIGHT,
             showlegend=False,
             xaxis=dict(showgrid=False, zeroline=False, tickfont=dict(color="#64748B", size=9)),
-            yaxis=dict(showgrid=True, gridcolor="rgba(255, 255, 255, 0.04)", zeroline=False, tickfont=dict(color="#64748B", size=9))
+            yaxis=dict(showgrid=True, gridcolor="rgba(203, 213, 225, 0.4)", zeroline=False, tickfont=dict(color="#64748B", size=9))
         )
         st.plotly_chart(fig_curve, use_container_width=True)
         st.markdown("</div>", unsafe_allow_html=True)
@@ -383,10 +461,10 @@ with tab_overview:
     # Card 2: Feature Drivers
     with c2:
         st.markdown("""
-        <div class="saas-card" style="height: 100%;">
+        <div class="glass-embossed-card" style="height: 100%;">
             <div class="card-title">
                 <span>Feature Drivers</span>
-                <span class="badge-pill-lilac">Top Weights</span>
+                <span class="embossed-pill-indigo">Top Weights</span>
             </div>
         """, unsafe_allow_html=True)
         feat_df = res["feature_importance"]
@@ -396,76 +474,69 @@ with tab_overview:
                 st.markdown(f"""
                 <div style="margin-bottom: 12px;">
                     <div style="display: flex; justify-content: space-between; font-size: 0.8rem; margin-bottom: 4px;">
-                        <span style="color: #E2E8F0; font-weight: 600;">{f_row['Feature']}</span>
-                        <span style="color: #B8A5FF; font-weight: 700;">{pct:.1f}%</span>
+                        <span style="color: #334155; font-weight: 700;">{f_row['Feature']}</span>
+                        <span style="color: #4F46E5; font-weight: 800;">{pct:.1f}%</span>
                     </div>
-                    <div style="background: #1F1F2B; border-radius: 9999px; height: 5px; overflow: hidden;">
-                        <div style="background: linear-gradient(90deg, #B8A5FF, #FFE58F); width: {min(100, max(5, pct))}%; height: 100%;"></div>
+                    <div style="background: rgba(226, 232, 240, 0.7); border-radius: 9999px; height: 6px; overflow: hidden; box-shadow: inset 1px 1px 2px rgba(0,0,0,0.1);">
+                        <div style="background: linear-gradient(90deg, #6366F1, #06B6D4); width: {min(100, max(5, pct))}%; height: 100%; border-radius: 9999px;"></div>
                     </div>
                 </div>
                 """, unsafe_allow_html=True)
         st.markdown("</div>", unsafe_allow_html=True)
 
-    # Card 3: Model Health & Accuracy Metrics
+    # Card 3: Model Health
     with c3:
         st.markdown("""
-        <div class="saas-card" style="height: 100%;">
+        <div class="glass-embossed-card" style="height: 100%;">
             <div class="card-title">
                 <span>Model Diagnostics</span>
-                <span class="badge-pill-yellow">Operational</span>
+                <span class="embossed-pill-purple">Optimal</span>
             </div>
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 14px;">
-                <div class="mini-box">
-                    <div>
-                        <div style="font-size: 1.15rem; font-weight: 800; color: #FFFFFF;">0.99</div>
-                        <div style="font-size: 0.72rem; color: #7E7E94;">Precision Score</div>
-                    </div>
+                <div class="embossed-inset-box">
+                    <div style="font-size: 1.25rem; font-weight: 800; color: #4F46E5;">0.99</div>
+                    <div style="font-size: 0.72rem; color: #64748B; font-weight: 600;">Precision Score</div>
                 </div>
-                <div class="mini-box">
-                    <div>
-                        <div style="font-size: 1.15rem; font-weight: 800; color: #FFFFFF;">0.99</div>
-                        <div style="font-size: 0.72rem; color: #7E7E94;">F1 Weighted</div>
-                    </div>
+                <div class="embossed-inset-box">
+                    <div style="font-size: 1.25rem; font-weight: 800; color: #7C3AED;">0.99</div>
+                    <div style="font-size: 0.72rem; color: #64748B; font-weight: 600;">F1 Weighted</div>
                 </div>
             </div>
-            <div class="mini-box">
-                <div class="mini-icon" style="background: #34D399; color: #0A0A0E; font-weight: 800;">✓</div>
+            <div class="embossed-inset-box" style="display: flex; align-items: center; gap: 10px;">
+                <div style="width: 28px; height: 28px; border-radius: 50%; background: #10B981; color: white; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.8rem;">✓</div>
                 <div>
-                    <div style="font-size: 0.82rem; font-weight: 700; color: #FFFFFF;">Stratified Split Clean</div>
-                    <div style="font-size: 0.72rem; color: #7E7E94;">0 nulls | 525 balanced rows</div>
+                    <div style="font-size: 0.82rem; font-weight: 700; color: #0F172A;">Stratified Split Verified</div>
+                    <div style="font-size: 0.72rem; color: #64748B;">0 nulls | 525 balanced rows</div>
                 </div>
             </div>
         </div>
         """, unsafe_allow_html=True)
 
-    # Bottom Row: Heatmap & Sample Predictions
+    # Bottom Row: Heatmap & Predictions Table
     st.markdown("<br>", unsafe_allow_html=True)
     c_bot1, c_bot2 = st.columns([1.2, 1.8])
     with c_bot1:
-        st.markdown('<div class="saas-card"><div class="card-title"><span>Interactive Confusion Heatmap</span><span class="badge-pill-lilac">Diagnostic</span></div>', unsafe_allow_html=True)
+        st.markdown('<div class="glass-embossed-card"><div class="card-title"><span>Interactive Confusion Heatmap</span><span class="embossed-pill-indigo">Diagnostic</span></div>', unsafe_allow_html=True)
         if res["task_type"] == "Classification":
             cm = res["confusion_matrix"]
             fig_cm = px.imshow(
                 cm, text_auto=True,
                 labels=dict(x="Predicted", y="Actual", color="Samples"),
-                color_continuous_scale=[[0, "#14141E"], [0.5, "#7C3AED"], [1, "#C4B5FD"]]
+                color_continuous_scale=[[0, "#F1F5F9"], [0.5, "#818CF8"], [1, "#4F46E5"]]
             )
-            fig_cm.update_layout(height=260, margin=dict(l=5, r=5, t=5, b=5), paper_bgcolor=COLOR_DARK_BG, plot_bgcolor=COLOR_DARK_BG)
+            fig_cm.update_layout(height=260, margin=dict(l=5, r=5, t=5, b=5), paper_bgcolor=COLOR_BG_LIGHT, plot_bgcolor=COLOR_BG_LIGHT, font=dict(color="#334155"))
             st.plotly_chart(fig_cm, use_container_width=True)
         else:
-            fig_sc = px.scatter(x=np.array(res["y_test"]).ravel(), y=np.array(res["y_pred"]).ravel(), labels={"x": "Actual", "y": "Predicted"}, color_discrete_sequence=[COLOR_LILAC])
-            fig_sc.update_layout(height=260, margin=dict(l=5, r=5, t=5, b=5), paper_bgcolor=COLOR_DARK_BG, plot_bgcolor=COLOR_DARK_BG)
+            fig_sc = px.scatter(x=np.array(res["y_test"]).ravel(), y=np.array(res["y_pred"]).ravel(), labels={"x": "Actual", "y": "Predicted"}, color_discrete_sequence=[COLOR_INDIGO])
+            fig_sc.update_layout(height=260, margin=dict(l=5, r=5, t=5, b=5), paper_bgcolor=COLOR_BG_LIGHT, plot_bgcolor=COLOR_BG_LIGHT)
             st.plotly_chart(fig_sc, use_container_width=True)
         st.markdown("</div>", unsafe_allow_html=True)
 
     with c_bot2:
-        st.markdown('<div class="saas-card"><div class="card-title"><span>Test Set Predictions Table</span><span class="badge-pill-yellow">Evaluation Sample</span></div>', unsafe_allow_html=True)
+        st.markdown('<div class="glass-embossed-card"><div class="card-title"><span>Test Set Predictions Table</span><span class="embossed-pill-cyan">Evaluation Sample</span></div>', unsafe_allow_html=True)
         y_test_arr = np.array(res["y_test"]).ravel()
         y_pred_arr = np.array(res["y_pred"]).ravel()
-        sample_df = pd.DataFrame({
-            "Actual Target": y_test_arr[:12],
-            "Model Prediction": y_pred_arr[:12]
-        })
+        sample_df = pd.DataFrame({"Actual Target": y_test_arr[:12], "Model Prediction": y_pred_arr[:12]})
         if res["task_type"] == "Regression":
             sample_df["Error Delta"] = np.round(sample_df["Actual Target"] - sample_df["Model Prediction"], 2)
         st.dataframe(sample_df, height=260, use_container_width=True)
@@ -474,12 +545,12 @@ with tab_overview:
 # ----------------- TAB 2: LIVE WHAT-IF SIMULATOR -----------------
 with tab_simulator:
     st.markdown("""
-    <div class="saas-card">
+    <div class="glass-embossed-card">
         <div class="card-title">
             <span>🔮 Interactive Candidate Salary & Level Simulator</span>
-            <span class="badge-pill-lilac">Real-Time What-If</span>
+            <span class="embossed-pill-indigo">Real-Time What-If</span>
         </div>
-        <p style="color: #7E7E94; font-size: 0.85rem; margin-top: -6px;">Tweak candidate attributes and observe real-time model inferences:</p>
+        <p style="color: #64748B; font-size: 0.88rem; margin-top: -6px;">Tweak candidate attributes and observe real-time model inferences:</p>
     """, unsafe_allow_html=True)
     
     col_sim_in, col_sim_out = st.columns([2, 1])
@@ -498,7 +569,6 @@ with tab_simulator:
                     min_v = float(df[col].min())
                     max_v = float(df[col].max())
                     mean_v = float(df[col].mean())
-                    # SAFE GUARD: Ensure min_value < max_value
                     if min_v < max_v:
                         user_inputs[col] = p_c.slider(f"{col}", min_value=min_v, max_value=max_v, value=mean_v, key=f"sim_{col}")
                     else:
@@ -521,18 +591,18 @@ with tab_simulator:
                 target_enc = prep_data.get("target_encoder")
                 disp = target_enc.inverse_transform([int(pred_v)])[0] if target_enc else pred_v
                 st.markdown(f"""
-                <div style="background: #1B1B26; border: 1px solid rgba(184, 165, 255, 0.3); border-radius: 16px; padding: 24px; text-align: center; margin-top: 15px;">
-                    <div style="font-size: 0.8rem; color: #7E7E94;">Predicted Seniority Bracket</div>
-                    <div style="font-size: 2rem; font-weight: 800; color: #B8A5FF; margin: 10px 0;">{disp}</div>
-                    <span class="badge-pill-lilac">Model: {selected_algorithm}</span>
+                <div class="glass-embossed-card" style="text-align: center; margin-top: 15px; border: 2px solid rgba(99, 102, 241, 0.4);">
+                    <div style="font-size: 0.8rem; color: #64748B; font-weight: 700;">Predicted Seniority Bracket</div>
+                    <div style="font-size: 2rem; font-weight: 800; color: #4F46E5; margin: 10px 0;">{disp}</div>
+                    <span class="embossed-pill-indigo">Model: {selected_algorithm}</span>
                 </div>
                 """, unsafe_allow_html=True)
             else:
                 st.markdown(f"""
-                <div style="background: #1B1B26; border: 1px solid rgba(255, 229, 143, 0.3); border-radius: 16px; padding: 24px; text-align: center; margin-top: 15px;">
-                    <div style="font-size: 0.8rem; color: #7E7E94;">Estimated Monthly Compensation</div>
-                    <div style="font-size: 2.2rem; font-weight: 800; color: #FFE58F; margin: 10px 0;">Rs. {float(pred_v):,.0f}</div>
-                    <span class="badge-pill-yellow">Model: {selected_algorithm}</span>
+                <div class="glass-embossed-card" style="text-align: center; margin-top: 15px; border: 2px solid rgba(6, 182, 212, 0.4);">
+                    <div style="font-size: 0.8rem; color: #64748B; font-weight: 700;">Estimated Monthly Compensation</div>
+                    <div style="font-size: 2.2rem; font-weight: 800; color: #0891B2; margin: 10px 0;">Rs. {float(pred_v):,.0f}</div>
+                    <span class="embossed-pill-cyan">Model: {selected_algorithm}</span>
                 </div>
                 """, unsafe_allow_html=True)
         except Exception as ex:
@@ -542,12 +612,12 @@ with tab_simulator:
 # ----------------- TAB 3: BENCHMARK BATTLE -----------------
 with tab_battle:
     st.markdown("""
-    <div class="saas-card">
+    <div class="glass-embossed-card">
         <div class="card-title">
             <span>⚔️ 4-Model Ensemble Battle</span>
-            <span class="badge-pill-yellow">Random Forest vs. Boosting</span>
+            <span class="embossed-pill-indigo">Random Forest vs. Boosting</span>
         </div>
-        <p style="color: #7E7E94; font-size: 0.85rem; margin-top: -6px;">Confrontation between Random Forest, XGBoost, LightGBM, and CatBoost:</p>
+        <p style="color: #64748B; font-size: 0.88rem; margin-top: -6px;">Confrontation between Random Forest, XGBoost, LightGBM, and CatBoost:</p>
     """, unsafe_allow_html=True)
     
     bench_rows = []
@@ -568,22 +638,16 @@ with tab_battle:
     
     with col_w1:
         st.markdown(f"""
-        <div class="mini-box" style="padding: 16px;">
-            <div class="mini-icon" style="background:#FFE58F;color:#0A0A0E;font-size:1.2rem;">👑</div>
-            <div>
-                <div style="font-size: 1.3rem; font-weight: 800; color: #FFE58F;">{b_winner}</div>
-                <div style="font-size: 0.75rem; color: #7E7E94;">Accuracy Winner ({p_metric}: <b>{b_score}</b>)</div>
-            </div>
+        <div class="embossed-inset-box" style="padding: 16px;">
+            <div style="font-size: 1.3rem; font-weight: 800; color: #4F46E5;">👑 {b_winner}</div>
+            <div style="font-size: 0.78rem; color: #64748B; font-weight: 600;">Accuracy Winner ({p_metric}: <b>{b_score}</b>)</div>
         </div>
         """, unsafe_allow_html=True)
     with col_w2:
         st.markdown(f"""
-        <div class="mini-box" style="padding: 16px;">
-            <div class="mini-icon" style="background:#B8A5FF;color:#0A0A0E;font-size:1.2rem;">⚡</div>
-            <div>
-                <div style="font-size: 1.3rem; font-weight: 800; color: #B8A5FF;">{s_winner}</div>
-                <div style="font-size: 0.75rem; color: #7E7E94;">Speed Champion ({s_time:.1f} ms)</div>
-            </div>
+        <div class="embossed-inset-box" style="padding: 16px;">
+            <div style="font-size: 1.3rem; font-weight: 800; color: #0891B2;">⚡ {s_winner}</div>
+            <div style="font-size: 0.78rem; color: #64748B; font-weight: 600;">Speed Champion ({s_time:.1f} ms)</div>
         </div>
         """, unsafe_allow_html=True)
         
@@ -592,36 +656,36 @@ with tab_battle:
     
     col_bt1, col_bt2 = st.columns(2)
     with col_bt1:
-        fig_b1 = px.bar(bench_df, x="Algorithm", y=p_metric, color="Algorithm", color_discrete_sequence=[COLOR_LILAC, COLOR_YELLOW, "#38BDF8", COLOR_MINT], text_auto=True)
-        fig_b1.update_layout(height=280, showlegend=False, paper_bgcolor=COLOR_DARK_BG, plot_bgcolor=COLOR_DARK_BG)
+        fig_b1 = px.bar(bench_df, x="Algorithm", y=p_metric, color="Algorithm", color_discrete_sequence=[COLOR_INDIGO, COLOR_CYAN, COLOR_PURPLE, COLOR_MINT], text_auto=True)
+        fig_b1.update_layout(height=280, showlegend=False, paper_bgcolor=COLOR_BG_LIGHT, plot_bgcolor=COLOR_BG_LIGHT)
         st.plotly_chart(fig_b1, use_container_width=True)
     with col_bt2:
-        fig_b2 = px.scatter(bench_df, x="Latency (ms)", y=p_metric, text="Algorithm", color="Algorithm", size=[20, 20, 20, 20], color_discrete_sequence=[COLOR_LILAC, COLOR_YELLOW, "#38BDF8", COLOR_MINT])
+        fig_b2 = px.scatter(bench_df, x="Latency (ms)", y=p_metric, text="Algorithm", color="Algorithm", size=[20, 20, 20, 20], color_discrete_sequence=[COLOR_INDIGO, COLOR_CYAN, COLOR_PURPLE, COLOR_MINT])
         fig_b2.update_traces(textposition="top center")
-        fig_b2.update_layout(height=280, showlegend=False, paper_bgcolor=COLOR_DARK_BG, plot_bgcolor=COLOR_DARK_BG)
+        fig_b2.update_layout(height=280, showlegend=False, paper_bgcolor=COLOR_BG_LIGHT, plot_bgcolor=COLOR_BG_LIGHT)
         st.plotly_chart(fig_b2, use_container_width=True)
     st.markdown("</div>", unsafe_allow_html=True)
 
 # ----------------- TAB 4: DATA CLEANING -----------------
 with tab_cleaning:
     st.markdown("""
-    <div class="saas-card">
+    <div class="glass-embossed-card">
         <div class="card-title">
             <span>🧹 Data Pipeline: Raw 209 Rows ➔ 525 Cleaned ML Records</span>
-            <span class="badge-pill-lilac">Pipeline Verified</span>
+            <span class="embossed-pill-indigo">Pipeline Verified</span>
         </div>
-        <p style="color: #7E7E94; font-size: 0.85rem; margin-top: -6px;">How nested pipe delimiters and unstructured text were parsed into ready-to-train tabular data:</p>
+        <p style="color: #64748B; font-size: 0.88rem; margin-top: -6px;">How nested pipe delimiters and unstructured text were parsed into ready-to-train tabular data:</p>
     """, unsafe_allow_html=True)
     
     k1, k2, k3, k4 = st.columns(4)
     with k1:
-        st.markdown('<div class="mini-box"><div><div class="big-stat-val" style="font-size:1.4rem;">209</div><div class="big-stat-label">Raw Roles</div></div></div>', unsafe_allow_html=True)
+        st.markdown('<div class="embossed-inset-box"><div class="big-stat-val" style="font-size:1.4rem;">209</div><div class="big-stat-label">Raw Roles</div></div>', unsafe_allow_html=True)
     with k2:
-        st.markdown('<div class="mini-box"><div><div class="big-stat-val" style="font-size:1.4rem;color:#B8A5FF;">525</div><div class="big-stat-label">Cleaned Rows</div></div></div>', unsafe_allow_html=True)
+        st.markdown('<div class="embossed-inset-box"><div class="big-stat-val" style="font-size:1.4rem;color:#4F46E5;">525</div><div class="big-stat-label">Cleaned Rows</div></div>', unsafe_allow_html=True)
     with k3:
-        st.markdown('<div class="mini-box"><div><div class="big-stat-val" style="font-size:1.4rem;color:#FFE58F;">17</div><div class="big-stat-label">Features</div></div></div>', unsafe_allow_html=True)
+        st.markdown('<div class="embossed-inset-box"><div class="big-stat-val" style="font-size:1.4rem;color:#0891B2;">17</div><div class="big-stat-label">Features</div></div>', unsafe_allow_html=True)
     with k4:
-        st.markdown('<div class="mini-box"><div><div class="big-stat-val" style="font-size:1.4rem;color:#34D399;">0</div><div class="big-stat-label">Nulls</div></div></div>', unsafe_allow_html=True)
+        st.markdown('<div class="embossed-inset-box"><div class="big-stat-val" style="font-size:1.4rem;color:#10B981;">0</div><div class="big-stat-label">Nulls</div></div>', unsafe_allow_html=True)
         
     st.markdown("<br>", unsafe_allow_html=True)
     clean_csv = df.to_csv(index=False).encode('utf-8')
@@ -634,10 +698,10 @@ with tab_cleaning:
 # ----------------- TAB 5: DATASET EXPLORER -----------------
 with tab_explorer:
     st.markdown("""
-    <div class="saas-card">
+    <div class="glass-embossed-card">
         <div class="card-title">
             <span>📁 Interactive Dataset Explorer</span>
-            <span class="badge-pill-lilac">Dynamic Filtering</span>
+            <span class="embossed-pill-indigo">Dynamic Filtering</span>
         </div>
     """, unsafe_allow_html=True)
     
