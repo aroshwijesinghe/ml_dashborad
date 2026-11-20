@@ -21,6 +21,21 @@ st.markdown("""
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
     
+    /* Hide Streamlit Header, Deploy Button, Main Menu, and Footer */
+    header[data-testid="stHeader"] {
+        display: none !important;
+        visibility: hidden !important;
+        height: 0px !important;
+    }
+    .stDeployButton, [data-testid="stToolbar"], #MainMenu, footer {
+        display: none !important;
+        visibility: hidden !important;
+    }
+    div[data-testid="stDecoration"] {
+        display: none !important;
+        visibility: hidden !important;
+    }
+    
     /* Light Background with Cool Aurora Gradients */
     html, body, [class*="css"], .stApp {
         background: linear-gradient(135deg, #EFF4FC 0%, #E6EDF9 35%, #F4F0FD 70%, #EBF4FE 100%) !important;
